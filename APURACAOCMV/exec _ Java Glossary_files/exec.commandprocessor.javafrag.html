@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)https://www.mindprod.com/jgloss/snippet/iframe/exec.commandprocessor.javafrag.htm -->
+<html lang="en-CA"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Snippet : exec.commandprocessor.javafrag</title>
+<meta http-equiv="lang" content="en">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link href="./jdisplay.css" type="text/css" rel="stylesheet" media="all">
+</head>
+<body class="snippet"><pre class="java"><span class="commentslashslash">// Windows 98 command.com</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="string">"command.com /E:1900 /C MyBat.bat"</span> <span class="fence1">)</span><span class="sc">;</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="string">"command.com /E:1900 /C ATTRIB -h C:\\temp\\*.*"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// Windows NT/W2K/XP/VISTA cmd.exe</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="string">"cmd.exe /E:1900 /C MyCmd.cmd"</span> <span class="fence1">)</span><span class="sc">;</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="string">"cmd.exe /E:1900 /C copy C:\\this.txt D:\\that.txt"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// Windows NT/W2K/XP/VISTA starting a service, you can't use the ... syntax here.</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="k">new </span><span class="class">String</span><span class="fence1">[</span><span class="fence1">]</span> <span class="fence1">{</span>
+                              <span class="string">"cmd.exe"</span><span class="op">,</span>
+                              <span class="string">"/E:1900"</span><span class="op">,</span>
+                              <span class="string">"/C"</span><span class="op">,</span>
+                              <span class="string">"net"</span><span class="op">,</span>
+                              <span class="string">"start"</span><span class="op">,</span>
+                              <span class="string">"servicename"</span><span class="fence1">}</span><span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// Windows 98 with 4DOS</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="string">"C:\\4DOS601\\4DOS.COM /E:1900 /C MyBtm.btm"</span> <span class="fence1">)</span><span class="sc">;</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="string">"C:\\4DOS601\\4DOS.COM /E:1900 /C del C:\\this.txt"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// Windows NT/W2K/XP/VISTA with 4NT</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="string">"F:\\Program Files\\JPSoft\\4NT8\\4NT.EXE /E:1900 /C MyBtm.btm"</span> <span class="fence1">)</span><span class="sc">;</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="string">"F:\\Program Files\\JPSoft\\4NT8\\4NT.EXE /E:1900 /C DIR C:\\temp"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// Linux Bash</span>
+<span class="class">String</span><span class="fence1">[</span><span class="fence1">]</span> <span class="vardef">cmd </span><span class="op">= </span><span class="fence1">{</span><span class="string">"/bin/bash"</span><span class="op">, </span><span class="string">"-c"</span><span class="op">, </span><span class="string">"rm /dirA/*"</span><span class="fence1">}</span><span class="sc">;</span>
+<span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="var">cmd </span><span class="fence1">)</span><span class="sc">;</span></pre>
+<!-- timestamp 1499732229215 -->
+</body></html>

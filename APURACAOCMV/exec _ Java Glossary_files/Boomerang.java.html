@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://www.mindprod.com/jgloss/snippet/iframe/Boomerang.java.htm -->
+<html lang="en-CA"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Snippet : Boomerang.java</title>
+<meta http-equiv="lang" content="en">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link href="./jdisplay.css" type="text/css" rel="stylesheet" media="all">
+</head>
+<body class="snippet"><pre class="java"><span class="commentslashstar">/*</span>
+<span class="commentslashstar"> * [Boomerang.java]</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Summary: Program to help test exec. It just echoes in System.in input on out.</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Copyright: (c) 2009-2017 Roedy Green, Canadian Mind Products, http://mindprod.com</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Licence: This software may be copied and used freely for any purpose but military.</span>
+<span class="commentslashstar"> *          http://mindprod.com/contact/nonmil.html</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Requires: JDK 1.8+</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Created with: JetBrains IntelliJ IDEA IDE http://www.jetbrains.com/idea/</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Version History:</span>
+<span class="commentslashstar"> *  1.0 2009-04-07 initial version</span>
+<span class="commentslashstar"> */</span>
+<span class="ik">package </span><span class="packagedef">com</span><span class="op">.</span><span class="packagedef">mindprod</span><span class="op">.</span><span class="packagedef">example</span><span class="sc">;</span>
+
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">BufferedReader</span><span class="sc">;</span>
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">IOException</span><span class="sc">;</span>
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">InputStreamReader</span><span class="sc">;</span>
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">OutputStreamWriter</span><span class="sc">;</span>
+
+<span class="k">import static </span><span class="var">java</span><span class="op">.</span><span class="var">lang</span><span class="op">.</span><span class="class">System</span><span class="op">.*</span><span class="sc">;</span>
+
+<span class="javadoc">/**</span>
+<span class="javadoc"> * Program to help test exec. It just echoes in System.in input on out.</span>
+<span class="javadoc"> * &lt;p/&gt;</span>
+<span class="javadoc"> * I don't think it has any practical application.</span>
+<span class="javadoc"> *</span>
+<span class="javadoc"> * </span><span class="javadoctag">@author</span><span class="javadoc"> Roedy Green, Canadian Mind Products</span>
+<span class="javadoc"> * </span><span class="javadoctag">@version</span><span class="javadoc"> 1.0 2009-04-07 initial version</span>
+<span class="javadoc"> * </span><span class="javadoctag">@since</span><span class="javadoc"> 2009-04-07</span>
+<span class="javadoc"> */</span>
+<span class="k">public </span><span class="ik">class </span><span class="classdef">Boomerang</span>
+    <span class="fence1">{</span>
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * e.g. \n \r\n or \r, whatever system uses to separate lines in a text file. Only used inside multiline fields. The</span>
+<span class="javadoc">     * file itself should use Windows format \r \n, though \n by itself will also work.</span>
+<span class="javadoc">     */</span>
+    <span class="k">private static final </span><span class="class">String </span><span class="vardef">lineSeparator </span><span class="op">= </span><span class="class">System</span><span class="op">.</span><span class="method">getProperty</span><span class="fence1">(</span> <span class="string">"line.separator"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * echo System.in to out. On EOF shut down.</span>
+<span class="javadoc">     *</span>
+<span class="javadoc">     * </span><span class="javadoctag">@param</span><span class="javadoc"> args not used</span>
+<span class="javadoc">     *</span>
+<span class="javadoc">     * </span><span class="javadoctag">@throws</span><span class="javadoc"> java.io.IOException if trouble setting up reader/writer</span>
+<span class="javadoc">     */</span>
+    <span class="k">public static void </span><span class="method">main</span><span class="fence1">(</span> <span class="class">String</span><span class="fence1">[</span><span class="fence1">]</span> <span class="vardef">args </span><span class="fence1">)</span> <span class="k">throws </span><span class="class">IOException</span>
+        <span class="fence2">{</span>
+        <span class="commentslashslash">// use platform default encoding.</span>
+        <span class="k">final </span><span class="class">BufferedReader </span><span class="vardef">br </span><span class="op">= </span><span class="k">new </span><span class="class">BufferedReader</span><span class="fence1">(</span> <span class="k">new </span><span class="class">InputStreamReader</span><span class="fence2">(</span> <span class="class">System</span><span class="op">.</span><span class="var">in </span><span class="fence2">)</span><span class="op">,</span>
+                <span class="decimallow">50</span>
+                <span class="commentslashstar">/* keep small for testing */ </span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="k">final </span><span class="class">OutputStreamWriter </span><span class="vardef">osw </span><span class="op">= </span><span class="k">new </span><span class="class">OutputStreamWriter</span><span class="fence1">(</span> <span class="var">out </span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="class">String </span><span class="vardef">line</span><span class="sc">;</span>
+        <span class="ik">while </span><span class="fence1">(</span> <span class="fence2">(</span> <span class="var">line </span><span class="op">= </span><span class="var">br</span><span class="op">.</span><span class="method">readLine</span><span class="fence3">(</span><span class="fence3">)</span> <span class="fence2">)</span> <span class="op">!= </span><span class="k">null </span><span class="fence1">)</span>
+            <span class="fence3">{</span>
+            <span class="var">osw</span><span class="op">.</span><span class="method">write</span><span class="fence1">(</span> <span class="var">line </span><span class="fence1">)</span><span class="sc">;</span>
+            <span class="var">osw</span><span class="op">.</span><span class="method">write</span><span class="fence1">(</span> <span class="var">lineSeparator </span><span class="fence1">)</span><span class="sc">;</span>
+            <span class="fence3">}</span>
+        <span class="var">br</span><span class="op">.</span><span class="method">close</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="var">osw</span><span class="op">.</span><span class="method">close</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="fence2">}</span>
+    <span class="fence1">}</span></pre>
+<!-- timestamp 1510047890117 -->
+</body></html>

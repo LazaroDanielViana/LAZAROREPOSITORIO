@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://www.mindprod.com/jgloss/snippet/iframe/TestProcessBuilder.java.htm -->
+<html lang="en-CA"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Snippet : TestProcessBuilder.java</title>
+<meta http-equiv="lang" content="en">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link href="./jdisplay.css" type="text/css" rel="stylesheet" media="all">
+</head>
+<body class="snippet"><pre class="java"><span class="commentslashstar">/*</span>
+<span class="commentslashstar"> * [TestProcessBuilder.java]</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Summary: Program to demostrate use of communicating with a child process using three threads and ProcessBuilder.</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Copyright: (c) 2009-2017 Roedy Green, Canadian Mind Products, http://mindprod.com</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Licence: This software may be copied and used freely for any purpose but military.</span>
+<span class="commentslashstar"> *          http://mindprod.com/contact/nonmil.html</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Requires: JDK 1.8+</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Created with: JetBrains IntelliJ IDEA IDE http://www.jetbrains.com/idea/</span>
+<span class="commentslashstar"> *</span>
+<span class="commentslashstar"> * Version History:</span>
+<span class="commentslashstar"> *  1.0 2009-04-07 initial version</span>
+<span class="commentslashstar"> */</span>
+<span class="ik">package </span><span class="packagedef">com</span><span class="op">.</span><span class="packagedef">mindprod</span><span class="op">.</span><span class="packagedef">example</span><span class="sc">;</span>
+
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">BufferedReader</span><span class="sc">;</span>
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">BufferedWriter</span><span class="sc">;</span>
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">IOException</span><span class="sc">;</span>
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">InputStream</span><span class="sc">;</span>
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">InputStreamReader</span><span class="sc">;</span>
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">OutputStream</span><span class="sc">;</span>
+<span class="k">import </span><span class="package">java</span><span class="op">.</span><span class="package">io</span><span class="op">.</span><span class="class">OutputStreamWriter</span><span class="sc">;</span>
+
+<span class="k">import static </span><span class="var">java</span><span class="op">.</span><span class="var">lang</span><span class="op">.</span><span class="class">System</span><span class="op">.*</span><span class="sc">;</span>
+
+<span class="javadoc">/**</span>
+<span class="javadoc"> * Program to demostrate use of communicating with a child process using three threads and ProcessBuilder.</span>
+<span class="javadoc"> *</span>
+<span class="javadoc"> * </span><span class="javadoctag">@author</span><span class="javadoc"> Roedy Green, Canadian Mind Products</span>
+<span class="javadoc"> * </span><span class="javadoctag">@version</span><span class="javadoc"> 1.0 2009-04-07 initial version</span>
+<span class="javadoc"> * </span><span class="javadoctag">@since</span><span class="javadoc"> 2009-04-07</span>
+<span class="javadoc"> */</span>
+<span class="k">final public </span><span class="ik">class </span><span class="classdef">TestProcessBuilder</span>
+    <span class="fence1">{</span>
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * Demonstrate us of ProcessBuilder and communicating with a child process.</span>
+<span class="javadoc">     *</span>
+<span class="javadoc">     * </span><span class="javadoctag">@param</span><span class="javadoc"> args not used</span>
+<span class="javadoc">     *</span>
+<span class="javadoc">     * </span><span class="javadoctag">@throws</span><span class="javadoc"> java.io.IOException if trouble setting up reader/writer</span>
+<span class="javadoc">     */</span>
+    <span class="k">public static void </span><span class="method">main</span><span class="fence1">(</span> <span class="class">String</span><span class="fence1">[</span><span class="fence1">]</span> <span class="vardef">args </span><span class="fence1">)</span> <span class="k">throws </span><span class="class">IOException</span>
+        <span class="fence2">{</span>
+        <span class="commentslashslash">// Boomerang exchoes input to output.</span>
+        <span class="k">final </span><span class="class">ProcessBuilder </span><span class="vardef">pb </span><span class="op">= </span><span class="k">new </span><span class="class">ProcessBuilder</span><span class="fence1">(</span> <span class="string">"E:/sys/boomerang.exe"</span> <span class="fence1">)</span><span class="sc">;</span>
+        <span class="commentslashslash">// merge child's error and normal output streams.</span>
+        <span class="commentslashslash">// Note it is not called setRedirectErrorStream.</span>
+        <span class="var">pb</span><span class="op">.</span><span class="method">redirectErrorStream</span><span class="fence1">(</span> <span class="k">true </span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="k">final </span><span class="class">Process </span><span class="vardef">p </span><span class="op">= </span><span class="var">pb</span><span class="op">.</span><span class="method">start</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="class">OutputStream </span><span class="vardef">os </span><span class="op">= </span><span class="var">p</span><span class="op">.</span><span class="method">getOutputStream</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="class">InputStream </span><span class="vardef">is </span><span class="op">= </span><span class="var">p</span><span class="op">.</span><span class="method">getInputStream</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="commentslashslash">// spawn two threads to handle I/O with child while we wait for it to complete.</span>
+        <span class="k">new </span><span class="class">Thread</span><span class="fence1">(</span> <span class="k">new </span><span class="class">Receiver</span><span class="fence2">(</span> <span class="var">is </span><span class="fence2">)</span> <span class="fence1">)</span><span class="op">.</span><span class="method">start</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="k">new </span><span class="class">Thread</span><span class="fence1">(</span> <span class="k">new </span><span class="class">Sender</span><span class="fence2">(</span> <span class="var">os </span><span class="fence2">)</span> <span class="fence1">)</span><span class="op">.</span><span class="method">start</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="k">try</span>
+            <span class="fence3">{</span>
+            <span class="var">p</span><span class="op">.</span><span class="method">waitFor</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+            <span class="fence3">}</span>
+        <span class="k">catch </span><span class="fence1">(</span> <span class="class">InterruptedException </span><span class="vardef">e </span><span class="fence1">)</span>
+            <span class="fence3">{</span>
+            <span class="class">Thread</span><span class="op">.</span><span class="method">currentThread</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">interrupt</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+            <span class="fence3">}</span>
+        <span class="var">out</span><span class="op">.</span><span class="method">println</span><span class="fence1">(</span> <span class="string">"Child done"</span> <span class="fence1">)</span><span class="sc">;</span>
+        <span class="commentslashslash">// at this point the child is complete.  All of its output may or may not have been processed however.</span>
+        <span class="commentslashslash">// The Receiver thread will continue until it has finished processing it.</span>
+        <span class="commentslashslash">// You must close the streams even if you never use them!  In this case the threads close is and os.</span>
+        <span class="var">p</span><span class="op">.</span><span class="method">getErrorStream</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">close</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+        <span class="fence2">}</span>
+    <span class="fence1">}</span>
+
+<span class="javadoc">/**</span>
+<span class="javadoc"> * thread to send output to the child.</span>
+<span class="javadoc"> */</span>
+<span class="k">final </span><span class="ik">class </span><span class="classdef">Sender </span><span class="k">implements </span><span class="interface">Runnable</span>
+    <span class="fence1">{</span>
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * e.g. \n \r\n or \r, whatever system uses to separate lines in a text file. Only used inside multiline fields. The</span>
+<span class="javadoc">     * file itself should use Windows format \r \n, though \n by itself will alsolineSeparator work.</span>
+<span class="javadoc">     */</span>
+    <span class="k">private static final </span><span class="class">String </span><span class="vardef">lineSeparator </span><span class="op">= </span><span class="class">System</span><span class="op">.</span><span class="method">getProperty</span><span class="fence1">(</span> <span class="string">"line.separator"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * stream to send output to child on</span>
+<span class="javadoc">     */</span>
+    <span class="k">private final </span><span class="class">OutputStream </span><span class="vardef">os</span><span class="sc">;</span>
+
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * constructor</span>
+<span class="javadoc">     *</span>
+<span class="javadoc">     * </span><span class="javadoctag">@param</span><span class="javadoc"> os stream to use to send data to child.</span>
+<span class="javadoc">     */</span>
+    <span class="classdef">Sender</span><span class="fence1">(</span> <span class="class">OutputStream </span><span class="vardef">os </span><span class="fence1">)</span>
+        <span class="fence2">{</span>
+        <span class="k">this</span><span class="op">.</span><span class="var">os </span><span class="op">= </span><span class="var">os</span><span class="sc">;</span>
+        <span class="fence2">}</span>
+
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * method invoked when Sender thread started.  Feeds dummy data to child.</span>
+<span class="javadoc">     */</span>
+    <span class="k">public void </span><span class="method">run</span><span class="fence1">(</span><span class="fence1">)</span>
+        <span class="fence2">{</span>
+        <span class="k">try</span>
+            <span class="fence3">{</span>
+            <span class="k">final </span><span class="class">BufferedWriter </span><span class="vardef">bw </span><span class="op">= </span><span class="k">new </span><span class="class">BufferedWriter</span><span class="fence1">(</span> <span class="k">new </span><span class="class">OutputStreamWriter</span><span class="fence2">(</span> <span class="var">os </span><span class="fence2">)</span><span class="op">, </span><span class="decimallow">50 </span><span class="commentslashstar">/* keep small for tests */ </span><span class="fence1">)</span><span class="sc">;</span>
+            <span class="ik">for </span><span class="fence1">(</span> <span class="k">int </span><span class="vardef">i </span><span class="op">= </span><span class="decimallow">99</span><span class="sc">; </span><span class="var">i </span><span class="op">&gt;= </span><span class="decimallow">0</span><span class="sc">; </span><span class="var">i</span><span class="op">-- </span><span class="fence1">)</span>
+                <span class="fence3">{</span>
+                <span class="var">bw</span><span class="op">.</span><span class="method">write</span><span class="fence1">(</span> <span class="string">"There are "</span> <span class="op">+ </span><span class="var">i </span><span class="op">+ </span><span class="string">" bottles of beer on the wall, "</span> <span class="op">+ </span><span class="var">i </span><span class="op">+ </span><span class="string">" bottles of beer."</span> <span class="fence1">)</span><span class="sc">;</span>
+                <span class="var">bw</span><span class="op">.</span><span class="method">write</span><span class="fence1">(</span> <span class="var">lineSeparator </span><span class="fence1">)</span><span class="sc">;</span>
+                <span class="fence3">}</span>
+            <span class="var">bw</span><span class="op">.</span><span class="method">close</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+            <span class="fence3">}</span>
+        <span class="k">catch </span><span class="fence1">(</span> <span class="class">IOException </span><span class="vardef">e </span><span class="fence1">)</span>
+            <span class="fence3">{</span>
+            <span class="k">throw new </span><span class="classdef">IllegalArgumentException</span><span class="fence1">(</span> <span class="string">"IOException sending data to child process."</span> <span class="fence1">)</span><span class="sc">;</span>
+            <span class="fence3">}</span>
+        <span class="fence2">}</span>
+    <span class="fence1">}</span>
+
+<span class="javadoc">/**</span>
+<span class="javadoc"> * thread to read output from child</span>
+<span class="javadoc"> */</span>
+<span class="ik">class </span><span class="classdef">Receiver </span><span class="k">implements </span><span class="interface">Runnable</span>
+    <span class="fence1">{</span>
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * stream to receive data from child</span>
+<span class="javadoc">     */</span>
+    <span class="k">private final </span><span class="class">InputStream </span><span class="vardef">is</span><span class="sc">;</span>
+
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * contructor</span>
+<span class="javadoc">     *</span>
+<span class="javadoc">     * </span><span class="javadoctag">@param</span><span class="javadoc"> is stream to receive data from child</span>
+<span class="javadoc">     */</span>
+    <span class="classdef">Receiver</span><span class="fence1">(</span> <span class="class">InputStream </span><span class="vardef">is </span><span class="fence1">)</span>
+        <span class="fence2">{</span>
+        <span class="k">this</span><span class="op">.</span><span class="var">is </span><span class="op">= </span><span class="var">is</span><span class="sc">;</span>
+        <span class="fence2">}</span>
+
+    <span class="javadoc">/**</span>
+<span class="javadoc">     * method invoked when Receiver thread started.  Reads data from child and displays in on out.</span>
+<span class="javadoc">     */</span>
+    <span class="k">public void </span><span class="method">run</span><span class="fence1">(</span><span class="fence1">)</span>
+        <span class="fence2">{</span>
+        <span class="k">try</span>
+            <span class="fence3">{</span>
+            <span class="k">final </span><span class="class">BufferedReader </span><span class="vardef">br </span><span class="op">= </span><span class="k">new </span><span class="class">BufferedReader</span><span class="fence1">(</span> <span class="k">new </span><span class="class">InputStreamReader</span><span class="fence2">(</span> <span class="var">is </span><span class="fence2">)</span><span class="op">,</span>
+                    <span class="decimallow">50</span>
+                    <span class="commentslashstar">/* keep small for testing */ </span><span class="fence1">)</span><span class="sc">;</span>
+            <span class="class">String </span><span class="vardef">line</span><span class="sc">;</span>
+            <span class="ik">while </span><span class="fence1">(</span> <span class="fence2">(</span> <span class="var">line </span><span class="op">= </span><span class="var">br</span><span class="op">.</span><span class="method">readLine</span><span class="fence3">(</span><span class="fence3">)</span> <span class="fence2">)</span> <span class="op">!= </span><span class="k">null </span><span class="fence1">)</span>
+                <span class="fence3">{</span>
+                <span class="var">out</span><span class="op">.</span><span class="method">println</span><span class="fence1">(</span> <span class="var">line </span><span class="fence1">)</span><span class="sc">;</span>
+                <span class="fence3">}</span>
+            <span class="var">br</span><span class="op">.</span><span class="method">close</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+            <span class="fence3">}</span>
+        <span class="k">catch </span><span class="fence1">(</span> <span class="class">IOException </span><span class="vardef">e </span><span class="fence1">)</span>
+            <span class="fence3">{</span>
+            <span class="k">throw new </span><span class="classdef">IllegalArgumentException</span><span class="fence1">(</span> <span class="string">"IOException receiving data from child process."</span> <span class="fence1">)</span><span class="sc">;</span>
+            <span class="fence3">}</span>
+        <span class="fence2">}</span>
+    <span class="fence1">}</span></pre>
+<!-- timestamp 1510047895562 -->
+</body></html>

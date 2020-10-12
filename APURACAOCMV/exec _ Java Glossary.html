@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://www.mindprod.com/jgloss/exec.html -->
+<html lang="en-CA"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>exec : Java Glossary</title>
+<meta name="apple-mobile-web-app-title" content="exec">
+<meta name="Author" content="Roedy Green, (250) 361-9093 of Canadian Mind Products. For email see contact page.">
+<meta name="dcterms.dateCopyrighted" content="1996">
+<meta name="dcterms.rightsHolder" content="Roedy Green of Canadian Mind Products">
+<meta name="Description" content="Canadian Mind Products Java &amp; Internet Glossary : exec">
+<meta name="Generator" content="HTMLMacros with the Compactor">
+<meta name="google-translate-customization" content="eeafc7b4b1a680b3-d11c84c20b455a00-g63221b879b657d29-c">
+<link href="./exec _ Java Glossary_files/mindprod.css" type="text/css" rel="stylesheet" media="screen">
+<link href="./exec _ Java Glossary_files/mindprodh.css" type="text/css" rel="stylesheet" media="handheld">
+<link href="./exec _ Java Glossary_files/jdisplay.css" type="text/css" rel="stylesheet" media="screen">
+<link href="./exec _ Java Glossary_files/jdisplayh.css" type="text/css" rel="stylesheet" media="handheld">
+<link rel="home" href="https://www.mindprod.com/index.html">
+<link rel="icon" href="https://www.mindprod.com/image/icon16/jgloss.png">
+<link rel="schema.dcterms" href="http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=terms#">
+<link rel="alternate" type="application/rss+xml" title="Canadian Mind Products | Java Glossary" href="http://mindprod.com/rss/jgloss.xml">
+<style type="text/css"> span.PIN_1585513861615_embed_grid { 
+  width: 100%;
+  max-width: 257px;
+  min-width: 140px;
+  display: inline-block;
+  box-shadow: inset 0 0 1px #000;
+  border-radius: 5px;
+  overflow: hidden;
+  font: 12px "Helvetica Neue", Helvetica, arial, sans-serif;
+  color: rgb(54, 54, 54);
+  box-sizing: border-box;
+  background: #fff;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+}
+ span.PIN_1585513861615_embed_grid * { 
+  display: block;
+  position: relative;
+  font: inherit;
+  cursor: inherit;
+  color: inherit;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_hd { 
+  height: 55px;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_hd .PIN_1585513861615_img { 
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 36px;
+  width: 36px;
+  border-radius: 18px;
+  background: transparent url () 0 0 no-repeat;
+  background-size: cover;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_hd .PIN_1585513861615_pinner { 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 75%;
+  position: absolute;
+  top: 20px;
+  left: 56px;
+  font-size: 14px;
+  font-weight: bold;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_bd { 
+  padding: 0 10px;
+  -moz-scrollbars: none;
+  -ms-overflow-style: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_bd .PIN_1585513861615_ct { 
+  width: 100%;
+  height: auto;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  display: inline-block;
+  width: 100%;
+  padding: 1px;
+  vertical-align: top;
+  min-width: 60px;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col .PIN_1585513861615_img { 
+  margin: 0;
+  display: inline-block;
+  width: 100%;
+  background: transparent url() 0 0 no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 0 1px #000;
+  border-radius: 2px;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_ft { 
+  padding: 11px;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_ft .PIN_1585513861615_button { 
+  border-radius: 3px;
+  text-align: center;
+  box-shadow: inset 0 0 1px #888;
+  background-color: #efefef;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 33px;
+  width: 100%;
+  min-width: 70px;
+  padding: 0 3px;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_ft .PIN_1585513861615_button .PIN_1585513861615_label { 
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_ft .PIN_1585513861615_button .PIN_1585513861615_label.PIN_1585513861615_top { 
+  top: 0;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_ft .PIN_1585513861615_button .PIN_1585513861615_label.PIN_1585513861615_bottom { 
+  bottom: 0;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_ft .PIN_1585513861615_button .PIN_1585513861615_label .PIN_1585513861615_string { 
+  white-space: pre;
+  color: #746d6a;
+  font-size: 13px;
+  font-weight: bold;
+  vertical-align: top;
+  display: inline-block;
+  height: 33px;
+  line-height: 33px;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_ft .PIN_1585513861615_button .PIN_1585513861615_label .PIN_1585513861615_logo { 
+  display: inline-block;
+  vertical-align: bottom;
+  height: 32px;
+  width: 80px;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTJweCIgd2lkdGg9IjUwcHgiIHZpZXdCb3g9IjAgMCA1MCAxMiI+PGc+PHBhdGggZD0iTTE5LjY5LDkuMjggTDE5LjY5LDQuMjggTDIxLjI3LDQuMjggTDIxLjI3LDkuMjggTDE5LjY5LDkuMjggWiBNNS45NywwLjAwIEM5LjI3LDAuMDAgMTEuOTUsMi42OSAxMS45NSw2LjAwIEMxMS45NSw5LjMxIDkuMjcsMTIuMDAgNS45NywxMi4wMCBDNS4zOCwxMi4wMCA0LjgwLDExLjkxIDQuMjYsMTEuNzUgQzQuMjYsMTEuNzUgNC4yNiwxMS43NSA0LjI2LDExLjc1IEM0LjI1LDExLjc1IDQuMjQsMTEuNzQgNC4yMywxMS43NCBMNC4yMSwxMS43MyBDNC4yMSwxMS43MyA0LjIxLDExLjczIDQuMjEsMTEuNzMgQzQuNDUsMTEuMzMgNC44MSwxMC42OCA0Ljk1LDEwLjE2IEM1LjAyLDkuODggNS4zMiw4LjczIDUuMzIsOC43MyBDNS41Miw5LjExIDYuMDgsOS40MiA2LjY5LDkuNDIgQzguNDksOS40MiA5Ljc5LDcuNzYgOS43OSw1LjY5IEM5Ljc5LDMuNzEgOC4xOCwyLjIzIDYuMTEsMi4yMyBDMy41MywyLjIzIDIuMTYsMy45NiAyLjE2LDUuODYgQzIuMTYsNi43NCAyLjYzLDcuODMgMy4zNyw4LjE4IEMzLjQ5LDguMjMgMy41NSw4LjIxIDMuNTcsOC4xMCBDMy41OSw4LjAyIDMuNjksNy42MSAzLjc0LDcuNDIgQzMuNzUsNy4zNiAzLjc1LDcuMzEgMy43MCw3LjI1IEMzLjQ1LDYuOTUgMy4yNSw2LjM5IDMuMjUsNS44OCBDMy4yNSw0LjU1IDQuMjUsMy4yNyA1Ljk1LDMuMjcgQzcuNDIsMy4yNyA4LjQ1LDQuMjggOC40NSw1LjcxIEM4LjQ1LDcuMzQgNy42Myw4LjQ2IDYuNTcsOC40NiBDNS45OCw4LjQ2IDUuNTQsNy45OCA1LjY4LDcuMzggQzUuODUsNi42NyA2LjE4LDUuOTAgNi4xOCw1LjM4IEM2LjE4LDQuOTIgNS45Myw0LjU0IDUuNDIsNC41NCBDNC44Miw0LjU0IDQuMzQsNS4xNiA0LjM0LDUuOTkgQzQuMzQsNi41MiA0LjUyLDYuODggNC41Miw2Ljg4IEM0LjUyLDYuODggMy45Myw5LjQwIDMuODIsOS44NyBDMy43MCwxMC4zOCAzLjc1LDExLjExIDMuODAsMTEuNTkgTDMuODAsMTEuNTkgQzMuNzksMTEuNTkgMy43OCwxMS41OCAzLjc4LDExLjU4IEMzLjc3LDExLjU4IDMuNzYsMTEuNTggMy43NiwxMS41NyBDMy43NiwxMS41NyAzLjc2LDExLjU3IDMuNzYsMTEuNTcgQzEuNTYsMTAuNjkgMC4wMCw4LjUzIDAuMDAsNi4wMCBDMC4wMCwyLjY5IDIuNjcsMC4wMCA1Ljk3LDAuMDAgWiBNMTYuODcsMi4zMSBDMTcuNzEsMi4zMSAxOC4zNCwyLjU0IDE4Ljc2LDIuOTUgQzE5LjIxLDMuMzcgMTkuNDYsMy45NiAxOS40Niw0LjY2IEMxOS40Niw2LjAwIDE4LjU0LDYuOTUgMTcuMTEsNi45NSBMMTUuNzIsNi45NSBMMTUuNzIsOS4yOCBMMTQuMTIsOS4yOCBMMTQuMTIsMi4zMSBMMTYuODcsMi4zMSBaIE0xNi45NCw1LjU4IEMxNy41Niw1LjU4IDE3LjkxLDUuMjEgMTcuOTEsNC42NSBDMTcuOTEsNC4xMCAxNy41NSwzLjc2IDE2Ljk0LDMuNzYgTDE1LjcyLDMuNzYgTDE1LjcyLDUuNTggTDE2Ljk0LDUuNTggWiBNNTAuMDAsNS4yOCBMNDkuMTksNS4yOCBMNDkuMTksNy42MiBDNDkuMTksOC4wMSA0OS40MCw4LjExIDQ5Ljc0LDguMTEgQzQ5LjgzLDguMTEgNDkuOTMsOC4xMCA1MC4wMCw4LjEwIEw1MC4wMCw5LjI4IEM0OS44NCw5LjMxIDQ5LjU4LDkuMzMgNDkuMjIsOS4zMyBDNDguMzAsOS4zMyA0Ny42NCw5LjAzIDQ3LjY0LDcuOTYgTDQ3LjY0LDUuMjggTDQ3LjE2LDUuMjggTDQ3LjE2LDQuMjggTDQ3LjY0LDQuMjggTDQ3LjY0LDIuNzAgTDQ5LjE5LDIuNzAgTDQ5LjE5LDQuMjggTDUwLjAwLDQuMjggTDUwLjAwLDUuMjggWiBNNDUuMzEsNi4xMyBDNDYuMTgsNi4yNyA0Ny4yMSw2LjUwIDQ3LjIxLDcuNzcgQzQ3LjIxLDguODcgNDYuMjUsOS40MyA0NC45NSw5LjQzIEM0My41NSw5LjQzIDQyLjY1LDguODEgNDIuNTQsNy43OCBMNDQuMDUsNy43OCBDNDQuMTUsOC4yMCA0NC40Niw4LjQwIDQ0Ljk0LDguNDAgQzQ1LjQyLDguNDAgNDUuNzIsOC4yMiA0NS43Miw3LjkwIEM0NS43Miw3LjQ1IDQ1LjEyLDcuNDAgNDQuNDYsNy4yOSBDNDMuNTksNy4xNCA0Mi42Nyw2LjkxIDQyLjY3LDUuNzQgQzQyLjY3LDQuNjggNDMuNjQsNC4xNCA0NC44Miw0LjE0IEM0Ni4yMiw0LjE0IDQ2Ljk4LDQuNzUgNDcuMDYsNS43NCBMNDUuNjAsNS43NCBDNDUuNTQsNS4yOSA0NS4yNCw1LjE1IDQ0LjgwLDUuMTUgQzQ0LjQyLDUuMTUgNDQuMTIsNS4zMCA0NC4xMiw1LjYxIEM0NC4xMiw1Ljk2IDQ0LjY4LDYuMDEgNDUuMzEsNi4xMyBaIE0yMC40OCwyLjAwIEMyMS4wMCwyLjAwIDIxLjQzLDIuNDIgMjEuNDMsMi45NSBDMjEuNDMsMy40OCAyMS4wMCwzLjkwIDIwLjQ4LDMuOTAgQzE5Ljk1LDMuOTAgMTkuNTMsMy40OCAxOS41MywyLjk1IEMxOS41MywyLjQyIDE5Ljk1LDIuMDAgMjAuNDgsMi4wMCBaIE0yOC40OCw3LjYyIEMyOC40OCw4LjAxIDI4LjcwLDguMTEgMjkuMDQsOC4xMSBDMjkuMTAsOC4xMSAyOS4xOCw4LjEwIDI5LjI0LDguMTAgTDI5LjI0LDkuMjkgQzI5LjA4LDkuMzEgMjguODMsOS4zMyAyOC41Miw5LjMzIEMyNy42MCw5LjMzIDI2Ljk0LDkuMDMgMjYuOTQsNy45NiBMMjYuOTQsNS4yOCBMMjYuNDIsNS4yOCBMMjYuNDIsNC4yOCBMMjYuOTQsNC4yOCBMMjYuOTQsMi43MCBMMjguNDgsMi43MCBMMjguNDgsNC4yOCBMMjkuMjQsNC4yOCBMMjkuMjQsNS4yOCBMMjguNDgsNS4yOCBMMjguNDgsNy42MiBaIE0yNC42OSw0LjE0IEMyNS43Nyw0LjE0IDI2LjQxLDQuOTIgMjYuNDEsNi4wMyBMMjYuNDEsOS4yOCBMMjQuODMsOS4yOCBMMjQuODMsNi4zNSBDMjQuODMsNS44MiAyNC41Nyw1LjQ2IDI0LjA1LDUuNDYgQzIzLjUzLDUuNDYgMjMuMTgsNS45MCAyMy4xOCw2LjUyIEwyMy4xOCw5LjI4IEwyMS42MCw5LjI4IEwyMS42MCw0LjI4IEwyMy4xMiw0LjI4IEwyMy4xMiw0Ljk3IEwyMy4xNSw0Ljk3IEMyMy41Miw0LjQzIDI0LjAwLDQuMTQgMjQuNjksNC4xNCBaIE0zMy40Miw0Ljc2IEMzMi45OSw0LjM3IDMyLjQzLDQuMTQgMzEuNzIsNC4xNCBDMzAuMjAsNC4xNCAyOS4xNiw1LjI4IDI5LjE2LDYuNzcgQzI5LjE2LDguMjggMzAuMTcsOS40MiAzMS44MSw5LjQyIEMzMi40NCw5LjQyIDMyLjk1LDkuMjYgMzMuMzcsOC45NiBDMzMuODAsOC42NiAzNC4xMCw4LjIzIDM0LjIwLDcuNzggTDMyLjY2LDcuNzggQzMyLjUyLDguMTAgMzIuMjUsOC4yOCAzMS44Myw4LjI4IEMzMS4xOCw4LjI4IDMwLjgxLDcuODYgMzAuNzIsNy4xOSBMMzQuMjksNy4xOSBDMzQuMzAsNi4xOCAzNC4wMSw1LjMxIDMzLjQyLDQuNzYgTDMzLjQyLDQuNzYgWiBNNDEuNjYsNC43NiBDNDIuMjYsNS4zMSA0Mi41NSw2LjE4IDQyLjU0LDcuMTkgTDM4Ljk3LDcuMTkgQzM5LjA2LDcuODYgMzkuNDMsOC4yOCA0MC4wOCw4LjI4IEM0MC41MCw4LjI4IDQwLjc3LDguMTAgNDAuOTEsNy43OCBMNDIuNDUsNy43OCBDNDIuMzQsOC4yMyA0Mi4wNSw4LjY2IDQxLjYyLDguOTYgQzQxLjIwLDkuMjYgNDAuNjksOS40MiA0MC4wNiw5LjQyIEMzOC40Miw5LjQyIDM3LjQxLDguMjggMzcuNDEsNi43NyBDMzcuNDEsNS4yOCAzOC40NSw0LjE0IDM5Ljk3LDQuMTQgQzQwLjY3LDQuMTQgNDEuMjQsNC4zNyA0MS42Niw0Ljc2IFogTTMwLjczLDYuMjQgQzMwLjgzLDUuNjUgMzEuMTQsNS4yNyAzMS43NSw1LjI3IEMzMi4yNiw1LjI3IDMyLjYzLDUuNjUgMzIuNjksNi4yNCBMMzAuNzMsNi4yNCBaIE0zOC45OCw2LjI0IEw0MC45NCw2LjI0IEM0MC44OCw1LjY1IDQwLjUxLDUuMjcgNDAuMDAsNS4yNyBDMzkuMzksNS4yNyAzOS4wOCw1LjY1IDM4Ljk4LDYuMjQgWiBNMzcuNTQsNC4yMSBMMzcuNTQsNS42MCBDMzYuNjQsNS41MSAzNi4wNyw1Ljk5IDM2LjA3LDcuMDMgTDM2LjA3LDkuMjggTDM0LjQ4LDkuMjggTDM0LjQ4LDQuMjggTDM2LjAwLDQuMjggTDM2LjAwLDUuMDYgTDM2LjAzLDUuMDYgQzM2LjM4LDQuNDcgMzYuNzgsNC4yMSAzNy4zOSw0LjIxIEMzNy40NSw0LjIxIDM3LjUwLDQuMjEgMzcuNTQsNC4yMSBaIiBmaWxsPSIjZTYwMDIzIj48L3BhdGg+PC9nPjwvc3ZnPg==) 50% 50% no-repeat;
+  background-size: contain;
+}
+ span.PIN_1585513861615_embed_grid .PIN_1585513861615_ft .PIN_1585513861615_button:hover { 
+  box-shadow: inset 0 0 1px #000;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_noscroll .PIN_1585513861615_bd { 
+  overflow: hidden;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_board .PIN_1585513861615_hd .PIN_1585513861615_pinner { 
+  top: 10px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_board .PIN_1585513861615_hd .PIN_1585513861615_board { 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 75%;
+  position: absolute;
+  bottom: 10px;
+  left: 56px;
+  color: #363636;
+  font-size: 12px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c2 { 
+  max-width: 494px;
+  min-width: 140px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c2 .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  width: 50%;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c3 { 
+  max-width: 731px;
+  min-width: 200px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c3 .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  width: 33.33%;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c4 { 
+  max-width: 968px;
+  min-width: 260px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c4 .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  width: 25%;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c5 { 
+  max-width: 1205px;
+  min-width: 320px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c5 .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  width: 20%;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c6 { 
+  max-width: 1442px;
+  min-width: 380px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c6 .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  width: 16.66%;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c7 { 
+  max-width: 1679px;
+  min-width: 440px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c7 .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  width: 14.28%;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c8 { 
+  max-width: 1916px;
+  min-width: 500px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c8 .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  width: 12.5%;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c9 { 
+  max-width: 2153px;
+  min-width: 560px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c9 .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  width: 11.11%;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c10 { 
+  max-width: 2390px;
+  min-width: 620px;
+}
+ span.PIN_1585513861615_embed_grid.PIN_1585513861615_c10 .PIN_1585513861615_bd .PIN_1585513861615_ct .PIN_1585513861615_col { 
+  width: 10%;
+}
+ span.PIN_1585513861615_embed_pin { 
+  width: 100%;
+  min-width: 160px;
+  max-width: 236px;
+  display: inline-block;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 1px #000;
+  border-radius: 5px;
+  overflow: hidden;
+  font: 12px "Helvetica Neue", Helvetica, arial, sans-serif;
+  color: #363636;
+  background: #fff;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+}
+ span.PIN_1585513861615_embed_pin * { 
+  display: block;
+  position: relative;
+  font: inherit;
+  cursor: inherit;
+  color: inherit;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd { 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd { 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container { 
+  width: 100%;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_img,  span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_iframe,  span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_video { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background: transparent url() 0 0 no-repeat;
+  background-size: cover;
+  border: none;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_native { 
+  height: 64px;
+  width: 64px;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNjNweCIgd2lkdGg9IjYzcHgiIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGc+PHBhdGggZD0iTSAzMiAzMiBtIC0zMiwgMCBhIDMxLCAzMSAwIDEsIDAgNjMsIDAgYSAzMSwgMzEgMCAxLDAgLTYzLCAwIHoiIGZpbGw9IiMwMDAiPjwvcGF0aD48cGF0aCBkPSJNIDI1IDE5IEwgNDggMzIgIEwgMjUgNDUgWiIgZmlsbD0iI2ZmZiI+PC9wYXRoPjwvZz48L3N2Zz4=) 0 0 no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -32px;
+  margin-left: -32px;
+  opacity: .75;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_control { 
+  width: 50px;
+  height: 24px;
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, .4);
+  color: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+  border: 2px solid rgba(255, 255, 255, .68);
+  border-radius: 13px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_control.PIN_1585513861615_paused::after,  span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_control.PIN_1585513861615_playing::after { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
+  line-height: 19px;
+  white-space: pre;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_control.PIN_1585513861615_paused::after { 
+  content: "▶ GIF";
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_control.PIN_1585513861615_playing::after { 
+  content: "❙ ❙ GIF";
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_repin { 
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 28px;
+  width: auto;
+  color: #fff;
+  background: #e60023 url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjZTYwMDIzIj48L3BhdGg+PC9nPjwvc3ZnPg==) 5px 50% no-repeat;
+  background-size: 18px 18px;
+  text-indent: 28px;
+  font: 14px/28px "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 0 6px 0 0;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_repin:hover { 
+  background-color: #e60023;
+  box-shadow: none;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source { 
+  height: 38px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source .PIN_1585513861615_img { 
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  left: 10px;
+  height: 16px;
+  width: 16px;
+  background: transparent url() 0 0 no-repeat;
+  background-size: 16px 16px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source .PIN_1585513861615_domain { 
+  line-height: 38px;
+  max-width: 75%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  color: #b9b9b9;
+  position: absolute;
+  top: 0px;
+  left: 35px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source.PIN_1585513861615_nofav .PIN_1585513861615_img { 
+  display: none;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source.PIN_1585513861615_nofav .PIN_1585513861615_domain { 
+  max-width: 85%;
+  left: 10px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source .PIN_1585513861615_menu { 
+  height: inherit;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source .PIN_1585513861615_menu .PIN_1585513861615_toggle { 
+  position: absolute;
+  top: 0;
+  right: 5px;
+  height: inherit;
+  width: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  background: #fff url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNXB4IiB3aWR0aD0iMjBweCIgdmlld0JveD0iMCAwIDIwIDUiPjxnPjxwYXRoIGQ9Ik0xNy41LDUgQzE4Ljg4MSw1IDIwLDMuODgxIDIwLDIuNSBDMjAsMS4xMTkgMTguODgxLDAgMTcuNSwwIEMxNi4xMTksMCAxNSwxLjExOSAxNSwyLjUgQzE1LDMuODgxIDE2LjExOSw1IDE3LjUsNSBaIE0xMCw1IEMxMS4zOCw1IDEyLjUsMy44ODEgMTIuNSwyLjUgQzEyLjUsMS4xMTkgMTEuMzgsMCAxMCwwIEM4LjYyLDAgNy41LDEuMTE5IDcuNSwyLjUgQzcuNSwzLjg4MSA4LjYyLDUgMTAsNSBNMi41LDUgQzMuODgxLDUgNSwzLjg4MSA1LDIuNSBDNSwxLjExOSAzLjg4MSwwIDIuNSwwIEMxLjEyLDAgMCwxLjExOSAwLDIuNSBDMCwzLjg4MSAxLjEyIDUsMi41LDUgWiIgZmlsbD0iI2I1YjViNSI+PC9wYXRoPjwvZz48L3N2Zz4=) 50% 50% no-repeat;
+  background-size: fill;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source .PIN_1585513861615_menu .PIN_1585513861615_dropdown { 
+  display: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .33);
+  font-weight: bold;
+  font-size: 12px;
+  background: #fff;
+  text-align: left;
+  padding: 10px;
+  position: absolute;
+  max-width: 195px;
+  right: 10px;
+  top: 39px;
+  z-index: 1;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source .PIN_1585513861615_menu .PIN_1585513861615_dropdown::after { 
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 1px;
+  border-bottom: 8px solid #fff;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_source .PIN_1585513861615_menu .PIN_1585513861615_dropdown::before { 
+  content: "";
+  position: absolute;
+  top: -7px;
+  right: 2px;
+  border-bottom: 7px solid #e2e2e2;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_description { 
+  font-size: 14px;
+  line-height: 17px;
+  margin: 8px 12px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_attribution { 
+  height: 22px;
+  margin-top: 5px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_attribution .PIN_1585513861615_img { 
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  left: 10px;
+  height: 16px;
+  width: 16px;
+  background: transparent url() 0 0 no-repeat;
+  background-size: 16px 16px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_attribution .PIN_1585513861615_by { 
+  line-height: 22px;
+  max-width: 75%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  font-weight: bold;
+  color: #b9b9b9;
+  position: absolute;
+  top: 0px;
+  left: 35px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_stats { 
+  height: 24px;
+  line-height: 24px;
+  margin: 0 0 0 10px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_stats .PIN_1585513861615_repins { 
+  padding-left: 17px;
+  padding-right: 10px;
+  color: #a8a8a8;
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-block;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTRweCIgd2lkdGg9IjE0cHgiIHZpZXdCb3g9IjAgMCAxNCAxNCI+PGc+PHBhdGggZD0iTTExLjk3OSw2Ljg1OSBMMTMuOTksNS4wMTEgTDExLjI0MSw1LjAxMSBMMTAuNDg2LDAgTDkuNzM5LDUuMDExIEw3LDUuMDExIEw4Ljk4Niw2Ljg1OCBMOC45ODYsMTEuMDE3IEM4LjUwNSwxMC45ODUgOC4xNDMsMTEuMDEyIDguMTQzLDExLjIxMyBDOC4xNDMsMTEuNjg3IDguNTAzLDEyLjAwMSA4Ljk4NiwxMi4wMDEgTDExLjk4MiwxMiBDMTIuNDY1LDEyIDEyLjg4OCwxMS42ODYgMTIuODg4LDExLjIxMyBDMTIuODg4LDExLjAxMSAxMi40NjUsMTAuOTg1IDExLjk4MiwxMS4wMTcgTDExLjk3OSw2Ljg1OSBaIE00Ljk3OSw3LjE0MiBMNi45OSw4Ljk5IEw0LjI0MSw4Ljk5IEwzLjQ4NiwxNC4wMDEgTDIuNzM5LDguOTkgTDAsOC45OSBMMS45ODYsNy4xNDMgTDEuOTg2LDIuOTg0IEMxLjUwNSwzLjAxNiAxLjE0MywyLjk4OSAxLjE0MywyLjc4OCBDMS4xNDMsMi4zMTUgMS41MDMsMiAxLjk4NiwyIEw0Ljk4MiwyLjAwMSBDNS40NjUsMi4wMDEgNS44ODgsMi4zMTUgNS44ODgsMi43ODkgQzUuODg4LDIuOTkgNS40NjUsMy4wMTcgNC45ODIsMi45ODQgTDQuOTc5LDcuMTQyIFoiIGZpbGw9IiNiNWI1YjUiPjwvcGF0aD48L2c+PC9zdmc+) 0 50% no-repeat;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_bd .PIN_1585513861615_stats .PIN_1585513861615_done { 
+  padding-left: 15px;
+  padding-right: 10px;
+  color: #a8a8a8;
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-block;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTJweCIgd2lkdGg9IjEycHgiIHZpZXdCb3g9IjAgMCAxMiAxMiI+PGc+PHBhdGggZD0iTTAsNiBMMiw0IEw1LDcgTDEwLDEgTDEyLDMgTDUsMTEgWiIgZmlsbD0iI2I1YjViNSI+PC9wYXRoPjwvZz48L3N2Zz4=) 0 50% no-repeat;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_ft { 
+  height: 50px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_ft:after { 
+  content: '-------------------------------------------------------------------------------------';
+  display: block;
+  height: 1px;
+  line-height: 1px;
+  color: #fff;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_ft .PIN_1585513861615_img { 
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  background: transparent url() 0 0 no-repeat;
+  background-size: 30px 30px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_ft .PIN_1585513861615_pinner,  span.PIN_1585513861615_embed_pin .PIN_1585513861615_ft  .PIN_1585513861615_board { 
+  position: absolute;
+  left: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 75%;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_ft .PIN_1585513861615_pinner { 
+  font-weight: bold;
+  top: 10px;
+}
+ span.PIN_1585513861615_embed_pin .PIN_1585513861615_ft .PIN_1585513861615_board { 
+  bottom: 10px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_ja .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_repin { 
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMThweCIgd2lkdGg9IjQxcHgiIHZpZXdCb3g9IjAgMCA0MSAxOCI+PGc+PHBhdGggZD0iTTE5LjgyMiw3LjE3MyBDMTkuODIyLDYuNTEgMTkuODM1LDYuMjc2IDE5Ljg4Nyw1Ljk2NCBMMTguMTQ1LDUuOTY0IEMxOC4xOTcsNi4yODkgMTguMTk3LDYuNDk3IDE4LjE5Nyw3LjE2IEwxOC4yMSwxMy4xOTIgQzE4LjIxLDEzLjk0NiAxOC4yMjMsMTQuMTY3IDE4LjI0OSwxNC4zODggQzE4LjMyNywxNS4wMjUgMTguNTIyLDE1LjQ0MSAxOC44ODYsMTUuNzE0IEMxOS4zOTMsMTYuMTA0IDIwLjI5LDE2LjI3MyAyMS45MjgsMTYuMjczIEMyMi43MjEsMTYuMjczIDI0LjM1OSwxNi4xOTUgMjUuMTI2LDE2LjExNyBDMjYuNTA0LDE1Ljk4NyAyNi41NjksMTUuOTc0IDI2Ljg0MiwxNS45NzQgTDI2Ljc2NCwxNC4yNDUgQzI2LjE5MiwxNC40MTQgMjUuOTA2LDE0LjQ3OSAyNS4yODIsMTQuNTU3IEMyNC4zMzMsMTQuNjg3IDIzLjEzNywxNC43NjUgMjIuMjY2LDE0Ljc2NSBDMjEuMDA1LDE0Ljc2NSAyMC4yNjQsMTQuNjQ4IDIwLjA0MywxNC40MjcgQzE5Ljg2MSwxNC4yNDUgMTkuODA5LDEzLjk1OSAxOS44MDksMTMuMjMxIEMxOS44MDksMTMuMTc5IDE5LjgwOSwxMy4xMDEgMTkuODIyLDEzLjAyMyBMMTkuODIyLDExLjMwNyBDMjEuOTkzLDEwLjkwNCAyNC4wMDgsMTAuMjI4IDI1LjkzMiw5LjI0IEwyNi4yNyw5LjA3MSBDMjYuMzc0LDkuMDE5IDI2LjQsOS4wMDYgMjYuNTQzLDguOTU0IEwyNS41MDMsNy40ODUgQzI0LjY1OCw4LjI3OCAyMS43ODUsOS40MzUgMTkuODIyLDkuNzk5IEwxOS44MjIsNy4xNzMgWiBNMjcuMzEsNC44NzIgQzI2LjQ5MSw0Ljg3MiAyNS44MTUsNS41NDggMjUuODE1LDYuMzY3IEMyNS44MTUsNy4xOTkgMjYuNDkxLDcuODc1IDI3LjMxLDcuODc1IEMyOC4xNDIsNy44NzUgMjguODE4LDcuMTk5IDI4LjgxOCw2LjM2NyBDMjguODE4LDUuNTQ4IDI4LjE0Miw0Ljg3MiAyNy4zMSw0Ljg3MiBMMjcuMzEsNC44NzIgWiBNMjcuMzEsNS41MjIgQzI3Ljc5MSw1LjUyMiAyOC4xNjgsNS44OTkgMjguMTY4LDYuMzY3IEMyOC4xNjgsNi44MzUgMjcuNzkxLDcuMjI1IDI3LjMxLDcuMjI1IEMyNi44NDIsNy4yMjUgMjYuNDY1LDYuODM1IDI2LjQ2NSw2LjM2NyBDMjYuNDY1LDUuODk5IDI2Ljg0Miw1LjUyMiAyNy4zMSw1LjUyMiBMMjcuMzEsNS41MjIgWiBNMzAuNTg2LDcuNjU0IEMzMS43OTUsOC4zMyAzMi44NjEsOS4xODggMzMuOTAxLDEwLjI5MyBMMzUuMDE5LDguODc2IEMzNC4wMTgsNy45MjcgMzMuMjEyLDcuMzI5IDMxLjY2NSw2LjM2NyBMMzAuNTg2LDcuNjU0IFogTTMxLjA0MSwxNi4yMzQgQzMxLjM0LDE2LjEzIDMxLjM3OSwxNi4xMTcgMzEuODk5LDE2LjAxMyBDMzMuOTE0LDE1LjU4NCAzNS41MjYsMTQuOTQ3IDM2Ljg1MiwxNC4wNjMgQzM4LjYzMywxMi44OCAzOS44NjgsMTEuMzQ2IDQwLjk3Myw4Ljk2NyBDNDAuMzEsOC40OTkgNDAuMTAyLDguMzA0IDM5LjU5NSw3LjY5MyBDMzkuMjA1LDguNzQ2IDM4Ljg0MSw5LjQ2MSAzOC4yNjksMTAuMjkzIEMzNy4yNDIsMTEuNzc1IDM2LjAzMywxMi43NzYgMzQuNDA4LDEzLjQ3OCBDMzMuMjI1LDEzLjk5OCAzMS42NzgsMTQuMzc1IDMwLjU2LDE0LjQ0IEwzMS4wNDEsMTYuMjM0IFogTTcuNDU4LDAgQzIuNSwwIDAsMy41MjIgMCw2LjQ1OSBDMCw4LjIzNyAwLjY4LDkuODE5IDIuMTM3LDEwLjQwOSBDMi4zNzYsMTAuNTA1IDIuNTksMTAuNDEyIDIuNjYsMTAuMTUgQzIuNzA4LDkuOTY5IDIuODIyLDkuNTExIDIuODczLDkuMzIgQzIuOTQzLDkuMDYxIDIuOTE2LDguOTcgMi43MjMsOC43NDQgQzIuMzAyLDguMjUzIDIuMDM0LDcuNjE3IDIuMDM0LDYuNzE2IEMyLjAzNCw0LjEwNCA0LjAwNywxLjc2NSA3LjE3MiwxLjc2NSBDOS45NzUsMS43NjUgMTEuNTE0LDMuNDYxIDExLjUxNCw1LjcyNiBDMTEuNTE0LDguNzA4IDEwLjE4MywxMS4xOCA4LjIwNiwxMS4xOCBDNy4xMTQsMTEuMTggNi4yOTcsMTAuMzI5IDYuNTU5LDkuMjMzIEM2Ljg3Miw3LjkyMiA3LjQ4LDYuNTA5IDcuNDgsNS41NjQgQzcuNDgsNC43MTcgNy4wMjIsNC4wMTEgNi4wNzIsNC4wMTEgQzQuOTU2LDQuMDExIDQuMDYsNS4xNTUgNC4wNiw2LjY4NyBDNC4wNiw3LjY2MyA0LjM5Myw4LjMyMyA0LjM5Myw4LjMyMyBDNC4zOTMsOC4zMjMgMy4yNTEsMTMuMTE3IDMuMDUxLDEzLjk1NyBDMi42NTIsMTUuNjI5IDIuOTkxLDE3LjY3OSAzLjAxOSwxNy44ODYgQzMuMDM2LDE4LjAwOSAzLjE5NSwxOC4wMzggMy4yNjcsMTcuOTQ2IEMzLjM3LDE3LjgxMiA0LjcsMTYuMTg3IDUuMTUxLDE0LjU2MiBDNS4yNzksMTQuMTAyIDUuODg1LDExLjcyIDUuODg1LDExLjcyIEM2LjI0OCwxMi40MDYgNy4zMDgsMTMuMDA5IDguNDM1LDEzLjAwOSBDMTEuNzksMTMuMDA5IDE0LjA2Niw5Ljk3OSAxNC4wNjYsNS45MjMgQzE0LjA2NiwyLjg1NyAxMS40NDQsMCA3LjQ1OCwwIFoiIGZpbGw9IiNmZmYiPjwvcGF0aD48L2c+PC9zdmc+);
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_ja .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_repin.PIN_1585513861615_save { 
+  background: #e60023 url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjZTYwMDIzIj48L3BhdGg+PC9nPjwvc3ZnPg==) 5px 50% no-repeat;
+  background-size: 16px 16px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_medium { 
+  min-width: 237px;
+  max-width: 345px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large { 
+  min-width: 345px;
+  max-width: 600px;
+  padding: 30px 34px 10px;
+  font-size: 14px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd { 
+  border-bottom: none;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_hd { 
+  padding-top: 50px;
+  border-bottom: none;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_img,  span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_container .PIN_1585513861615_video { 
+  border-radius: 8px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_hd .PIN_1585513861615_repin { 
+  top: 0px;
+  left: 0px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_source { 
+  height: 50px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_source .PIN_1585513861615_domain { 
+  line-height: 50px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_stats { 
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_description { 
+  font-size: 16px;
+  line-height: 20px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_menu { 
+  height: inherit;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_bd .PIN_1585513861615_menu .PIN_1585513861615_dropdown { 
+  top: 50px;
+  font-size: 14px;
+  padding: 10px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_ft { 
+  height: 60px;
+  font-size: 16px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_ft .PIN_1585513861615_board,  span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_ft .PIN_1585513861615_pinner { 
+  left: 60px;
+}
+ span.PIN_1585513861615_embed_pin.PIN_1585513861615_large .PIN_1585513861615_ft .PIN_1585513861615_img { 
+  height: 40px;
+  width: 40px;
+  background-size: 40px 40px;
+  border-radius: 20px;
+}
+ .PIN_1585513861615_button_follow { 
+  display: inline-block;
+  color: #363636;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 1px #888;
+  border-radius: 3px;
+  font: bold 11px/20px "Helvetica Neue", Helvetica, arial, sans-serif !important;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  height: 20px;
+  padding: 0 4px 0 20px;
+  background-color: #efefef;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+ .PIN_1585513861615_button_follow:hover { 
+  box-shadow: inset 0 0 1px #000;
+}
+ .PIN_1585513861615_button_follow::after { 
+  content: "";
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  top: 3px;
+  left: 3px;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjZTYwMDIzIj48L3BhdGg+PC9nPjwvc3ZnPg==) 0 0 no-repeat;
+  background-size: 14px 14px;
+}
+ .PIN_1585513861615_button_follow.PIN_1585513861615_tall { 
+  height: 26px;
+  line-height: 26px;
+  font-size: 13px;
+  padding: 0 6px 0 25px;
+  border-radius: 3px;
+}
+ .PIN_1585513861615_button_follow.PIN_1585513861615_tall::after { 
+  height: 18px;
+  width: 18px;
+  top: 4px;
+  left: 4px;
+  background-size: 18px 18px;
+}
+ .PIN_1585513861615_button_pin { 
+  cursor: pointer;
+  display: inline-block;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 1px #888;
+  border-radius: 3px;
+  height: 20px;
+  width: 40px;
+  -webkit-font-smoothing: antialiased;
+  background: #efefef url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMThweCIgd2lkdGg9IjQycHgiIHZpZXdCb3g9IjAgMCA0MiAxOCI+PGc+PHBhdGggZD0iTTE2Ljg1Myw2LjM0NSBDMTcuNjMyLDYuMzQ1IDE4LjM4LDUuNzAyIDE4LjUxLDQuOTA5IEMxOC42NjQsNC4xMzggMTguMTM1LDMuNDk0IDE3LjM1NywzLjQ5NCBDMTYuNTc4LDMuNDk0IDE1LjgzLDQuMTM4IDE1LjY5OCw0LjkwOSBDMTUuNTQ2LDUuNzAyIDE2LjA1Myw2LjM0NSAxNi44NTMsNi4zNDUgWiBNNy40NTgsMCBDMi41LDAgMCwzLjUyMiAwLDYuNDU5IEMwLDguMjM3IDAuNjgsOS44MTkgMi4xMzcsMTAuNDA5IEMyLjM3NiwxMC41MDUgMi41OSwxMC40MTIgMi42NiwxMC4xNSBDMi43MDgsOS45NjkgMi44MjIsOS41MTEgMi44NzMsOS4zMiBDMi45NDMsOS4wNjEgMi45MTYsOC45NyAyLjcyMyw4Ljc0NCBDMi4zMDIsOC4yNTMgMi4wMzQsNy42MTcgMi4wMzQsNi43MTYgQzIuMDM0LDQuMTA0IDQuMDA3LDEuNzY1IDcuMTcyLDEuNzY1IEM5Ljk3NSwxLjc2NSAxMS41MTQsMy40NjEgMTEuNTE0LDUuNzI2IEMxMS41MTQsOC43MDggMTAuMTgzLDExLjE4IDguMjA2LDExLjE4IEM3LjExNCwxMS4xOCA2LjI5NywxMC4zMjkgNi41NTksOS4yMzMgQzYuODcyLDcuOTIyIDcuNDgsNi41MDkgNy40OCw1LjU2NCBDNy40OCw0LjcxNyA3LjAyMiw0LjAxMSA2LjA3Miw0LjAxMSBDNC45NTYsNC4wMTEgNC4wNiw1LjE1NSA0LjA2LDYuNjg3IEM0LjA2LDcuNjYzIDQuMzkzLDguMzIzIDQuMzkzLDguMzIzIEM0LjM5Myw4LjMyMyAzLjI1MSwxMy4xMTcgMy4wNTEsMTMuOTU3IEMyLjY1MiwxNS42MjkgMi45OTEsMTcuNjc5IDMuMDE5LDE3Ljg4NiBDMy4wMzYsMTguMDA5IDMuMTk1LDE4LjAzOCAzLjI2NywxNy45NDYgQzMuMzcsMTcuODEyIDQuNywxNi4xODcgNS4xNTEsMTQuNTYyIEM1LjI3OSwxNC4xMDIgNS44ODUsMTEuNzIgNS44ODUsMTEuNzIgQzYuMjQ4LDEyLjQwNiA3LjMwOCwxMy4wMDkgOC40MzUsMTMuMDA5IEMxMS43OSwxMy4wMDkgMTQuMDY2LDkuOTc5IDE0LjA2Niw1LjkyMyBDMTQuMDY2LDIuODU3IDExLjQ0NCwwIDcuNDU4LDAgWiBNMjYuODk2LDE0LjE4OSBDMjYuMzQ4LDE0LjE4OSAyNi4xMTcsMTMuOTE1IDI2LjExNywxMy4zMjggQzI2LjExNywxMi40MDQgMjcuMDM1LDEwLjA5MSAyNy4wMzUsOS4wNDEgQzI3LjAzNSw3LjYzOCAyNi4yNzYsNi44MjYgMjQuNzIsNi44MjYgQzIzLjczOSw2LjgyNiAyMi43MjIsNy40NTMgMjIuMjkxLDguMDAzIEMyMi4yOTEsOC4wMDMgMjIuNDIyLDcuNTUzIDIyLjQ2Nyw3LjM4IEMyMi41MTUsNy4xOTYgMjIuNDE1LDYuODg0IDIyLjE3Myw2Ljg4NCBMMjAuNjUxLDYuODg0IEMyMC4zMjgsNi44ODQgMjAuMjM4LDcuMDU1IDIwLjE5MSw3LjI0NCBDMjAuMTcyLDcuMzIgMTkuNjI0LDkuNTg0IDE5LjA5OCwxMS42MzIgQzE4LjczOCwxMy4wMzQgMTcuODYzLDE0LjIwNSAxNi45MjgsMTQuMjA1IEMxNi40NDcsMTQuMjA1IDE2LjIzMywxMy45MDYgMTYuMjMzLDEzLjM5OSBDMTYuMjMzLDEyLjk1OSAxNi41MTksMTEuODc3IDE2Ljg2LDEwLjUzNCBDMTcuMjc2LDguODk4IDE3LjY0Miw3LjU1MSAxNy42ODEsNy4zOTQgQzE3LjczMiw3LjE5MiAxNy42NDIsNy4wMTcgMTcuMzc5LDcuMDE3IEwxNS44NDksNy4wMTcgQzE1LjU3Miw3LjAxNyAxNS40NzMsNy4xNjEgMTUuNDE0LDcuMzYxIEMxNS40MTQsNy4zNjEgMTQuOTgzLDguOTc3IDE0LjUyNywxMC43NzUgQzE0LjE5NiwxMi4wNzkgMTMuODMsMTMuNDA5IDEzLjgzLDE0LjAzNCBDMTMuODMsMTUuMTQ4IDE0LjMzNiwxNS45NDQgMTUuNzI0LDE1Ljk0NCBDMTYuNzk2LDE1Ljk0NCAxNy42NDQsMTUuNDUgMTguMjkyLDE0Ljc2NCBDMTguMTk3LDE1LjEzNSAxOC4xMzYsMTUuNDE0IDE4LjEzLDE1LjQzOSBDMTguMDc0LDE1LjY1IDE4LjE0MiwxNS44MzggMTguMzk0LDE1LjgzOCBMMTkuOTYxLDE1LjgzOCBDMjAuMjMzLDE1LjgzOCAyMC4zMzcsMTUuNzMgMjAuMzk0LDE1LjQ5NCBDMjAuNDQ5LDE1LjI2OSAyMS42MTksMTAuNjY3IDIxLjYxOSwxMC42NjcgQzIxLjkyOCw5LjQ0MyAyMi42OTIsOC42MzIgMjMuNzY4LDguNjMyIEMyNC4yNzksOC42MzIgMjQuNzIsOC45NjcgMjQuNjY5LDkuNjE4IEMyNC42MTIsMTAuMzMzIDIzLjc0MSwxMi45MDMgMjMuNzQxLDE0LjAzMSBDMjMuNzQxLDE0Ljg4NCAyNC4wNiwxNS45NDUgMjUuNjgzLDE1Ljk0NSBDMjYuNzg5LDE1Ljk0NSAyNy42MDMsMTUuNDY0IDI4LjE5NSwxNC43ODYgTDI3LjQ4OSwxMy45NDEgQzI3LjMxMSwxNC4wOTQgMjcuMTE0LDE0LjE4OSAyNi44OTYsMTQuMTg5IFogTTQxLjcwMSw2Ljg3MyBMNDAuMTM0LDYuODczIEM0MC4xMzQsNi44NzMgNDAuODU2LDQuMTA5IDQwLjg3Myw0LjAzNSBDNDAuOTQyLDMuNzQ1IDQwLjY5OCwzLjU3OCA0MC40NDEsMy42MzEgQzQwLjQ0MSwzLjYzMSAzOS4yMywzLjg2NiAzOS4wMDUsMy45MTMgQzM4Ljc3OSwzLjk1OCAzOC42MDQsNC4wODEgMzguNTIyLDQuNDAzIEMzOC41MTIsNC40NDUgMzcuODgsNi44NzMgMzcuODgsNi44NzMgTDM2LjYyMiw2Ljg3MyBDMzYuMzg1LDYuODczIDM2LjI0NSw2Ljk2OCAzNi4xOTIsNy4xODggQzM2LjExNSw3LjUwNCAzNS45NzUsOC4xNDUgMzUuOTM2LDguMjk3IEMzNS44ODUsOC40OTQgMzYsOC42NDQgMzYuMjIyLDguNjQ0IEwzNy40NTcsOC42NDQgQzM3LjQ0OCw4LjY3NyAzNy4wNjQsMTAuMTI1IDM2LjcyNSwxMS41MjEgTDM2LjcyNCwxMS41MTYgQzM2LjcyLDExLjUzMiAzNi43MTYsMTEuNTQ2IDM2LjcxMiwxMS41NjIgTDM2LjcxMiwxMS41NTYgQzM2LjcxMiwxMS41NTYgMzYuNzA4LDExLjU3MSAzNi43MDIsMTEuNTk4IEMzNi4zMjQsMTIuOTY4IDM1LjExOCwxNC4yMDkgMzQuMjAxLDE0LjIwOSBDMzMuNzIxLDE0LjIwOSAzMy41MDYsMTMuOTA5IDMzLjUwNiwxMy40MDIgQzMzLjUwNiwxMi45NjMgMzMuNzkyLDExLjg4IDM0LjEzNCwxMC41MzcgQzM0LjU0OSw4LjkwMSAzNC45MTUsNy41NTUgMzQuOTU1LDcuMzk3IEMzNS4wMDYsNy4xOTYgMzQuOTE1LDcuMDIgMzQuNjUyLDcuMDIgTDMzLjEyMiw3LjAyIEMzMi44NDUsNy4wMiAzMi43NDYsNy4xNjQgMzIuNjg3LDcuMzY0IEMzMi42ODcsNy4zNjQgMzIuMjU3LDguOTggMzEuOCwxMC43NzggQzMxLjQ2OSwxMi4wODMgMzEuMTAzLDEzLjQxMiAzMS4xMDMsMTQuMDM3IEMzMS4xMDMsMTUuMTUxIDMxLjYwOSwxNS45NDggMzIuOTk3LDE1Ljk0OCBDMzQuMDcsMTUuOTQ4IDM1LjEzNiwxNS40NTMgMzUuNzgzLDE0Ljc2NyBDMzUuNzgzLDE0Ljc2NyAzNi4wMTEsMTQuNTIxIDM2LjIzLDE0LjIyOSBDMzYuMjQxLDE0LjU4MSAzNi4zMjQsMTQuODM3IDM2LjQxMSwxNS4wMTggQzM2LjQ1OCwxNS4xMTkgMzYuNTE1LDE1LjIxNSAzNi41ODEsMTUuMzAzIEMzNi41ODIsMTUuMzA0IDM2LjU4MywxNS4zMDYgMzYuNTg1LDE1LjMwOCBMMzYuNTg1LDE1LjMwOCBDMzYuODkxLDE1LjcxMyAzNy4zOTgsMTUuOTYyIDM4LjE1MSwxNS45NjIgQzM5Ljg5NCwxNS45NjIgNDAuOTQ0LDE0LjkzOCA0MS41NjIsMTMuOTA5IEw0MC43MDQsMTMuMjM5IEM0MC4zMzMsMTMuNzc0IDM5LjgzOSwxNC4xNzUgMzkuMzI0LDE0LjE3NSBDMzguODQ2LDE0LjE3NSAzOC41NzksMTMuODc4IDM4LjU3OSwxMy4zNzIgQzM4LjU3OSwxMi45MzUgMzguODg5LDExLjg2OCAzOS4yMjksMTAuNTMgQzM5LjM0NCwxMC4wODMgMzkuNTE2LDkuNDAxIDM5LjcwOCw4LjY0NCBMNDEuMzAyLDguNjQ0IEM0MS41MzksOC42NDQgNDEuNjc4LDguNTQ5IDQxLjczMiw4LjMyOSBDNDEuODA4LDguMDEyIDQxLjk0OCw3LjM3MiA0MS45ODgsNy4yMjEgQzQyLjAzOSw3LjAyMyA0MS45MjMsNi44NzMgNDEuNzAxLDYuODczIFogTTM0LjEyNiw2LjM0OCBDMzQuOTA1LDYuMzQ4IDM1LjY1Myw1LjcwNiAzNS43ODMsNC45MTIgQzM1LjkzNyw0LjE0MSAzNS40MDksMy40OTggMzQuNjMsMy40OTggQzMzLjg1MSwzLjQ5OCAzMy4xMDMsNC4xNDEgMzIuOTcxLDQuOTEyIEMzMi44MTksNS43MDYgMzMuMzI2LDYuMzQ4IDM0LjEyNiw2LjM0OCBaIiBmaWxsPSIjZTYwMDIzIj48L3BhdGg+PC9nPjwvc3ZnPg==) 50% 50% no-repeat;
+  background-size: 75%;
+  position: relative;
+  font: 12px "Helvetica Neue", Helvetica, arial, sans-serif;
+  color: #555;
+  text-align: center;
+  vertical-align: baseline;
+}
+ .PIN_1585513861615_button_pin:hover { 
+  box-shadow: inset 0 0 1px #000;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_above .PIN_1585513861615_count { 
+  position: absolute;
+  top: -28px;
+  left: 0;
+  height: 28px;
+  width: inherit;
+  line-height: 24px;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNzZweCIgd2lkdGg9IjExNHB4IiB2aWV3Qm94PSIwIDAgMTE0IDc2Ij48Zz48cGF0aCBkPSJNOSAxQzQuNiAxIDEgNC42IDEgOXY0M2MwIDQuMyAzLjYgOCA4IDhoMjZsMTggMTVoNy41bDE2LTE1SDEwNWM0LjQgMCA4LTMuNyA4LThWOWMwLTQuNC0zLjYtOC04LThIOXoiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2I1YjViNSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+PC9nPjwvc3ZnPg==) 0 0 no-repeat;
+  background-size: 40px 28px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_above.PIN_1585513861615_padded { 
+  margin-top: 28px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_beside .PIN_1585513861615_count { 
+  position: absolute;
+  right: -45px;
+  text-align: center;
+  text-indent: 5px;
+  height: inherit;
+  width: 45px;
+  font-size: 11px;
+  line-height: 20px;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNTZweCIgd2lkdGg9IjEyNnB4IiB2aWV3Qm94PSIyIDAgMTMwIDYwIj48Zz48cGF0aCBkPSJNMTE5LjYgMmM0LjUgMCA4IDMuNiA4IDh2NDBjMCA0LjQtMy41IDgtOCA4SDIzLjNMMS42IDMyLjR2LTQuNkwyMy4zIDJoOTYuM3oiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2I1YjViNSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+PC9nPjwvc3ZnPg==);
+  background-size: cover;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_beside.PIN_1585513861615_padded { 
+  margin-right: 45px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_ja { 
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMThweCIgd2lkdGg9IjQxcHgiIHZpZXdCb3g9IjAgMCA0MSAxOCI+PGc+PHBhdGggZD0iTTE5LjgyMiw3LjE3MyBDMTkuODIyLDYuNTEgMTkuODM1LDYuMjc2IDE5Ljg4Nyw1Ljk2NCBMMTguMTQ1LDUuOTY0IEMxOC4xOTcsNi4yODkgMTguMTk3LDYuNDk3IDE4LjE5Nyw3LjE2IEwxOC4yMSwxMy4xOTIgQzE4LjIxLDEzLjk0NiAxOC4yMjMsMTQuMTY3IDE4LjI0OSwxNC4zODggQzE4LjMyNywxNS4wMjUgMTguNTIyLDE1LjQ0MSAxOC44ODYsMTUuNzE0IEMxOS4zOTMsMTYuMTA0IDIwLjI5LDE2LjI3MyAyMS45MjgsMTYuMjczIEMyMi43MjEsMTYuMjczIDI0LjM1OSwxNi4xOTUgMjUuMTI2LDE2LjExNyBDMjYuNTA0LDE1Ljk4NyAyNi41NjksMTUuOTc0IDI2Ljg0MiwxNS45NzQgTDI2Ljc2NCwxNC4yNDUgQzI2LjE5MiwxNC40MTQgMjUuOTA2LDE0LjQ3OSAyNS4yODIsMTQuNTU3IEMyNC4zMzMsMTQuNjg3IDIzLjEzNywxNC43NjUgMjIuMjY2LDE0Ljc2NSBDMjEuMDA1LDE0Ljc2NSAyMC4yNjQsMTQuNjQ4IDIwLjA0MywxNC40MjcgQzE5Ljg2MSwxNC4yNDUgMTkuODA5LDEzLjk1OSAxOS44MDksMTMuMjMxIEMxOS44MDksMTMuMTc5IDE5LjgwOSwxMy4xMDEgMTkuODIyLDEzLjAyMyBMMTkuODIyLDExLjMwNyBDMjEuOTkzLDEwLjkwNCAyNC4wMDgsMTAuMjI4IDI1LjkzMiw5LjI0IEwyNi4yNyw5LjA3MSBDMjYuMzc0LDkuMDE5IDI2LjQsOS4wMDYgMjYuNTQzLDguOTU0IEwyNS41MDMsNy40ODUgQzI0LjY1OCw4LjI3OCAyMS43ODUsOS40MzUgMTkuODIyLDkuNzk5IEwxOS44MjIsNy4xNzMgWiBNMjcuMzEsNC44NzIgQzI2LjQ5MSw0Ljg3MiAyNS44MTUsNS41NDggMjUuODE1LDYuMzY3IEMyNS44MTUsNy4xOTkgMjYuNDkxLDcuODc1IDI3LjMxLDcuODc1IEMyOC4xNDIsNy44NzUgMjguODE4LDcuMTk5IDI4LjgxOCw2LjM2NyBDMjguODE4LDUuNTQ4IDI4LjE0Miw0Ljg3MiAyNy4zMSw0Ljg3MiBMMjcuMzEsNC44NzIgWiBNMjcuMzEsNS41MjIgQzI3Ljc5MSw1LjUyMiAyOC4xNjgsNS44OTkgMjguMTY4LDYuMzY3IEMyOC4xNjgsNi44MzUgMjcuNzkxLDcuMjI1IDI3LjMxLDcuMjI1IEMyNi44NDIsNy4yMjUgMjYuNDY1LDYuODM1IDI2LjQ2NSw2LjM2NyBDMjYuNDY1LDUuODk5IDI2Ljg0Miw1LjUyMiAyNy4zMSw1LjUyMiBMMjcuMzEsNS41MjIgWiBNMzAuNTg2LDcuNjU0IEMzMS43OTUsOC4zMyAzMi44NjEsOS4xODggMzMuOTAxLDEwLjI5MyBMMzUuMDE5LDguODc2IEMzNC4wMTgsNy45MjcgMzMuMjEyLDcuMzI5IDMxLjY2NSw2LjM2NyBMMzAuNTg2LDcuNjU0IFogTTMxLjA0MSwxNi4yMzQgQzMxLjM0LDE2LjEzIDMxLjM3OSwxNi4xMTcgMzEuODk5LDE2LjAxMyBDMzMuOTE0LDE1LjU4NCAzNS41MjYsMTQuOTQ3IDM2Ljg1MiwxNC4wNjMgQzM4LjYzMywxMi44OCAzOS44NjgsMTEuMzQ2IDQwLjk3Myw4Ljk2NyBDNDAuMzEsOC40OTkgNDAuMTAyLDguMzA0IDM5LjU5NSw3LjY5MyBDMzkuMjA1LDguNzQ2IDM4Ljg0MSw5LjQ2MSAzOC4yNjksMTAuMjkzIEMzNy4yNDIsMTEuNzc1IDM2LjAzMywxMi43NzYgMzQuNDA4LDEzLjQ3OCBDMzMuMjI1LDEzLjk5OCAzMS42NzgsMTQuMzc1IDMwLjU2LDE0LjQ0IEwzMS4wNDEsMTYuMjM0IFogTTcuNDU4LDAgQzIuNSwwIDAsMy41MjIgMCw2LjQ1OSBDMCw4LjIzNyAwLjY4LDkuODE5IDIuMTM3LDEwLjQwOSBDMi4zNzYsMTAuNTA1IDIuNTksMTAuNDEyIDIuNjYsMTAuMTUgQzIuNzA4LDkuOTY5IDIuODIyLDkuNTExIDIuODczLDkuMzIgQzIuOTQzLDkuMDYxIDIuOTE2LDguOTcgMi43MjMsOC43NDQgQzIuMzAyLDguMjUzIDIuMDM0LDcuNjE3IDIuMDM0LDYuNzE2IEMyLjAzNCw0LjEwNCA0LjAwNywxLjc2NSA3LjE3MiwxLjc2NSBDOS45NzUsMS43NjUgMTEuNTE0LDMuNDYxIDExLjUxNCw1LjcyNiBDMTEuNTE0LDguNzA4IDEwLjE4MywxMS4xOCA4LjIwNiwxMS4xOCBDNy4xMTQsMTEuMTggNi4yOTcsMTAuMzI5IDYuNTU5LDkuMjMzIEM2Ljg3Miw3LjkyMiA3LjQ4LDYuNTA5IDcuNDgsNS41NjQgQzcuNDgsNC43MTcgNy4wMjIsNC4wMTEgNi4wNzIsNC4wMTEgQzQuOTU2LDQuMDExIDQuMDYsNS4xNTUgNC4wNiw2LjY4NyBDNC4wNiw3LjY2MyA0LjM5Myw4LjMyMyA0LjM5Myw4LjMyMyBDNC4zOTMsOC4zMjMgMy4yNTEsMTMuMTE3IDMuMDUxLDEzLjk1NyBDMi42NTIsMTUuNjI5IDIuOTkxLDE3LjY3OSAzLjAxOSwxNy44ODYgQzMuMDM2LDE4LjAwOSAzLjE5NSwxOC4wMzggMy4yNjcsMTcuOTQ2IEMzLjM3LDE3LjgxMiA0LjcsMTYuMTg3IDUuMTUxLDE0LjU2MiBDNS4yNzksMTQuMTAyIDUuODg1LDExLjcyIDUuODg1LDExLjcyIEM2LjI0OCwxMi40MDYgNy4zMDgsMTMuMDA5IDguNDM1LDEzLjAwOSBDMTEuNzksMTMuMDA5IDE0LjA2Niw5Ljk3OSAxNC4wNjYsNS45MjMgQzE0LjA2NiwyLjg1NyAxMS40NDQsMCA3LjQ1OCwwIFoiIGZpbGw9IiNlNjAwMjMiPjwvcGF0aD48L2c+PC9zdmc+);
+  background-size: 72%;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_red { 
+  background-color: #e60023;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMThweCIgd2lkdGg9IjQycHgiIHZpZXdCb3g9IjAgMCA0MiAxOCI+PGc+PHBhdGggZD0iTTE2Ljg1Myw2LjM0NSBDMTcuNjMyLDYuMzQ1IDE4LjM4LDUuNzAyIDE4LjUxLDQuOTA5IEMxOC42NjQsNC4xMzggMTguMTM1LDMuNDk0IDE3LjM1NywzLjQ5NCBDMTYuNTc4LDMuNDk0IDE1LjgzLDQuMTM4IDE1LjY5OCw0LjkwOSBDMTUuNTQ2LDUuNzAyIDE2LjA1Myw2LjM0NSAxNi44NTMsNi4zNDUgWiBNNy40NTgsMCBDMi41LDAgMCwzLjUyMiAwLDYuNDU5IEMwLDguMjM3IDAuNjgsOS44MTkgMi4xMzcsMTAuNDA5IEMyLjM3NiwxMC41MDUgMi41OSwxMC40MTIgMi42NiwxMC4xNSBDMi43MDgsOS45NjkgMi44MjIsOS41MTEgMi44NzMsOS4zMiBDMi45NDMsOS4wNjEgMi45MTYsOC45NyAyLjcyMyw4Ljc0NCBDMi4zMDIsOC4yNTMgMi4wMzQsNy42MTcgMi4wMzQsNi43MTYgQzIuMDM0LDQuMTA0IDQuMDA3LDEuNzY1IDcuMTcyLDEuNzY1IEM5Ljk3NSwxLjc2NSAxMS41MTQsMy40NjEgMTEuNTE0LDUuNzI2IEMxMS41MTQsOC43MDggMTAuMTgzLDExLjE4IDguMjA2LDExLjE4IEM3LjExNCwxMS4xOCA2LjI5NywxMC4zMjkgNi41NTksOS4yMzMgQzYuODcyLDcuOTIyIDcuNDgsNi41MDkgNy40OCw1LjU2NCBDNy40OCw0LjcxNyA3LjAyMiw0LjAxMSA2LjA3Miw0LjAxMSBDNC45NTYsNC4wMTEgNC4wNiw1LjE1NSA0LjA2LDYuNjg3IEM0LjA2LDcuNjYzIDQuMzkzLDguMzIzIDQuMzkzLDguMzIzIEM0LjM5Myw4LjMyMyAzLjI1MSwxMy4xMTcgMy4wNTEsMTMuOTU3IEMyLjY1MiwxNS42MjkgMi45OTEsMTcuNjc5IDMuMDE5LDE3Ljg4NiBDMy4wMzYsMTguMDA5IDMuMTk1LDE4LjAzOCAzLjI2NywxNy45NDYgQzMuMzcsMTcuODEyIDQuNywxNi4xODcgNS4xNTEsMTQuNTYyIEM1LjI3OSwxNC4xMDIgNS44ODUsMTEuNzIgNS44ODUsMTEuNzIgQzYuMjQ4LDEyLjQwNiA3LjMwOCwxMy4wMDkgOC40MzUsMTMuMDA5IEMxMS43OSwxMy4wMDkgMTQuMDY2LDkuOTc5IDE0LjA2Niw1LjkyMyBDMTQuMDY2LDIuODU3IDExLjQ0NCwwIDcuNDU4LDAgWiBNMjYuODk2LDE0LjE4OSBDMjYuMzQ4LDE0LjE4OSAyNi4xMTcsMTMuOTE1IDI2LjExNywxMy4zMjggQzI2LjExNywxMi40MDQgMjcuMDM1LDEwLjA5MSAyNy4wMzUsOS4wNDEgQzI3LjAzNSw3LjYzOCAyNi4yNzYsNi44MjYgMjQuNzIsNi44MjYgQzIzLjczOSw2LjgyNiAyMi43MjIsNy40NTMgMjIuMjkxLDguMDAzIEMyMi4yOTEsOC4wMDMgMjIuNDIyLDcuNTUzIDIyLjQ2Nyw3LjM4IEMyMi41MTUsNy4xOTYgMjIuNDE1LDYuODg0IDIyLjE3Myw2Ljg4NCBMMjAuNjUxLDYuODg0IEMyMC4zMjgsNi44ODQgMjAuMjM4LDcuMDU1IDIwLjE5MSw3LjI0NCBDMjAuMTcyLDcuMzIgMTkuNjI0LDkuNTg0IDE5LjA5OCwxMS42MzIgQzE4LjczOCwxMy4wMzQgMTcuODYzLDE0LjIwNSAxNi45MjgsMTQuMjA1IEMxNi40NDcsMTQuMjA1IDE2LjIzMywxMy45MDYgMTYuMjMzLDEzLjM5OSBDMTYuMjMzLDEyLjk1OSAxNi41MTksMTEuODc3IDE2Ljg2LDEwLjUzNCBDMTcuMjc2LDguODk4IDE3LjY0Miw3LjU1MSAxNy42ODEsNy4zOTQgQzE3LjczMiw3LjE5MiAxNy42NDIsNy4wMTcgMTcuMzc5LDcuMDE3IEwxNS44NDksNy4wMTcgQzE1LjU3Miw3LjAxNyAxNS40NzMsNy4xNjEgMTUuNDE0LDcuMzYxIEMxNS40MTQsNy4zNjEgMTQuOTgzLDguOTc3IDE0LjUyNywxMC43NzUgQzE0LjE5NiwxMi4wNzkgMTMuODMsMTMuNDA5IDEzLjgzLDE0LjAzNCBDMTMuODMsMTUuMTQ4IDE0LjMzNiwxNS45NDQgMTUuNzI0LDE1Ljk0NCBDMTYuNzk2LDE1Ljk0NCAxNy42NDQsMTUuNDUgMTguMjkyLDE0Ljc2NCBDMTguMTk3LDE1LjEzNSAxOC4xMzYsMTUuNDE0IDE4LjEzLDE1LjQzOSBDMTguMDc0LDE1LjY1IDE4LjE0MiwxNS44MzggMTguMzk0LDE1LjgzOCBMMTkuOTYxLDE1LjgzOCBDMjAuMjMzLDE1LjgzOCAyMC4zMzcsMTUuNzMgMjAuMzk0LDE1LjQ5NCBDMjAuNDQ5LDE1LjI2OSAyMS42MTksMTAuNjY3IDIxLjYxOSwxMC42NjcgQzIxLjkyOCw5LjQ0MyAyMi42OTIsOC42MzIgMjMuNzY4LDguNjMyIEMyNC4yNzksOC42MzIgMjQuNzIsOC45NjcgMjQuNjY5LDkuNjE4IEMyNC42MTIsMTAuMzMzIDIzLjc0MSwxMi45MDMgMjMuNzQxLDE0LjAzMSBDMjMuNzQxLDE0Ljg4NCAyNC4wNiwxNS45NDUgMjUuNjgzLDE1Ljk0NSBDMjYuNzg5LDE1Ljk0NSAyNy42MDMsMTUuNDY0IDI4LjE5NSwxNC43ODYgTDI3LjQ4OSwxMy45NDEgQzI3LjMxMSwxNC4wOTQgMjcuMTE0LDE0LjE4OSAyNi44OTYsMTQuMTg5IFogTTQxLjcwMSw2Ljg3MyBMNDAuMTM0LDYuODczIEM0MC4xMzQsNi44NzMgNDAuODU2LDQuMTA5IDQwLjg3Myw0LjAzNSBDNDAuOTQyLDMuNzQ1IDQwLjY5OCwzLjU3OCA0MC40NDEsMy42MzEgQzQwLjQ0MSwzLjYzMSAzOS4yMywzLjg2NiAzOS4wMDUsMy45MTMgQzM4Ljc3OSwzLjk1OCAzOC42MDQsNC4wODEgMzguNTIyLDQuNDAzIEMzOC41MTIsNC40NDUgMzcuODgsNi44NzMgMzcuODgsNi44NzMgTDM2LjYyMiw2Ljg3MyBDMzYuMzg1LDYuODczIDM2LjI0NSw2Ljk2OCAzNi4xOTIsNy4xODggQzM2LjExNSw3LjUwNCAzNS45NzUsOC4xNDUgMzUuOTM2LDguMjk3IEMzNS44ODUsOC40OTQgMzYsOC42NDQgMzYuMjIyLDguNjQ0IEwzNy40NTcsOC42NDQgQzM3LjQ0OCw4LjY3NyAzNy4wNjQsMTAuMTI1IDM2LjcyNSwxMS41MjEgTDM2LjcyNCwxMS41MTYgQzM2LjcyLDExLjUzMiAzNi43MTYsMTEuNTQ2IDM2LjcxMiwxMS41NjIgTDM2LjcxMiwxMS41NTYgQzM2LjcxMiwxMS41NTYgMzYuNzA4LDExLjU3MSAzNi43MDIsMTEuNTk4IEMzNi4zMjQsMTIuOTY4IDM1LjExOCwxNC4yMDkgMzQuMjAxLDE0LjIwOSBDMzMuNzIxLDE0LjIwOSAzMy41MDYsMTMuOTA5IDMzLjUwNiwxMy40MDIgQzMzLjUwNiwxMi45NjMgMzMuNzkyLDExLjg4IDM0LjEzNCwxMC41MzcgQzM0LjU0OSw4LjkwMSAzNC45MTUsNy41NTUgMzQuOTU1LDcuMzk3IEMzNS4wMDYsNy4xOTYgMzQuOTE1LDcuMDIgMzQuNjUyLDcuMDIgTDMzLjEyMiw3LjAyIEMzMi44NDUsNy4wMiAzMi43NDYsNy4xNjQgMzIuNjg3LDcuMzY0IEMzMi42ODcsNy4zNjQgMzIuMjU3LDguOTggMzEuOCwxMC43NzggQzMxLjQ2OSwxMi4wODMgMzEuMTAzLDEzLjQxMiAzMS4xMDMsMTQuMDM3IEMzMS4xMDMsMTUuMTUxIDMxLjYwOSwxNS45NDggMzIuOTk3LDE1Ljk0OCBDMzQuMDcsMTUuOTQ4IDM1LjEzNiwxNS40NTMgMzUuNzgzLDE0Ljc2NyBDMzUuNzgzLDE0Ljc2NyAzNi4wMTEsMTQuNTIxIDM2LjIzLDE0LjIyOSBDMzYuMjQxLDE0LjU4MSAzNi4zMjQsMTQuODM3IDM2LjQxMSwxNS4wMTggQzM2LjQ1OCwxNS4xMTkgMzYuNTE1LDE1LjIxNSAzNi41ODEsMTUuMzAzIEMzNi41ODIsMTUuMzA0IDM2LjU4MywxNS4zMDYgMzYuNTg1LDE1LjMwOCBMMzYuNTg1LDE1LjMwOCBDMzYuODkxLDE1LjcxMyAzNy4zOTgsMTUuOTYyIDM4LjE1MSwxNS45NjIgQzM5Ljg5NCwxNS45NjIgNDAuOTQ0LDE0LjkzOCA0MS41NjIsMTMuOTA5IEw0MC43MDQsMTMuMjM5IEM0MC4zMzMsMTMuNzc0IDM5LjgzOSwxNC4xNzUgMzkuMzI0LDE0LjE3NSBDMzguODQ2LDE0LjE3NSAzOC41NzksMTMuODc4IDM4LjU3OSwxMy4zNzIgQzM4LjU3OSwxMi45MzUgMzguODg5LDExLjg2OCAzOS4yMjksMTAuNTMgQzM5LjM0NCwxMC4wODMgMzkuNTE2LDkuNDAxIDM5LjcwOCw4LjY0NCBMNDEuMzAyLDguNjQ0IEM0MS41MzksOC42NDQgNDEuNjc4LDguNTQ5IDQxLjczMiw4LjMyOSBDNDEuODA4LDguMDEyIDQxLjk0OCw3LjM3MiA0MS45ODgsNy4yMjEgQzQyLjAzOSw3LjAyMyA0MS45MjMsNi44NzMgNDEuNzAxLDYuODczIFogTTM0LjEyNiw2LjM0OCBDMzQuOTA1LDYuMzQ4IDM1LjY1Myw1LjcwNiAzNS43ODMsNC45MTIgQzM1LjkzNyw0LjE0MSAzNS40MDksMy40OTggMzQuNjMsMy40OTggQzMzLjg1MSwzLjQ5OCAzMy4xMDMsNC4xNDEgMzIuOTcxLDQuOTEyIEMzMi44MTksNS43MDYgMzMuMzI2LDYuMzQ4IDM0LjEyNiw2LjM0OCBaIiBmaWxsPSIjZmZmIj48L3BhdGg+PC9nPjwvc3ZnPg==);
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_red.PIN_1585513861615_ja { 
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMThweCIgd2lkdGg9IjQxcHgiIHZpZXdCb3g9IjAgMCA0MSAxOCI+PGc+PHBhdGggZD0iTTE5LjgyMiw3LjE3MyBDMTkuODIyLDYuNTEgMTkuODM1LDYuMjc2IDE5Ljg4Nyw1Ljk2NCBMMTguMTQ1LDUuOTY0IEMxOC4xOTcsNi4yODkgMTguMTk3LDYuNDk3IDE4LjE5Nyw3LjE2IEwxOC4yMSwxMy4xOTIgQzE4LjIxLDEzLjk0NiAxOC4yMjMsMTQuMTY3IDE4LjI0OSwxNC4zODggQzE4LjMyNywxNS4wMjUgMTguNTIyLDE1LjQ0MSAxOC44ODYsMTUuNzE0IEMxOS4zOTMsMTYuMTA0IDIwLjI5LDE2LjI3MyAyMS45MjgsMTYuMjczIEMyMi43MjEsMTYuMjczIDI0LjM1OSwxNi4xOTUgMjUuMTI2LDE2LjExNyBDMjYuNTA0LDE1Ljk4NyAyNi41NjksMTUuOTc0IDI2Ljg0MiwxNS45NzQgTDI2Ljc2NCwxNC4yNDUgQzI2LjE5MiwxNC40MTQgMjUuOTA2LDE0LjQ3OSAyNS4yODIsMTQuNTU3IEMyNC4zMzMsMTQuNjg3IDIzLjEzNywxNC43NjUgMjIuMjY2LDE0Ljc2NSBDMjEuMDA1LDE0Ljc2NSAyMC4yNjQsMTQuNjQ4IDIwLjA0MywxNC40MjcgQzE5Ljg2MSwxNC4yNDUgMTkuODA5LDEzLjk1OSAxOS44MDksMTMuMjMxIEMxOS44MDksMTMuMTc5IDE5LjgwOSwxMy4xMDEgMTkuODIyLDEzLjAyMyBMMTkuODIyLDExLjMwNyBDMjEuOTkzLDEwLjkwNCAyNC4wMDgsMTAuMjI4IDI1LjkzMiw5LjI0IEwyNi4yNyw5LjA3MSBDMjYuMzc0LDkuMDE5IDI2LjQsOS4wMDYgMjYuNTQzLDguOTU0IEwyNS41MDMsNy40ODUgQzI0LjY1OCw4LjI3OCAyMS43ODUsOS40MzUgMTkuODIyLDkuNzk5IEwxOS44MjIsNy4xNzMgWiBNMjcuMzEsNC44NzIgQzI2LjQ5MSw0Ljg3MiAyNS44MTUsNS41NDggMjUuODE1LDYuMzY3IEMyNS44MTUsNy4xOTkgMjYuNDkxLDcuODc1IDI3LjMxLDcuODc1IEMyOC4xNDIsNy44NzUgMjguODE4LDcuMTk5IDI4LjgxOCw2LjM2NyBDMjguODE4LDUuNTQ4IDI4LjE0Miw0Ljg3MiAyNy4zMSw0Ljg3MiBMMjcuMzEsNC44NzIgWiBNMjcuMzEsNS41MjIgQzI3Ljc5MSw1LjUyMiAyOC4xNjgsNS44OTkgMjguMTY4LDYuMzY3IEMyOC4xNjgsNi44MzUgMjcuNzkxLDcuMjI1IDI3LjMxLDcuMjI1IEMyNi44NDIsNy4yMjUgMjYuNDY1LDYuODM1IDI2LjQ2NSw2LjM2NyBDMjYuNDY1LDUuODk5IDI2Ljg0Miw1LjUyMiAyNy4zMSw1LjUyMiBMMjcuMzEsNS41MjIgWiBNMzAuNTg2LDcuNjU0IEMzMS43OTUsOC4zMyAzMi44NjEsOS4xODggMzMuOTAxLDEwLjI5MyBMMzUuMDE5LDguODc2IEMzNC4wMTgsNy45MjcgMzMuMjEyLDcuMzI5IDMxLjY2NSw2LjM2NyBMMzAuNTg2LDcuNjU0IFogTTMxLjA0MSwxNi4yMzQgQzMxLjM0LDE2LjEzIDMxLjM3OSwxNi4xMTcgMzEuODk5LDE2LjAxMyBDMzMuOTE0LDE1LjU4NCAzNS41MjYsMTQuOTQ3IDM2Ljg1MiwxNC4wNjMgQzM4LjYzMywxMi44OCAzOS44NjgsMTEuMzQ2IDQwLjk3Myw4Ljk2NyBDNDAuMzEsOC40OTkgNDAuMTAyLDguMzA0IDM5LjU5NSw3LjY5MyBDMzkuMjA1LDguNzQ2IDM4Ljg0MSw5LjQ2MSAzOC4yNjksMTAuMjkzIEMzNy4yNDIsMTEuNzc1IDM2LjAzMywxMi43NzYgMzQuNDA4LDEzLjQ3OCBDMzMuMjI1LDEzLjk5OCAzMS42NzgsMTQuMzc1IDMwLjU2LDE0LjQ0IEwzMS4wNDEsMTYuMjM0IFogTTcuNDU4LDAgQzIuNSwwIDAsMy41MjIgMCw2LjQ1OSBDMCw4LjIzNyAwLjY4LDkuODE5IDIuMTM3LDEwLjQwOSBDMi4zNzYsMTAuNTA1IDIuNTksMTAuNDEyIDIuNjYsMTAuMTUgQzIuNzA4LDkuOTY5IDIuODIyLDkuNTExIDIuODczLDkuMzIgQzIuOTQzLDkuMDYxIDIuOTE2LDguOTcgMi43MjMsOC43NDQgQzIuMzAyLDguMjUzIDIuMDM0LDcuNjE3IDIuMDM0LDYuNzE2IEMyLjAzNCw0LjEwNCA0LjAwNywxLjc2NSA3LjE3MiwxLjc2NSBDOS45NzUsMS43NjUgMTEuNTE0LDMuNDYxIDExLjUxNCw1LjcyNiBDMTEuNTE0LDguNzA4IDEwLjE4MywxMS4xOCA4LjIwNiwxMS4xOCBDNy4xMTQsMTEuMTggNi4yOTcsMTAuMzI5IDYuNTU5LDkuMjMzIEM2Ljg3Miw3LjkyMiA3LjQ4LDYuNTA5IDcuNDgsNS41NjQgQzcuNDgsNC43MTcgNy4wMjIsNC4wMTEgNi4wNzIsNC4wMTEgQzQuOTU2LDQuMDExIDQuMDYsNS4xNTUgNC4wNiw2LjY4NyBDNC4wNiw3LjY2MyA0LjM5Myw4LjMyMyA0LjM5Myw4LjMyMyBDNC4zOTMsOC4zMjMgMy4yNTEsMTMuMTE3IDMuMDUxLDEzLjk1NyBDMi42NTIsMTUuNjI5IDIuOTkxLDE3LjY3OSAzLjAxOSwxNy44ODYgQzMuMDM2LDE4LjAwOSAzLjE5NSwxOC4wMzggMy4yNjcsMTcuOTQ2IEMzLjM3LDE3LjgxMiA0LjcsMTYuMTg3IDUuMTUxLDE0LjU2MiBDNS4yNzksMTQuMTAyIDUuODg1LDExLjcyIDUuODg1LDExLjcyIEM2LjI0OCwxMi40MDYgNy4zMDgsMTMuMDA5IDguNDM1LDEzLjAwOSBDMTEuNzksMTMuMDA5IDE0LjA2Niw5Ljk3OSAxNC4wNjYsNS45MjMgQzE0LjA2NiwyLjg1NyAxMS40NDQsMCA3LjQ1OCwwIFoiIGZpbGw9IiNmZmYiPjwvcGF0aD48L2c+PC9zdmc+);
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_white { 
+  background-color: #fff;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_save { 
+  border-radius: 2px;
+  text-indent: 20px;
+  width: auto;
+  padding: 0 4px 0 0;
+  text-align: center;
+  text-decoration: none;
+  font: 11px/20px "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: bold;
+  color: #fff!important;
+  background: #e60023 url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjZTYwMDIzIj48L3BhdGg+PC9nPjwvc3ZnPg==) 3px 50% no-repeat;
+  background-size: 14px 14px;
+  -webkit-font-smoothing: antialiased;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_save:hover { 
+  background-color: #e60023;
+  box-shadow: none;
+  color: #fff!important;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_save .PIN_1585513861615_count { 
+  text-indent: 0;
+  position: absolute;
+  color: #555;
+  background: #efefef;
+  border-radius: 2px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_save .PIN_1585513861615_count::before { 
+  content: "";
+  position: absolute;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_save.PIN_1585513861615_beside .PIN_1585513861615_count { 
+  right: -46px;
+  height: 20px;
+  width: 40px;
+  font-size: 10px;
+  line-height: 20px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_save.PIN_1585513861615_beside .PIN_1585513861615_count::before { 
+  top: 3px;
+  left: -4px;
+  border-right: 7px solid #efefef;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_save.PIN_1585513861615_above .PIN_1585513861615_count { 
+  top: -36px;
+  width: 100%;
+  height: 30px;
+  font-size: 10px;
+  line-height: 30px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_save.PIN_1585513861615_above .PIN_1585513861615_count::before { 
+  bottom: -4px;
+  left: 4px;
+  border-top: 7px solid #efefef;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_save.PIN_1585513861615_above.PIN_1585513861615_padded { 
+  margin-top: 28px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall { 
+  height: 28px;
+  width: 56px;
+  border-radius: 3px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_above .PIN_1585513861615_count { 
+  position: absolute;
+  height: 37px;
+  width: inherit;
+  top: -37px;
+  left: 0;
+  line-height: 30px;
+  font-size: 14px;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNzZweCIgd2lkdGg9IjExNHB4IiB2aWV3Qm94PSIwIDAgMTE0IDc2Ij48Zz48cGF0aCBkPSJNOSAxQzQuNiAxIDEgNC42IDEgOXY0M2MwIDQuMyAzLjYgOCA4IDhoMjZsMTggMTVoNy41bDE2LTE1SDEwNWM0LjQgMCA4LTMuNyA4LThWOWMwLTQuNC0zLjYtOC04LThIOXoiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2I1YjViNSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+PC9nPjwvc3ZnPg==);
+  background-size: cover;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_above.PIN_1585513861615_padded { 
+  margin-top: 37px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_beside .PIN_1585513861615_count { 
+  text-indent: 5px;
+  position: absolute;
+  right: -63px;
+  height: inherit;
+  width: 63px;
+  font-size: 14px;
+  line-height: 28px;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNTZweCIgd2lkdGg9IjEyNnB4IiB2aWV3Qm94PSIyIDAgMTMwIDYwIj48Zz48cGF0aCBkPSJNMTE5LjYgMmM0LjUgMCA4IDMuNiA4IDh2NDBjMCA0LjQtMy41IDgtOCA4SDIzLjNMMS42IDMyLjR2LTQuNkwyMy4zIDJoOTYuM3oiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2I1YjViNSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+PC9nPjwvc3ZnPg==);
+  background-size: cover;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_beside.PIN_1585513861615_padded { 
+  margin-right: 63px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_save { 
+  border-radius: 4px;
+  width: auto;
+  background-position-x: 6px;
+  background-size: 18px 18px;
+  text-indent: 29px;
+  font: 14px/28px "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  font-weight: bold;
+  padding: 0 6px 0 0;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_save .PIN_1585513861615_count { 
+  position: absolute;
+  color: #555;
+  font-size: 12px;
+  text-indent: 0;
+  background: #efefef;
+  border-radius: 4px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_save .PIN_1585513861615_count::before { 
+  content: "";
+  position: absolute;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_save.PIN_1585513861615_above .PIN_1585513861615_count { 
+  font-size: 14px;
+  top: -50px;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_save.PIN_1585513861615_above .PIN_1585513861615_count::before { 
+  bottom: -4px;
+  left: 7px;
+  border-top: 7px solid #efefef;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_save.PIN_1585513861615_beside .PIN_1585513861615_count { 
+  font-size: 14px;
+  right: -63px;
+  width: 56px;
+  height: 28px;
+  line-height: 28px;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_tall.PIN_1585513861615_save.PIN_1585513861615_beside .PIN_1585513861615_count::before { 
+  top: 7px;
+  left: -4px;
+  border-right: 7px solid #efefef;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_round { 
+  height: 16px;
+  width: 16px;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjZTYwMDIzIj48L3BhdGg+PC9nPjwvc3ZnPg==) 0 0 no-repeat;
+  background-size: 16px 16px;
+  box-shadow: none;
+}
+ .PIN_1585513861615_button_pin.PIN_1585513861615_round.PIN_1585513861615_tall { 
+  height: 32px;
+  width: 32px;
+  background-size: 32px 32px;
+}
+</style></head>
+<body>
+<!-- Google Adsense ad visible -->
+<div class="googlead"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-7275336356867641" data-ad-slot="3915217187"></ins>
+<script type="text/javascript" async="" src="./exec _ Java Glossary_files/pinit_main.js.download"></script><script src="./exec _ Java Glossary_files/cb=gapi.loaded_1" async=""></script><script src="./exec _ Java Glossary_files/cb=gapi(1).loaded_0" async=""></script><script type="text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<!-- Google translate vis -->
+<div class="googletranslate" id="google_translate_element"></div>
+<!-- title --><div class="titlejgloss" id="TOP"><h1>exec : Java Glossary</h1></div>
+<div class="navbar"><a class="plain" href="https://www.mindprod.com/index.html"><img src="./exec _ Java Glossary_files/home.png" alt="home page" width="24" height="24" style="vertical-align:middle"></a>
+<a class="plain" href="https://www.mindprod.com/jgloss/jgloss.html"><img class="plain" src="./exec _ Java Glossary_files/jgloss.png" alt="go to the Java Glossary Home" width="27" height="26" style="vertical-align:middle"></a>
+<a class="plain" href="https://www.mindprod.com/bgloss/bgloss.html"><img class="plain" src="./exec _ Java Glossary_files/bgloss.png" alt="go to the Computer Buyer’s Glossary" width="24" height="24" style="vertical-align:middle"></a>
+<a class="plain" href="https://www.mindprod.com/jgloss/e.html"><img src="./exec _ Java Glossary_files/up.png" alt="up" width="21" height="22" style="vertical-align:middle"></a>
+<a class="plain" href="https://www.mindprod.com/jgloss/exec.html#BOTTOM"><img src="./exec _ Java Glossary_files/tobottom.png" alt="jump to foot of page" width="22" height="22" style="vertical-align:middle"></a>
+<!-- Google Search --><a class="plain" href="https://www.google.com/search?q=exec"><img src="./exec _ Java Glossary_files/googlesearch.png" alt="Google search web for more information on this topic" width="22" height="22" style="vertical-align:middle"></a>
+<!-- Pinterest vis -->
+<span class="PIN_1585513861615_button_pin PIN_1585513861615_save" data-pin-log="button_pinit_bookmarklet" data-pin-href="https://br.pinterest.com/pin/create/button/">Salvar</span>
+<!-- Google +1 vis -->
+<div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" width="100%" id="I0_1585513861478" name="I0_1585513861478" src="./exec _ Java Glossary_files/fastbutton.html" data-gapiattached="true"></iframe></div><div class="g-plusone" data-size="medium" data-gapiscan="true" data-onload="true" data-gapistub="true"></div></div>
+<div class="indexletters"><a href="https://www.mindprod.com/jgloss/punct.html">*</a> <a href="https://www.mindprod.com/jgloss/0-9.html">0-9</a> <a href="https://www.mindprod.com/jgloss/a.html">A</a> <a href="https://www.mindprod.com/jgloss/b.html">B</a> <a href="https://www.mindprod.com/jgloss/c.html">C</a> <a href="https://www.mindprod.com/jgloss/d.html">D</a> <a href="https://www.mindprod.com/jgloss/e.html">E</a> <a href="https://www.mindprod.com/jgloss/f.html">F</a> <a href="https://www.mindprod.com/jgloss/g.html">G</a> <a href="https://www.mindprod.com/jgloss/h.html">H</a> <a href="https://www.mindprod.com/jgloss/i.html">I</a> <a href="https://www.mindprod.com/jgloss/j.html">J</a> <a href="https://www.mindprod.com/jgloss/k.html">K</a> <a href="https://www.mindprod.com/jgloss/l.html">L</a> <a href="https://www.mindprod.com/jgloss/m.html">M</a> <a href="https://www.mindprod.com/jgloss/n.html">N</a> <a href="https://www.mindprod.com/jgloss/o.html">O</a> <a href="https://www.mindprod.com/jgloss/p.html">P</a> <a href="https://www.mindprod.com/jgloss/q.html">Q</a> <a href="https://www.mindprod.com/jgloss/r.html">R</a> <a href="https://www.mindprod.com/jgloss/s.html">S</a> <a href="https://www.mindprod.com/jgloss/t.html">T</a> <a href="https://www.mindprod.com/jgloss/u.html">U</a> <a href="https://www.mindprod.com/jgloss/v.html">V</a> <a href="https://www.mindprod.com/jgloss/w.html">W</a> <a href="https://www.mindprod.com/jgloss/x.html">X</a> <a href="https://www.mindprod.com/jgloss/y.html">Y</a> <a href="https://www.mindprod.com/jgloss/z.html">Z</a> (<a href="https://www.mindprod.com/jgloss/masterindex.html">all</a>)</div>
+<div class="navbar"><ul class="breadcrumb"><li class="firstbreadcrumb">You are here :</li>
+<li><a class="plain" href="https://www.mindprod.com/index.html">home</a></li>
+<li><a class="plain" href="https://www.mindprod.com/jgloss/jgloss.html">Java Glossary</a></li>
+<li><a class="plain" href="https://www.mindprod.com/jgloss/e.html">E words</a></li>
+<li><span class="term">exec</span></li>
+<li class="lastbreadcrumb">&nbsp;</li></ul></div>
+<div class="navbar"><span class="copyright">©<span class="date">1996-2017</span> <span class="reviewed">2008-01-22</span> Roedy Green of Canadian Mind Products</span></div>
+<br style="clear:both">
+<!-- ==== H E A D ====o==== H E A D ====o==== H E A D ==== -->
+<!-- /generated by JglossHead -->
+<dl>
+<dt id="EXEC">exec<!-- alias ProcessBuilder --><!-- alias spawn --></dt>
+<dd>
+<!-- macro JDisplay exec.example1.javafrag --><!-- generated --><pre class="java"><span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="string">"myprog.exe"</span> <span class="fence1">)</span><span class="sc">;</span></pre><!-- /generated by JDisplay -->
+will spawn an external process (usually a program written in some language other than
+Java) that runs in parallel with the Java execution. In&nbsp;
+<!-- macro OSes W95:W2K3 --><!-- generated --><span class="os">W95, W98, Me, NT, W2K, XP and W2003</span><!-- /generated by OSes -->, you must use an
+explicit <span class="ext">*.exe</span> or <span class="ext">*.com</span> extension on the parameter. In&nbsp;
+<!-- macro OSes VISTA --><!-- generated --><span class="os">Vista</span><!-- /generated by OSes -->
+it will still work even if you leave it off. Be careful to include it, or your code
+will mysteriously fail on the older operating systems.
+<p>It is also best to fully qualify executable names so that the system executable
+search path is irrelevant and so you don’t pick up some stray program off the
+path with the same name.</p>
+<div class="important">Starting with&nbsp;<!-- macro Java 1.5 --><!-- generated -->Java version <span class="version">1.5</span><!-- /generated by Java -->, <span class="method">exec</span> has been replaced by <a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#PROCESSBUILDER"><span class="class">ProcessBuilder</span>. <span class="method">start</span></a>. You should likely not be using <span class="method">exec</span> for new programs. However, studying <span class="method">exec</span> is useful to understand old programs that use <span class="method">exec</span> and to understand why <span class="class">ProcessBuilder</span> is designed the way it is. They have many things in
+common, especially the way command interpreters and internal commands must be
+handled and they both use the same <span class="class">Process</span> class. So
+read about <span class="method">exec</span> first, then enjoy the improved
+<span class="class">ProcessBuilder</span>.</div><!-- macro Quilt 2 asis gridmenu
+{<a class="onpage" href="#EXECVSTHREADS">Exec vs Threads</a>}
+{<a class="onpage" href="#OVERLOADED">Overloaded exec</a>}
+{<a class="onpage" href="#COMMANDINTERPRETER">Command Interpreter</a>}
+{<a class="onpage" href="#SIMPLIFICATIONS">Simplifications</a>}
+{<a class="jgloss" href="browserlaunching.html">launching a browser</a>}
+{<a class="onpage" href="#UNIX">Unix</a>}
+{<a class="onpage" href="#COMMUNICATING">Communicating With The Spawned Process</a>}
+{<a class="onpage" href="#APPLETS">Applets</a>}
+{<a class="onpage" href="#GOTCHAS">Gotchas</a>}
+{<a class="onpage" href="#PROCESSBUILDER">ProcessBuilder</a>}
+{<a class="onpage" href="#THREADS">Threads to Tend the Child</a>}
+{<a class="onpage" href="#SPAWNINGJAVA">Spawning java.exe</a>}
+{<a class="onpage" href="#SPAWNINGJAVAC">Spawning javac.exe</a>}
+{<a class="onpage" href="#SPAWNINGJWS">Java Web Start Spawning</a>}
+{<a class="onpage" href="#DESKTOP">Desktop Spawning</a>}
+{<a class="onpage" href="#LEARNINGMORE">Learning More</a>}
+{<a class="tosee" href="#SEE">Links</a>} --><!-- generated --><table class="gridmenu"><caption class="hidden">menu</caption><colgroup><col span="2" style="width:50%"></colgroup>
+<tbody><tr><td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#EXECVSTHREADS">Exec vs Threads</a></td>
+<td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#PROCESSBUILDER">ProcessBuilder</a></td></tr>
+<tr><td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#OVERLOADED">Overloaded exec</a></td>
+<td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#THREADS">Threads to Tend the Child</a></td></tr>
+<tr><td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#COMMANDINTERPRETER">Command Interpreter</a></td>
+<td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#SPAWNINGJAVA">Spawning java.exe</a></td></tr>
+<tr><td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#SIMPLIFICATIONS">Simplifications</a></td>
+<td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#SPAWNINGJAVAC">Spawning javac.exe</a></td></tr>
+<tr><td><a class="jgloss" href="https://www.mindprod.com/jgloss/browserlaunching.html">launching a browser</a></td>
+<td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#SPAWNINGJWS">Java Web Start Spawning</a></td></tr>
+<tr><td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#UNIX">Unix</a></td>
+<td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#DESKTOP">Desktop Spawning</a></td></tr>
+<tr><td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#COMMUNICATING">Communicating With The Spawned Process</a></td>
+<td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#LEARNINGMORE">Learning More</a></td></tr>
+<tr><td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#APPLETS">Applets</a></td>
+<td><a class="tosee" href="https://www.mindprod.com/jgloss/exec.html#SEE">Links</a></td></tr>
+<tr><td><a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#GOTCHAS">Gotchas</a></td>
+<td></td></tr></tbody></table>
+<!-- /generated by Quilt -->
+<h2 id="EXECVSTHREADS">EXEC vs Threads</h2>
+<p>There are two ways to get parallel execution, spawn a separate job with exec, or
+use threads. Which is best for your problem?</p>
+<p>Threads join the queue of processes to execute. The <!-- macro Acronym OS --><!-- generated --><a class="acronymdef" href="https://www.mindprod.com/jgloss/os.html">OS</a> (<span class="means"><span class="ac">O</span>perating <span class="ac">S</span>ystem</span>)<!-- /generated by Acronym -->
+schedules them on the next available <!-- macro Acronym CPU --><!-- generated --><a class="acronymdef" href="https://www.mindprod.com/bgloss/cpu.html">CPU</a> (<span class="means"><span class="ac">C</span>entral <span class="ac">P</span>rocessing <span class="ac">U</span>nit</span>)<!-- /generated by Acronym -->
+core. So if you have 7 threads and 4 cores, you can
+have 4 of those threads running fully simultaneously, not just interleaved. Your
+threads compute just like independent jobs, though the <!-- macro Acronym OS --><!-- generated --><span class="acronym"><abbr title="Operating System">OS</abbr></span><!-- /generated by Acronym -->
+can do proprietary clever things to treat them differently.</p>
+<p>When you exec/fork, you spin off a separate job than runs independently in a
+separate address space. The spawner can fail and the child keeps going. The child can
+be written in a different language. The child have very limited ability to
+communicate with the spawner. In contrast a thread has access to the shared address
+space directly which makes interthread communication much easier.</p>
+<p>You can also use Thread pools where you logically want to have hundreds of
+threads, but don’t want the overhead.</p>
+<h2 id="OVERLOADED">Overloaded exec</h2>
+There are also many overloaded forms of
+<span class="java">exec()</span> including this most general one:
+<!-- macro JDisplay exec.example101.javafrag --><!-- generated --><iframe class="jdisplay" src="./exec _ Java Glossary_files/exec.example101.javafrag.html" width="800" height="116" style="overflow:scroll"></iframe><!-- /generated by JDisplay -->
+The second argument can be a <span class="class">String</span> [] and can be used to
+set environment variables. In the second case, <span class="string"><span class="quoted">C:\\SomeDirectory</span></span> specifies a directory for the process to
+start in. If, for instance, your process saves files to disk, then this form allows
+you to specify which directory they will be saved in.
+<h2 id="COMMANDINTERPRETER">Command Interpreter</h2>
+To run a <span class="ext">*.BAT</span>, <span class="ext">*.CMD</span>, <span class="ext">*.html</span> <span class="ext">*.BTM</span> or
+<!-- macro Acronym URL --><!-- generated --><a class="acronymdef" href="https://www.mindprod.com/jgloss/url.html">URL</a> (<span class="means"><span class="ac">U</span>niform <span class="ac">R</span>esource <span class="ac">L</span>ocator</span>)<!-- /generated by Acronym --> you must invoke the command processor with these as a
+parameter. These extensions are not first class executables in Windows. They are
+input data for the command processor. You must also invoke the command processor when
+you want to use the <span class="bat">&lt; &gt; |</span> piping options, Here’s
+how, presuming you are not interested in looking at the output:
+<!-- macro JDisplay exec.commandprocessor.javafrag --><!-- generated --><iframe class="jdisplay" src="./exec _ Java Glossary_files/exec.commandprocessor.javafrag.html" width="800" height="580" style="overflow:scroll"></iframe><!-- /generated by JDisplay -->
+<div class="important"><span class="method">exec</span> only understands <span class="method">xxx.exe</span> and parameters. It knows nothing about program names
+without the <span class="ext">*.exe</span> explicitly mentioned, | pipes, &lt;
+redirection &gt;, % environment parameter subsitution, or <span class="ext">*.bat</span>, <span class="ext">*.cmd</span> or <span class="ext">*.html</span> files. Further, commands such as <span class="bat">attrib</span>, <span class="bat">cls</span>, <span class="bat">copy</span>
+<span class="bat">del</span>, <span class="bat">dir</span>, <span class="bat">format</span>, <span class="bat">move</span> and <span class="bat">rename</span> are not <span class="exe">*.exe</span> files. They are internal
+commands to the command interpreter. For all those things you must spawn a command
+interpreter/shell script with an explicit <span class="ext">*.exe</span> extension
+(at least in&nbsp;<!-- macro OSes W98: --><!-- generated --><span class="os">W98, Me, NT, W2K, XP, W2003, Vista, W2008, W7-32, W7-64, W8-32, W8-64, W2012, W10-32 and W10-64</span><!-- /generated by OSes -->, in other <!-- macro Acronym OS --><!-- generated --><span class="acronym"><abbr title="Operating System">OS</abbr></span><!-- /generated by Acronym -->
+es, you need a fully qualified executable name) and pass it the name of your
+executable or internal command as a parameter. Similarly in
+<!-- macro OSes LINUX --><!-- generated --><span class="os">Linux</span><!-- /generated by OSes -->,
+if you want to use any of the commands internal to the command processor that
+don’t have corresponding independent excutables such as <span class="bat">alias, enable, export, pwd, unset, while…</span>, you must spawn bash
+or other shell and feed it commands as parameters.</div>There is an exception. In <!-- macro OSes XP: --><!-- generated --><span class="os">XP, W2003, Vista, W2008, W7-32, W7-64, W8-32, W8-64, W2012, W10-32 and W10-64</span><!-- /generated by OSes -->
+you can invoke a bat file so long as you use the explicit <span class="ext">.bat</span> extension, without resorting to a command interpreter.
+<h2 id="SIMPLIFICATIONS">Simplifications</h2>
+There is also <a class="com" href="http://archive.corewebprogramming.com/Chapter8.html">Marty Hall’s <span class="class">Exec</span> class</a>, which simplifies the process of using <span class="method">exec</span> and tends to make the command more stable. Currently, only the
+<span class="method">exec</span>(<span class="class">String</span> <span class="var">cmd</span>) is supported, with a workaround for <span class="method">exec</span>( <span class="class">String</span> <span class="var">cmd</span>,
+<span class="k">null</span>, <span class="class">String</span> <span class="var">dir</span>)
+<h2 id="UNIX">Unix</h2>
+For Unix/Linux you must spawn the program that can process the
+script, e.g. bash. However, you can run scripts directly with <span class="method">exec</span> if you do two things:
+<ol><li>Start the script with <span class="file">#!bash</span> or whatever the
+interpreter’s name is.</li>
+<li>Mark the script file itself with the executable attribute.</li></ol>Alternatively&nbsp;<!-- macro JDisplay exec.example105.javafrag --><!-- generated --><iframe class="jdisplay" src="./exec _ Java Glossary_files/exec.example105.javafrag.html" width="800" height="60" style="overflow:scroll"></iframe><!-- /generated by JDisplay -->
+I suspect you will have more success if you pass the entire command line as a single
+parameter to the shell interpreter, at least if you have any redirection or piping.
+<h2 id="COMMUNICATING">Communicating With The Spawned Process</h2>
+<span class="method">exec</span> returns a <span class="class">Process</span> object that you can
+use to control, monitor or wait for the background process. This example shows you
+how you can wait for the child, rather than letting it run asynchronously. This
+example does not show the many possible other separate <span class="class">Thread</span>s you might use to:
+<ol><li>Spawn the child (and continue processing).</li>
+<li>Write the child’s <strong>input</strong> from <span class="class">System</span>.<span class="var">in</span> with <span class="class">Process</span>. <span class="method">get<strong>Output</strong>Stream</span>(). Note the stream is named
+relative to the parent, not the child.</li>
+<li>Read the child’s <strong>output</strong> from <span class="class">System</span>.<span class="var">out</span> with <span class="class">Process</span>. <span class="method">get<strong>Input</strong>Stream</span>(). Note the stream is named
+relative to the parent, not the child. You <strong>must</strong> do this if there
+are more that a few line of output, or the child will stall, constipated with
+unread output.</li>
+<li>Read the child’s output from <span class="class">System</span>.
+<span class="var">err</span> with <span class="class">Process</span>. <span class="method">getErrorStream</span>().</li>
+<li>One each to read the child’s output from files, sockets etc.</li>
+<li>Wait for the child with&nbsp;<!-- macro Qualified Process.waitFor class --><!-- generated --><span class="qualified"><span class="class">Process</span>.<span class="method">waitFor</span></span><!-- /generated by Qualified -->
+() once you have all the hooks set up.</li>
+<li><span class="class">Timer</span> to kill the child and interrupt the
+<span class="method">waitFor</span>() thread with&nbsp;
+<!-- macro Qualified Thread.interrupt() class --><!-- generated --><span class="qualified"><span class="class">Thread</span>.<span class="method">interrupt</span><span class="fence2">()</span></span><!-- /generated by Qualified --> if the child
+takes too long.</li></ol>You need to start all these possible <span class="class">Thread</span>s after
+you create the <span class="class">Process</span> object, but before you call
+<span class="method">waitfor</span>. <!-- macro JDisplay exec.example106.javafrag --><!-- generated --><iframe class="jdisplay" src="./exec _ Java Glossary_files/exec.example106.javafrag.html" width="680" height="580" style="overflow:scroll"></iframe><!-- /generated by JDisplay -->
+<p><span class="java">Process.getOutputStream</span> lets you write out data that
+will be used as <strong>input</strong> to the process. Don’t forget to include
+any <span class="string"><span class="quoted">\n</span></span> and <span class="string"><span class="quoted">\r</span></span> characters the process is expecting.
+<span class="java">Process.getInputStream</span> lets you read in the data that your
+process squirted <strong>out</strong> to <span class="java">stdout</span>.</p>
+<p>The other cruder way to get the output from the execed program is to spawn a
+command processor and use the <span class="bat">&gt;</span> or <span class="bat">2&gt;</span> redirection operator to direct stdout or stderr to a file. When
+the spawned program completes, read the file. Or simply read and write files both in
+your mother and child. If batching up this way is acceptable, it is much simpler and
+much less likely to go south with thread complexities.</p>
+<p>If you wait for the <span class="class">Process</span>, you might want to do it on
+some thread other than the main <!-- macro Acronym AWT --><!-- generated --><a class="acronymdef" href="https://www.mindprod.com/jgloss/awt.html">AWT</a> (<span class="means"><span class="ac">A</span>dvanced <span class="ac">W</span>indowing <span class="ac">T</span>oolkit</span>)<!-- /generated by Acronym --> event processing one, i.e.
+create a new Thread, otherwise your app will not be able to process
+<!-- macro Acronym AWT --><!-- generated --><span class="acronym"><abbr title="Advanced Windowing Toolkit">AWT</abbr></span><!-- /generated by Acronym -->
+events while you wait.</p>
+<p>ON the Java side you may need to read and write to the child with separate threads
+to avoid deadlocks. The deadlock occurs if you try to read and/or write more than a
+certain amount (empirically it is around <span class="stat">4</span>K). The
+<span class="term">deadlock</span> (a Mexican standoff freeze) happens when the child
+wants you to listen when you are still trying to feed it more, or when the child is
+hungry for input and you won’t send it any more until it has spoken.</p>
+<h2 id="APPLETS">Applets</h2>
+You can’t use <span class="method">exec</span> from
+an unsigned <span class="class">Applet</span> otherwise you would be able to wreck
+havoc on the client machine by spawning <span class="file">FORMAT C:</span>. If you
+need to do that, you will need to have a <a class="jgloss" href="https://www.mindprod.com/jgloss/signedapplets.html">signed Applet</a> with high privilege.
+<p>If you are in an <span class="class">Applet</span> and all you are trying to is
+get a browser to render a page, you don’t need <span class="method">exec</span>.
+Simply use <span class="java">getAppletContext().showDocument( <span class="k">new</span> <!-- macro Acronym URL --><!-- generated --><span class="acronym"><abbr title="Uniform Resource Locator">URL</abbr></span><!-- /generated by Acronym --> (<span class="string"><span class="quoted">http://domain/file.html</span></span>));</span></p>
+<h2 class="gotcha" id="GOTCHAS">Gotchas</h2>
+<ul class="gotcha"><li><span class="red">If your child program produces more than a few lines of
+output, your parent program must capture and process it, otherwise the child will
+stall with constipation.</span></li>
+<li><span class="red">The sender must use <span class="method">flush</span>() to
+make that data available to the receiver.</span></li>
+<li>If you are used to C <span class="c">exec</span>, watch out. Java does not use
+the dummy parameter 0 which duplicates the name of the program.</li>
+<li>In a similar way, Java <span class="method">main</span> methods don’t see
+that dummy parameter either.</li>
+<li>Your execed program will stall if it produces more than a few lines out output.
+You have to make provision via the <span class="class">Process</span> object for
+the parent program to read the child’s <span class="class">System</span>.
+<span class="var">out</span> and <span class="class">System</span>.<span class="var">err</span> output if the child produces more than a few lines.</li>
+<li>You must use the <span class="ext">.exe</span> suffix. <span class="method">exec</span> is not smart enough to figure out the extension. A command
+interpreter can however, figure out if you meant <span class="ext">.bat</span>,
+<span class="ext">.com</span> or <span class="ext">.exe</span>, however. Spawn a
+command interpreter instead, with the program name as a parameter. See the
+<a class="onpage" href="https://www.mindprod.com/jgloss/exec.html#COMMANDINTERPRETER">example code above</a>.</li>
+<li>For internal command interpreter commands like <span class="bat">dir</span> and
+<span class="bat">del</span>, you must spawn a command interpreter with the command
+as a parameter. You can’t spawn the command directly.</li></ul>
+<h2 id="PROCESSBUILDER">ProcessBuilder</h2>
+Starting with&nbsp;<!-- macro Java 1.5 --><!-- generated -->Java version <span class="version">1.5</span><!-- /generated by Java -->
+there is a better way of handling <span class="method">exec</span> called
+<span class="class">ProcessBuilder</span>. It has a number of advantages over
+<span class="method">exec</span>.
+<ul><li>It lets you control the environment.</li>
+<li>There are separate methods for setting up the various aspects of the spawn,
+rather than confusing positional parameters.</li>
+<li>It will merge the child <span class="var">stderr</span> and <span class="var">stdout</span> streams for you.</li></ul>Here is how&nbsp;<!-- macro JDisplay exec.processbuilder.javafrag --><!-- generated --><iframe class="jdisplay" src="./exec _ Java Glossary_files/exec.processbuilder.javafrag.html" width="800" height="580" style="overflow:scroll"></iframe><!-- /generated by JDisplay -->
+<h2 id="THREADS">Threads to Tend the Child</h2>
+Here is an example of using Threads to
+communicate with the child process to feed it input and read its output. This example
+does not show a separate <span class="class">System</span>. <span class="var">err</span> reader or a timeout timer, but this example should be enough to get
+you started.
+<p class="tip">You need code like this, or the child will freeze, the sender unable
+to empty it buffers and the receiver starved of data because the sender is still
+holding onto it. Don’t be seduced by the fact code using a single thread will
+often work for small amounts of data.</p>
+<!-- macro JDisplay TestProcessBuilder.java --><!-- generated --><iframe class="jdisplay" src="./exec _ Java Glossary_files/TestProcessBuilder.java.html" width="800" height="580" style="overflow:scroll"></iframe><!-- /generated by JDisplay -->
+<p>Here is the source code for the dummy <span class="exe">boomerang.exe</span>
+utility I used to test the above code. I used Jet to compile in down to an
+<span class="exe">exe</span> file.</p><!-- macro JDisplay Boomerang.java --><!-- generated --><iframe class="jdisplay" src="./exec _ Java Glossary_files/Boomerang.java.html" width="800" height="580" style="overflow:scroll"></iframe><!-- /generated by JDisplay -->
+<p>On the <span class="writteninc">C</span>/<span class="writtenincpp">C++</span>
+side, in your child program, you could use <span class="method">getc</span> to read
+the output from Java’s <span class="class">BufferedWriter</span> and
+<span class="method">putc</span> to write the input to Java’s <span class="class">BufferedReader</span>. One you have the communication working, replace the
+<span class="writteninc">C</span>/ <span class="writtenincpp">C++</span> I/O with
+something fancier.</p>
+<p class="tip">Keep in mind that using large buffers will delay releasing the output
+to the other party until a buffer full of data has been accumulated. This can delude
+you into thinking things are not working when they are just fine. You must also use
+<span class="method">flush</span>() to ensure the other party has access to all the
+data recently written. If your child in written in Python, use the -u option to turn
+off buffering. This will ensure the mother Java program sees the output of the child
+as soon as possible.</p>
+<h2 id="SPAWNINGJAVA">Spawning java.exe</h2>
+<p>I mentioned earlier that exec is used to start non-Java apps, though in principle
+you could spawn a copy of <span class="exe">java.exe</span>. However, there are
+cleaner and faster ways to get that same effect.</p>
+<ul><li>The easiest way to spawn some other program is just to invoke its
+<span class="k">static</span> <!-- macro JDisplay execingjava.javafrag --><!-- generated --><pre class="java"><span class="commentslashslash">// How to start up some other Java program whole name you</span>
+<span class="commentslashslash">// know at compile time.</span>
+<span class="commentslashslash">// Just call its main method.</span>
+<span class="commentslashslash">// It will run in the same JVM and return when it is done.</span>
+
+<span class="k">import </span><span class="package">com</span><span class="op">.</span><span class="package">othersite</span><span class="op">.</span><span class="package">otherpackage</span><span class="op">.</span><span class="class">OtherProgram</span><span class="sc">;</span>
+<span class="op">...</span>
+<span class="class">OtherProgram</span><span class="op">.</span><span class="method">main</span><span class="fence1">(</span> <span class="k">new </span><span class="class">String</span><span class="fence1">[</span><span class="fence1">]</span> <span class="fence1">{</span> <span class="string">"first"</span><span class="op">, </span><span class="string">"second"</span> <span class="fence1">}</span> <span class="fence1">)</span><span class="sc">;</span></pre><!-- /generated by JDisplay --></li>
+<li>When you don’t know the name of the class you want to exec at compile
+time, you need to resort to <span class="class">Class</span>. <span class="method">forName</span> dynamic class loading.
+<!-- macro JDisplay execingjavadynamically.javafrag --><!-- generated --><iframe class="jdisplay" src="./exec _ Java Glossary_files/execingjavadynamically.javafrag.html" width="800" height="507" style="overflow:scroll"></iframe><!-- /generated by JDisplay --></li>
+<li>If that does not provide sufficient flexibility, you will need to use
+<a class="jgloss" href="https://www.mindprod.com/jgloss/reflection.html">reflection</a>, which is ugly, slow and
+complicated.</li>
+<li>If you want a separate <!-- macro Acronym JVM --><!-- generated --><a class="acronymdef" href="https://www.mindprod.com/jgloss/jvm.html">JVM</a> (<span class="means"><span class="ac">J</span>ava <span class="ac">V</span>irtual <span class="ac">M</span>achine</span>)<!-- /generated by Acronym --> running independently,
+use <span class="class">ProcessBuilder</span> the same as
+<!-- macro JDisplay exec.processbuilderforjava.javafrag --><!-- generated --><iframe class="jdisplay" src="./exec _ Java Glossary_files/exec.processbuilderforjava.javafrag.html" width="800" height="580" style="overflow:scroll"></iframe><!-- /generated by JDisplay -->
+See <a class="jgloss" href="https://www.mindprod.com/jgloss/javaexe.html">java.exe</a> for more details on the
+command line options.</li></ul>
+<h2 id="SPAWNINGJAVAC">Spawning javac.exe</h2>
+There are a three basic techniques to
+spawn a copy of the Java compiler: <a class="jgloss" href="https://www.mindprod.com/jgloss/javacompiler.html">JavaCompiler</a>, <a class="jgloss" href="https://www.mindprod.com/jgloss/javacmain.html">sun.tools.javac.Main</a>, or spawning <a class="jgloss" href="https://www.mindprod.com/jgloss/javacexe.html">javac.exe</a> with <span class="class">ProcessBuilder</span> or
+<span class="method">exec</span>.
+<h2 id="SPAWNINGJWS">Java Web Start Spawning</h2>
+If you have set up the association
+between <span class="ext">.jnlp</span> to <span class="exe">javaws.exe</span>, you
+can spawn a shell such an <span class="exe">cmd.exe</span> or <span class="exe">tcc.exe</span> with the name of the <span class="ext">.jnlp</span> file as the
+parameter. If you have not, you must spawn <span class="exe">javaws.exe</span> with
+the name of the <span class="ext">.jnlp</span> file as the parameter. The current
+<span class="exe">javaws.exe</span> is automatically on the path, via the registry
+<span class="registry">HKEY_LOCAL_MACHINE/SYSTEM/Microsoft/Windows/CurrentVersion/App
+Paths</span>.
+<h2 id="DESKTOP">Desktop Spawning</h2>
+In&nbsp;<!-- macro Java 1.6+ --><!-- generated -->Java version <span class="version">1.6</span> or later<!-- /generated by Java -->
+there is a simplified exec technique. You cannot communicate with the child task.
+<ul><li><!-- macro Qualified Desktop.open class --><!-- generated --><span class="qualified"><span class="class">Desktop</span>.<span class="method">open</span></span><!-- /generated by Qualified -->
+will launch the appropriate application to handle the given file.</li>
+<li><!-- macro Qualified Desktop.browse class --><!-- generated --><span class="qualified"><span class="class">Desktop</span>.<span class="method">browse</span></span><!-- /generated by Qualified -->
+will launch a browser and display a <!-- macro Acronym URL --><!-- generated --><span class="acronym"><abbr title="Uniform Resource Locator">URL</abbr></span><!-- /generated by Acronym -->.</li>
+<li><!-- macro Qualified Desktop.edit class --><!-- generated --><span class="qualified"><span class="class">Desktop</span>.<span class="method">edit</span></span><!-- /generated by Qualified -->
+will launch as appropriate editor of some sort on the given file.</li>
+<li><!-- macro Qualified Desktop.mail class --><!-- generated --><span class="qualified"><span class="class">Desktop</span>.<span class="method">mail</span></span><!-- /generated by Qualified -->
+will launch the user’s favourite mail program.</li>
+<li><!-- macro Qualified Desktop.print class --><!-- generated --><span class="qualified"><span class="class">Desktop</span>.<span class="method">print</span></span><!-- /generated by Qualified -->
+will launch the appropriate application to print the given file.</li></ul>
+<h2 class="learningmore" id="LEARNINGMORE">Learning More</h2>
+<!-- macro JavaAPI {java/lang/Runtime.html#exec(java.lang.String)} {exec} --><!-- generated --><div class="oracle">Oracle’s Javadoc on <span class="packagedef">exec</span> package : available:<ul><li>on the web at <a class="oracle" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#exec(java.lang.String)">Oracle.com</a></li><li>in the current <a class="jdrive" href="file:///J:/Program%20Files/Java/jdk1.8.0_131/docs/api/java/lang/Runtime.html#exec(java.lang.String)">JDK <span class="version">1.8.0_131</span></a> on your local Windows <a class="jgloss" href="https://www.mindprod.com/jgloss/jdrive.html"><span class="drive">J:</span> drive</a>.</li></ul></div>
+<!-- /generated by JavaAPI -->
+<!-- macro JavaAPI {java/lang/Process.html} {Process} --><!-- generated --><div class="oracle">Oracle’s Javadoc on <span class="classdef">Process</span> class : available:<ul><li>on the web at <a class="oracle" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Process.html">Oracle.com</a></li><li>in the current <a class="jdrive" href="file:///J:/Program%20Files/Java/jdk1.8.0_131/docs/api/java/lang/Process.html">JDK <span class="version">1.8.0_131</span></a> on your local Windows <a class="jgloss" href="https://www.mindprod.com/jgloss/jdrive.html"><span class="drive">J:</span> drive</a>.</li></ul></div>
+<!-- /generated by JavaAPI -->
+<!-- macro JavaAPI {java/lang/ProcessBuilder.html} {ProcessBuilder} --><!-- generated --><div class="oracle">Oracle’s Javadoc on <span class="classdef">ProcessBuilder</span> class : available:<ul><li>on the web at <a class="oracle" href="https://docs.oracle.com/javase/8/docs/api/java/lang/ProcessBuilder.html">Oracle.com</a></li><li>in the current <a class="jdrive" href="file:///J:/Program%20Files/Java/jdk1.8.0_131/docs/api/java/lang/ProcessBuilder.html">JDK <span class="version">1.8.0_131</span></a> on your local Windows <a class="jgloss" href="https://www.mindprod.com/jgloss/jdrive.html"><span class="drive">J:</span> drive</a>.</li></ul></div>
+<!-- /generated by JavaAPI -->
+<!-- macro JavaAPI {java/awt/Desktop.html} {Desktop} --><!-- generated --><div class="oracle">Oracle’s Javadoc on <span class="classdef">Desktop</span> class : available:<ul><li>on the web at <a class="oracle" href="https://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html">Oracle.com</a></li><li>in the current <a class="jdrive" href="file:///J:/Program%20Files/Java/jdk1.8.0_131/docs/api/java/awt/Desktop.html">JDK <span class="version">1.8.0_131</span></a> on your local Windows <a class="jgloss" href="https://www.mindprod.com/jgloss/jdrive.html"><span class="drive">J:</span> drive</a>.</li></ul></div>
+<!-- /generated by JavaAPI -->
+<div class="see" id="SEE"><a class="jgloss" href="https://www.mindprod.com/jgloss/fordos.html">4DOS</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/bat.html#BATFILES">bat files</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/classforname.html">Class.forName</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/console.html">console</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/delegate.html">delegate</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/desktop.html">Desktop</a> to launch browser, email reader, associated open, editor or print app<br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/javacexe.html">javac.exe</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/javacompiler.html">JavaCompiler</a><br>
+<a class="com" href="http://www.javaworld.com/article/2071275/core-java/when-runtime-exec---won-t.html">Javaworld exec article</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/browserlaunching.html">launching a browser</a><br>
+<a class="wikipedia" href="http://en.wikipedia.org/wiki/OLE_Automation">OLE automation</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/reflection.html">reflection</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/javacmain.html">sun.tools.javac.Main</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/takecommand.html">tcc/TakeCommand</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/tee.html">tee</a><br>
+<a class="jgloss" href="https://www.mindprod.com/jgloss/url.html">URL</a></div>
+</dd>
+</dl><!-- macro Foot --><!-- generated --><!-- ==== F O O T ====o==== F O O T ====o==== F O O T ==== -->
+<hr class="foot">
+<table class="borderless"><caption class="hidden">standard footer</caption>
+<tbody><tr><td class="navigate" id="BOTTOM"><a class="plain" href="https://www.mindprod.com/index.html#TITLE"><img src="./exec _ Java Glossary_files/home.png" alt="CMP home" width="24" height="24"></a><a class="plain" href="https://www.mindprod.com/jgloss/exec.html#TOP"><img src="./exec _ Java Glossary_files/totop.png" alt="jump to top" width="22" height="22"></a></td>
+<td class="middle"><p class="alignedright"><span class="unobtrusive">This page is posted<br>on the web at:</span></p></td>
+<td class="middle"><a class="url" href="http://mindprod.com/jgloss/exec.html">http://mindprod.com/jgloss/exec.html</a></td></tr>
+<tr><td></td>
+<td class="middle"><p class="alignedright"><span class="unobtrusive">Optional Replicator mirror
+<br>
+of mindprod.com
+<br>
+on local hard disk <a class="unobtrusive" href="https://www.mindprod.com/jgloss/jdrive.html"><span class="drive">J:</span></a></span></p></td>
+<td class="middle"><a class="jdrive" href="file:///J:/mindprod/jgloss/exec.html">J:\mindprod\jgloss\exec.html</a></td></tr>
+<tr><td><a class="plain" href="https://www.mindprod.com/index.html#TITLE"><img src="./exec _ Java Glossary_files/cmpmartylogomid.png" alt="Canadian Mind Products" width="89" height="113" style="vertical-align:middle"></a></td>
+<td class="alignedmiddle" colspan="2"><div class="pleasefeedback">Please <a class="feedback" href="https://www.mindprod.com/feedback/feedback.html">read</a> the feedback from other visitors,
+or <a class="feedback" href="https://www.mindprod.com/feedback/feedback.html">send</a> your own feedback about the site.<br><a class="plain" href="https://www.mindprod.com/contact/contact.html">Contact Roedy</a>.
+Please feel free to link to this page without explicit permission.</div></td></tr>
+<tr><td></td>
+<td><span style="white-space:nowrap;"><span class="logo"><span class="logocaps">C</span>anadian
+<span class="logocaps">M</span>ind
+<span class="logocaps">P</span>roducts</span>
+<br>
+IP:[<span class="ip">65.110.21.43</span>]
+<br>
+Your face IP:[<span class="ip">187.104.113.124</span>]</span></td>
+<td rowspan="2"><!-- Google Adsense ad visible -->
+<div class="googleadfoot"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-7275336356867641" data-ad-slot="5284935692"></ins>
+<script type="text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script></div></td></tr>
+<tr><td><a class="feedback" href="https://www.mindprod.com/feedback/feedback.html">Feedback</a></td>
+<td><!-- StatCounter visible -->
+<span class="unobtrusive">You are visitor number</span><br>
+<script type="text/javascript">
+var sc_project=9857407;
+var sc_invisible=0;
+var sc_security="dcc1ed0f";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script><script type="text/javascript" src="./exec _ Java Glossary_files/counter.js.download"></script><span class="statcounter"><a id="sc_counter_content" class="statcounter" href="http://www.statcounter.com/" target="_blank"><img src="./exec _ Java Glossary_files/t.php" alt="StatCounter - Free Web Tracker and Counter" border="0"></a></span>
+
+<noscript><div class="statcounter"><a title="website statistics" href="http://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9857407/0/dcc1ed0f/0/"
+alt="website statistics"></a></div></noscript></td></tr>
+<tr><td colspan="3"><iframe src="./exec _ Java Glossary_files/exec.html" class="foot"></iframe></td></tr></tbody></table>
+<!-- Google Adsense ad invisible -->
+<script type="text/javascript" async="" src="./exec _ Java Glossary_files/f.txt"></script>
+<!-- Google translate invis -->
+<script type="text/javascript">
+function googleTranslateElementInit()
+{new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');}
+</script>
+<script type="text/javascript" src="./exec _ Java Glossary_files/f(1).txt"></script>
+<!-- Pinterest invis -->
+<script type="text/javascript">
+!function(a,b,c){var d,e,f;d="PIN_"+~~((new Date).getTime()/864e5),a[d]?a[d]+=1:(a[d]=1,a.setTimeout(function(){e=b.getElementsByTagName("SCRIPT")[0],f=b.createElement("SCRIPT"),f.type="text/javascript",f.async=!0,f.src=c.mainUrl+"?"+Math.random(),e.parentNode.insertBefore(f,e)},10))}(window,document,{mainUrl:"//assets.pinterest.com/js/pinit_main.js"});
+</script>
+<!-- Google +1 invis -->
+<script type="text/javascript" src="./exec _ Java Glossary_files/platform.js.download" async="" defer="" gapi_processed="true"></script>
+<!-- /generated by Foot -->
+<iframe name="oauth2relay394500803" id="oauth2relay394500803" src="./exec _ Java Glossary_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><script id="PIN_1585513861615.f.callback[0]" type="text/javascript" charset="utf-8" src="./exec _ Java Glossary_files/saved_resource"></script></body></html>

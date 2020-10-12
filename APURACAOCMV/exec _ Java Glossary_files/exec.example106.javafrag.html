@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)https://www.mindprod.com/jgloss/snippet/iframe/exec.example106.javafrag.htm -->
+<html lang="en-CA"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Snippet : exec.example106.javafrag</title>
+<meta http-equiv="lang" content="en">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link href="./jdisplay.css" type="text/css" rel="stylesheet" media="all">
+</head>
+<body class="snippet"><pre class="java"><span class="javadoc">/**</span>
+<span class="javadoc"> * wrapper for Runtime.exec.</span>
+<span class="javadoc"> * No input/output. Optionally wait for child to finish.</span>
+<span class="javadoc"> * </span><span class="javadoctag">@param</span><span class="javadoc"> command fully qualified *.exe or *.com command</span>
+<span class="javadoc"> * </span><span class="javadoctag">@param</span><span class="javadoc"> wait true if you want to wait for the child to finish.</span>
+<span class="javadoc"> */</span>
+<span class="k">public static </span><span class="class">Process </span><span class="methoddef">exec </span><span class="fence1">(</span> <span class="class">String </span><span class="vardef">command</span><span class="op">, </span><span class="k">boolean </span><span class="vardef">wait </span><span class="fence1">)</span>
+   <span class="fence1">{</span>
+   <span class="class">Process </span><span class="vardef">p</span><span class="sc">;</span>
+   <span class="k">try</span>
+      <span class="fence2">{</span>
+      <span class="var">p </span><span class="op">= </span><span class="class">Runtime</span><span class="op">.</span><span class="method">getRuntime</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">exec</span><span class="fence1">(</span> <span class="var">command </span><span class="fence1">)</span><span class="sc">;</span>
+      <span class="fence2">}</span>
+   <span class="k">catch </span><span class="fence1">(</span> <span class="class">IOException </span><span class="vardef">e </span><span class="fence1">)</span>
+      <span class="fence2">{</span>
+      <span class="ik">return </span><span class="k">null</span><span class="sc">;</span>
+      <span class="fence2">}</span>
+   <span class="k">if </span><span class="fence1">(</span> <span class="var">wait </span><span class="fence1">)</span>
+      <span class="fence2">{</span>
+      <span class="k">try</span>
+         <span class="fence3">{</span>
+         <span class="var">p</span><span class="op">.</span><span class="method">waitFor</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+         <span class="fence3">}</span>
+      <span class="k">catch </span><span class="fence1">(</span> <span class="class">InterruptedException </span><span class="vardef">e </span><span class="fence1">)</span>
+         <span class="fence3">{</span>
+         <span class="class">Thread</span><span class="op">.</span><span class="method">currentThread</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">interrupt</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+         <span class="fence3">}</span>
+      <span class="fence2">}</span>
+   <span class="commentslashslash">// You must close these even if you never use them!</span>
+   <span class="var">p</span><span class="op">.</span><span class="method">getInputStream</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">close</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+   <span class="var">p</span><span class="op">.</span><span class="method">getOutputStream</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">close</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+   <span class="var">p</span><span class="op">.</span><span class="method">getErrorStream</span><span class="fence1">(</span><span class="fence1">)</span><span class="op">.</span><span class="method">close</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+   <span class="ik">return </span><span class="var">p</span><span class="sc">;</span>
+   <span class="fence1">}</span> <span class="commentslashslash">// end exec</span></pre>
+<!-- timestamp 1499732229215 -->
+</body></html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)https://www.mindprod.com/jgloss/snippet/iframe/execingjavadynamically.javafrag.htm -->
+<html lang="en-CA"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Snippet : execingjavadynamically.javafrag</title>
+<meta http-equiv="lang" content="en">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link href="./jdisplay.css" type="text/css" rel="stylesheet" media="all">
+</head>
+<body class="snippet"><pre class="java"><span class="commentslashslash">// How to start up some other Java program when you don't</span>
+<span class="commentslashslash">// know its name at compile time.</span>
+
+<span class="commentslashslash">// Have all your dynamically loaded classes implement a common interface,</span>
+<span class="commentslashslash">// called here Delegate. For his method to work, you need the source code for all</span>
+<span class="commentslashslash">// dynamic classes, or the power to ensure they all implement some common interface.</span>
+
+<span class="commentslashslash">// You might get the list of possible dynamic class names</span>
+<span class="commentslashslash">// from a run-time properties file or by doing a File.list</span>
+
+<span class="class">Delegate </span><span class="vardef">d </span><span class="op">= </span><span class="fence1">(</span><span class="class">Delegate</span><span class="fence1">)</span> <span class="fence1">(</span> <span class="class">Class</span><span class="op">.</span><span class="method">forName</span><span class="fence2">(</span> <span class="string">"com.mysite.mypackage."</span>
+                            <span class="op">+ </span><span class="var">nameOfClass </span><span class="fence2">)</span>
+                           <span class="op">.</span><span class="method">newInstance</span><span class="fence2">(</span><span class="fence2">)</span> <span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// To get better control of exceptions, you might use reflection on the constructor</span>
+<span class="commentslashslash">// in place of newInstance.</span>
+
+<span class="commentslashslash">// Now you can invoke instance methods on your delegate.</span>
+<span class="commentslashslash">// Interfaces don't have any static methods, though you can cast your</span>
+<span class="commentslashslash">// interfaces to classes that do.</span>
+<span class="var">d</span><span class="op">.</span><span class="method">doSomething</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span></pre>
+<!-- timestamp 1499732229231 -->
+</body></html>

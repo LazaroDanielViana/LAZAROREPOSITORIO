@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- saved from url=(0086)https://www.mindprod.com/jgloss/snippet/iframe/exec.processbuilderforjava.javafrag.htm -->
+<html lang="en-CA"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Snippet : exec.processbuilderforjava.javafrag</title>
+<meta http-equiv="lang" content="en">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link href="./jdisplay.css" type="text/css" rel="stylesheet" media="all">
+</head>
+<body class="snippet"><pre class="java"><span class="commentslashslash">// using ProcessBuilder to spawn a Java class in another JVM.</span>
+<span class="class">ProcessBuilder </span><span class="vardef">pb </span><span class="op">= </span><span class="k">new </span><span class="class">ProcessBuilder</span><span class="fence1">(</span> <span class="string">"java.exe"</span><span class="op">,</span>
+                                        <span class="string">"-jar"</span><span class="op">,</span>
+                                        <span class="string">"otherprog.jar"</span><span class="op">,</span>
+                                        <span class="string">"42"</span> <span class="commentslashstar">/* a parameter to OtherProg */</span><span class="fence1">)</span><span class="sc">;</span>
+
+<span class="class">Map</span><span class="op">&lt;</span><span class="class">String</span><span class="op">, </span><span class="class">String</span><span class="op">&gt; </span><span class="var">env </span><span class="op">= </span><span class="var">pb</span><span class="op">.</span><span class="method">environment</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// insert set FRUIT=strawberry into environment just for our children</span>
+<span class="var">env</span><span class="op">.</span><span class="method">put</span><span class="fence1">(</span> <span class="string">"FRUIT"</span><span class="op">, </span><span class="string">"strawberry"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// remove set LIVERCOURSE=YES from environment just for our children</span>
+<span class="var">env</span><span class="op">.</span><span class="method">remove</span><span class="fence1">(</span> <span class="string">"LIVERCOURSE"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// modify set WINE=pinot to WINE=pinot blanc</span>
+<span class="var">env</span><span class="op">.</span><span class="method">put</span><span class="fence1">(</span> <span class="string">"WINE"</span><span class="op">, </span><span class="var">env</span><span class="op">.</span><span class="method">get</span><span class="fence2">(</span><span class="string">"WINE"</span><span class="fence2">)</span> <span class="op">+ </span><span class="string">" blanc"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// set up the working directory; note it is not called setDirectory</span>
+<span class="var">pb</span><span class="op">.</span><span class="method">directory</span><span class="fence1">(</span> <span class="string">"/progdir"</span> <span class="fence1">)</span><span class="sc">;</span>
+
+<span class="commentslashslash">// merge child's error and normal output streams.</span>
+<span class="commentslashslash">// Note it is not called setRedirectErrorStream.</span>
+<span class="var">pb</span><span class="op">.</span><span class="method">redirectErrorStream</span><span class="fence1">(</span> <span class="k">true </span><span class="fence1">)</span><span class="sc">;</span>
+
+<span class="class">Process </span><span class="vardef">p </span><span class="op">= </span><span class="var">pb</span><span class="op">.</span><span class="method">start</span><span class="fence1">(</span><span class="fence1">)</span><span class="sc">;</span>
+<span class="commentslashslash">// From here on it, it behaves just like exec, since you have the</span>
+<span class="commentslashslash">// exact same Process object.</span>
+<span class="commentslashslash">// ...</span></pre>
+<!-- timestamp 1499732229231 -->
+</body></html>

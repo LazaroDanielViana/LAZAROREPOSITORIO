@@ -6,22 +6,39 @@ import java.util.List;
 
 public class MakeDAO<T> {
 	
-	public String insertStatement(Field[] fields, Class classe) {
+	
+	public static String insertStatement(Field[] fields, Object tipo) {
 		String sql = "insert into ";
-		String classeComand = classe.getName() + fields.toString();
 		
-		return sql + classeComand;
+		StringBuffer makeCode = new StringBuffer();
+		makeCode.append("( ");
+		StringBuffer makeCode2 = new StringBuffer();
+		makeCode2.append("values( ");
+		
+		System.out.println("FieldsLength vale: " + fields.length);
+		
+		for(int i = 0; i< fields.length; i++) {
+			if(i < fields.length -1) {
+				makeCode.append(fields[i].getName() + ", ");
+				makeCode2.append("?, ");
+			}
+			else {
+				makeCode.append(fields[i].getName() + ") ");
+				makeCode2.append("?);");
+			}
+			
+		}
+		
+		String classeComand = tipo.getClass().getSimpleName() + (makeCode.toString() + makeCode2.toString());
+		
+		return (sql + classeComand);
 	}
 	
-	public String makeAdiciona(MakeDAO<T> tipo) {
-		
-		Class<T> classT = (Class<T>) tipo.getClass();
-		List<T> declaredFields = new ArrayList<>();
-		Field[] fields = classT.getDeclaredFields();		
+	public static String makeAdiciona(Field[] fields, Object tipo) {
 		
 		StringBuffer makeCode = new StringBuffer();
 		
-		makeCode.append(insertStatement(fields, classT));
+		makeCode.append(insertStatement(fields, tipo));
 		
 		return makeCode.toString();
 		
@@ -46,8 +63,8 @@ public class MakeDAO<T> {
 	*/
 	
 	public static void main(String[] args) {		
-		MakeDAO<TTipo> tipo = new MakeDAO<>();
-		String teste = tipo.makeAdiciona(tipo);
+		
+		String teste = makeAdiciona(TTipo.class.getDeclaredFields(), new TTipo());
 		System.out.println(teste);
 		
 	}

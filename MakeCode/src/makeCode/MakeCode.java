@@ -121,7 +121,7 @@ public class MakeCode {
 	}//end main
 	
 	
-	public ArrayList<TTipo> listTTipo(String t){
+	public List<TTipo> listTTipo(String t){
 		
 		String semEspacoPontas = t.trim();
 		List<String> semVazio = new ArrayList<String>();					

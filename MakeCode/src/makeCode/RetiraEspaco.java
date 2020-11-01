@@ -22,11 +22,7 @@ public class RetiraEspaco {
 				"r e q u e s t A n i m a t i o n F r a m e ( a n i m a t e ) ;\r\n" + 
 				"}\r\n" + 
 				"r e q u e s t A n i m a t i o n F r a m e ( a n i m a t e ) ;\r\n" + 
-				"</ script >";
-				
-				
-				
-				
+				"</ script >";				
 				
 				
 		char[] espaco2 = espaco.toCharArray();

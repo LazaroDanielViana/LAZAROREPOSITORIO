@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -15,7 +16,7 @@ import util.WhatType;
 
 public class GetAtribute {
 	
-	ArrayList<String> stringToArrayAtribute(String s,  String sep ){
+	List<String> stringToArrayAtribute(String s,  String sep ){
 
 		ArrayList<Integer> indices = new ArrayList<Integer>();
 
@@ -46,7 +47,7 @@ public class GetAtribute {
 		
 		String line = "";		
 		
-		ArrayList<String> strs = new ArrayList<String>();				
+		List<String> strs = new ArrayList<String>();				
 			
 		try{  		
 			FileReader fr = new FileReader(fullPath);

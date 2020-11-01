@@ -20,7 +20,7 @@ public class LeEscreveExcel {
 
 	public static Map<String, String> leExcel()   {
 
-		String filePath = "CFOP_tabela.xlsx";
+		String filePath = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\CFOP_tabela.xlsx";
 		
 		Map<String, String> keyValue = new HashMap<String, String>();
 		

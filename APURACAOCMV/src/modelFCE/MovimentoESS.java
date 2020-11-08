@@ -22,10 +22,10 @@ import modelBloco0.R0200.TIPO_ITEM_R0200;
 import modelBlocoC.C170;
 
 public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 
-	int numColuna = 0;
-
+	//int numColuna = 0;
+	
 	String CNPJ;
 
 	Calendar data;
@@ -188,7 +188,7 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 	}
 
 	@Coluna(posicao = 1, nome = "Data", formato="%1$td/%1$tm/%1$tY")
-	Calendar getData() {
+	public	Calendar getData() {
 		return data;
 	}
 

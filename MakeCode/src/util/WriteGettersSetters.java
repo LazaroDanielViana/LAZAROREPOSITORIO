@@ -11,9 +11,14 @@ public class WriteGettersSetters {
 		StringBuilder methodName = new StringBuilder("get");
 		methodName.append(fieldName.substring(0, 1).toUpperCase());
 		methodName.append(fieldName.substring(1,fieldName.length()));
-		return methodName.toString();
-		
+		return methodName.toString();		
 	}
+	
+	public static String firstLetterToUpper(String fieldName) {
+		return fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1,fieldName.length());
+			
+	}
+	
 	
 	public static String buildGetMethodNameCpp(TTipo tipo) {
 		

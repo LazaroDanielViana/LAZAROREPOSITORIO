@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -15,6 +16,53 @@ import util.WriteGettersSetters;
 
 public class MakeDAO {
 
+	public static String createTableStatement(Field[] fields, Object tipo, String nomeBD) {
+		/*CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
+				column_1 data_type PRIMARY KEY,
+			   	column_2 data_type NOT NULL,
+				column_3 data_type DEFAULT 0,
+				table_constraints
+			) [WITHOUT ROWID];*/
+		String simpleClassName = tipo.getClass().getSimpleName();
+		String simpleObjectName = simpleClassName.substring(0, 1).toLowerCase()+simpleClassName.substring(1);
+		String methodHeader = "public void createTable(){\n";
+		String sql = "CREATE TABLE IF NOT EXISTS " + nomeBD + "." + tipo.getClass().getSimpleName() +"(\n";
+
+		StringBuffer makeCode = new StringBuffer();
+		
+
+		
+		// PreparedStatement stmt = conexao.prepareStatement(sql);
+		// stmt.setDouble(1, js.getCapital());
+		// ...
+		// stmt.execute();
+		// stmt.close();
+
+		makeCode.append("id Integer PRIMARY KEY,\n");
+		for (int i = 0; i < fields.length; i++) {
+			
+			if(fields[i].getType() == Calendar.class) {
+				makeCode.append(fields[i].getName() + " Date,\n");
+								
+			}
+			else {
+				makeCode.append(fields[i].getName() + " " + fields[i].getType().getSimpleName()+",\n" );
+			
+			}
+			
+			
+			if (i == fields.length - 1) {
+				makeCode.append("\n);\n}");
+			}
+
+		}
+
+		String classeComand = makeCode.toString()  ;
+
+		return (methodHeader + sql + classeComand);
+	}
+
+	
 	public static String insertStatement(Field[] fields, Object tipo) {
 		String simpleClassName = tipo.getClass().getSimpleName();
 		String simpleObjectName = simpleClassName.substring(0, 1).toLowerCase()+simpleClassName.substring(1);
@@ -48,8 +96,19 @@ public class MakeDAO {
 		makeCode3.append("PreparedStatement stmt = conexao.prepareStatement(sql);\n");
 
 		for (int i = 0; i < fields.length; i++) {
-			makeCode3.append("stmt.set" + WriteGettersSetters.firstLetterToUpper(fields[i].getType().getSimpleName()) + "(" + (i + 1) + ", " + simpleObjectName+"."
+			
+			if(fields[i].getType() == Calendar.class) {
+				makeCode3.append("stmt.setDate(" + (i + 1) +",new java.sql.Date(1) "+ ", " + simpleObjectName+"."
+						+ WriteGettersSetters.buildGetMethodName(fields[i].getName()) + "());\n");
+				//stmt.setDate(2, new java.sql.Date(1), movimentoESS.getData());
+				
+			}
+			else {
+				makeCode3.append("stmt.set" + WriteGettersSetters.firstLetterToUpper(fields[i].getType().getSimpleName()) + "(" + (i + 1) + ", " + simpleObjectName+"."
 					+ WriteGettersSetters.buildGetMethodName(fields[i].getName()) + "());\n");
+			
+			}
+			
 			
 			if (i == fields.length - 1) {
 				makeCode3.append("stmt.execute();\n" + "stmt.close();\n}");
@@ -261,6 +320,10 @@ public class MakeDAO {
 		teste3 = selectByArgumentStatement(MovimentoESS.class.getDeclaredFields(), new MovimentoESS(),
 				new Integer( new MovimentoESS().getCEST()), new Integer(1), "<");
 		System.out.println(teste3);
+		teste3 = createTableStatement(MovimentoESS.class.getDeclaredFields(), new MovimentoESS(),"sample"
+				);
+		System.out.println(teste3);
+		
 
 	}
 

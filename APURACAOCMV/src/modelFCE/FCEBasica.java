@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-
+import DAO.MovimentoDao;
 import modelBloco0.Bloco0;
 import modelBloco0.R0000;
 import modelBloco0.R0200;
@@ -126,6 +127,12 @@ public class FCEBasica implements FCE, Serializable {
 			else {
 				System.out.println("tablez é nula");
 			}
+			try {
+				adicionaBD(fceBasica);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			ToExcel.exportaExcel(tablez);
 			FCEBasica copia = calculoMedioPonderadaMovel(fceBasica, null);
 			String diretorio = "D:\\JavaCode\\APURACAOCMV\\SERIAL\\";
@@ -139,6 +146,11 @@ public class FCEBasica implements FCE, Serializable {
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
+		}
+	}
+	public static void adicionaBD(FCEBasica fceBasica) throws SQLException {
+		for(MovimentoESS mov : fceBasica.getMovimentos()) {
+			MovimentoDao.adiciona(mov);
 		}
 	}
 

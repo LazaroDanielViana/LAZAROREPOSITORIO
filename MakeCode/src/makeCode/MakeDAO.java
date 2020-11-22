@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
@@ -16,7 +17,7 @@ import util.WriteGettersSetters;
 
 public class MakeDAO {
 
-	public static String createTableStatement(Field[] fields, Object tipo, String nomeBD) {
+	public static String createTableStatement(Field[] fields, Object tipo, String nomeBD, boolean isJava) {
 		/*CREATE TABLE [IF NOT EXISTS] [schema_name].table_name (
 				column_1 data_type PRIMARY KEY,
 			   	column_2 data_type NOT NULL,
@@ -39,6 +40,13 @@ public class MakeDAO {
 		// stmt.close();
 
 		makeCode.append("id Integer PRIMARY KEY,\n");
+		
+		String inicioColunaSQL = "";
+		String fimColunaSQL = "";
+		if(isJava) {
+			inicioColunaSQL = "+\"";
+			fimColunaSQL = "\"";
+		}
 		for (int i = 0; i < fields.length; i++) {
 			
 			if(fields[i].getType() == Calendar.class) {
@@ -46,7 +54,10 @@ public class MakeDAO {
 								
 			}
 			else {
-				makeCode.append(fields[i].getName() + " " + fields[i].getType().getSimpleName()+",\n" );
+				Vector<String> vecTipo = MapaTipos.javaToSQL.get(fields[i].getType().getSimpleName());
+				String tipoSQL = vecTipo != null ?vecTipo.get(0):"";
+				
+				makeCode.append(inicioColunaSQL+fields[i].getName() + " " + tipoSQL	+"," + fimColunaSQL+"\n" );
 			
 			}
 			
@@ -170,7 +181,7 @@ public class MakeDAO {
 	public static String deleteStatement(Field[] fields, Object tipo) {
 		String simpleClassName = tipo.getClass().getSimpleName();
 		String simpleObjectName = simpleClassName.substring(0, 1).toLowerCase()+simpleClassName.substring(1);
-		String methodHeader = "public void delete(" + simpleClassName + simpleClassName.substring(0, 1).toLowerCase()+simpleClassName.substring(1)  + "){\n";
+		String methodHeader = "public void delete(" + simpleClassName +" "+ simpleClassName.substring(0, 1).toLowerCase()+simpleClassName.substring(1)  + "){\n";
 		String sql = "String sql = \"DELETE FROM " + tipo.getClass().getSimpleName() + " WHERE id=?\";\n";
 
 		StringBuffer makeCode = new StringBuffer();
@@ -242,8 +253,6 @@ public class MakeDAO {
 
 		return (methodHeader +sql + makeCode.toString());
 	}
-	
-	
 	
 	
 
@@ -320,8 +329,7 @@ public class MakeDAO {
 		teste3 = selectByArgumentStatement(MovimentoESS.class.getDeclaredFields(), new MovimentoESS(),
 				new Integer( new MovimentoESS().getCEST()), new Integer(1), "<");
 		System.out.println(teste3);
-		teste3 = createTableStatement(MovimentoESS.class.getDeclaredFields(), new MovimentoESS(),"sample"
-				);
+		teste3 = createTableStatement(MovimentoESS.class.getDeclaredFields(), new MovimentoESS(),"sample",true				);
 		System.out.println(teste3);
 		
 

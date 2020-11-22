@@ -25,7 +25,7 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 	//private static final long serialVersionUID = 1L;
 
 	//int numColuna = 0;
-	
+	int id;
 	String CNPJ;
 
 	Calendar data;
@@ -176,8 +176,17 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 		String[] arr = ConcatenarArrays.concat(String.class, movimentoIdentifiers, saldoIdentifiers);
 		return arr;
 	}
+	
 
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Coluna(posicao = 0, nome = "CNPJ")
 	public String getCNPJ() {
 		return CNPJ;

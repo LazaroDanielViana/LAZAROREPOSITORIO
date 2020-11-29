@@ -1,6 +1,7 @@
 package acao;
 
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.AbstractAction;
@@ -15,7 +16,12 @@ public class ImportaSpedAcao extends AbstractAction {
 
 		List<String> pastaMensal = ArquivoDiretorioUtil.listaArquivos();
 		for (String pathOfFile : pastaMensal) {
-			ImportaSped.parseArquivo2(pathOfFile);
+			try {
+				ImportaSped.parseArquivo2(pathOfFile);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

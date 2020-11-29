@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
+import DAO.MovimentoDao;
 import excelText.ToExcel_InCMV;
 import modelBloco0.Bloco0;
 import modelBloco0.R0200;
@@ -27,7 +29,7 @@ import view.TableView;
 
 public class ImportaSped {
 
-	public static void parseArquivo2(String pathOfFile) {
+	public static void parseArquivo2(String pathOfFile) throws SQLException {
 
 		System.out.println("pathOfFile vale: " + pathOfFile);
 		List<String> strs1 = new ArrayList<>();
@@ -112,10 +114,10 @@ public class ImportaSped {
 			
 			
 			Map<String, FCEBasica> mapFCEBasica = FCEBasica.getMapFCEBasica(blocoC.getListC100(), bloco0);
-
+			MovimentoDao mdao = new MovimentoDao();
 			for (Map.Entry<String, FCEBasica> pairFCE : mapFCEBasica.entrySet()) {
 				System.out.println("Passou por aqui");
-				FCEBasica.escreveFCEBasica(pairFCE.getValue());
+				FCEBasica.escreveFCEBasica(pairFCE.getValue(), mdao);
 				
 			}
 			System.out.println(MovimentoESS.set.toString());
@@ -147,7 +149,7 @@ public class ImportaSped {
 		Map<String, FCEBasica> mapFCEBasica = FCEBasica.getMapFCEBasica(listC100, bloco0);
 
 		for (Map.Entry<String, FCEBasica> pairFCE : mapFCEBasica.entrySet()) {
-			FCEBasica.escreveFCEBasica(pairFCE.getValue());
+			FCEBasica.escreveFCEBasica(pairFCE.getValue(),null);
 
 		}
 		System.out.println(MovimentoESS.set.toString());

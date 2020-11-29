@@ -18,6 +18,9 @@ public class WriteGettersSetters {
 		return fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1,fieldName.length());
 			
 	}
+	public static String firstLetterToLower(String fieldName) {
+		return fieldName.substring(0, 1).toLowerCase() + fieldName.substring(1,fieldName.length());			
+	}
 	
 	
 	public static String buildGetMethodNameCpp(TTipo tipo) {

@@ -116,26 +116,29 @@ public class FCEBasica implements FCE, Serializable {
 		return mapFCEBasica2;
 	}
 
-	public static void escreveFCEBasica(FCEBasica fceBasica) {
+	public static void escreveFCEBasica(FCEBasica fceBasica, MovimentoDao mdao) {
 		if (fceBasica.getMovimentos().size() > 1) {
 			JTable tablez;
 			tablez  = preencheTabela(fceBasica);
 			if(tablez != null) {
-				System.out.println("A tabela tem o seguinte número de linhas" + tablez.getModel().getRowCount());
+				System.out.println("A tabela tem o seguinte número de linhas: " + tablez.getModel().getRowCount());
 				
 			}
 			else {
 				System.out.println("tablez é nula");
 			}
-			try {
-				adicionaBD(fceBasica);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if(mdao != null) {
+				try {
+					adicionaBD(fceBasica, mdao);
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			ToExcel.exportaExcel(tablez);
+			//ToExcel.exportaExcel(tablez);
 			FCEBasica copia = calculoMedioPonderadaMovel(fceBasica, null);
-			String diretorio = "D:\\JavaCode\\APURACAOCMV\\SERIAL\\";
+			String diretorio = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL";
 			String filename = copia.getMovimentos().get(1).getCodigoMercadoria() + ".laz";
 			// SerialClass time = new SerialClass(); // We will write this object to file
 			// system.
@@ -148,9 +151,10 @@ public class FCEBasica implements FCE, Serializable {
 			}
 		}
 	}
-	public static void adicionaBD(FCEBasica fceBasica) throws SQLException {
+	public static void adicionaBD(FCEBasica fceBasica, MovimentoDao mdao) throws SQLException {
+		
 		for(MovimentoESS mov : fceBasica.getMovimentos()) {
-			MovimentoDao.adiciona(mov);
+			mdao.adiciona(mov);
 		}
 	}
 

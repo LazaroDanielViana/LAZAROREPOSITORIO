@@ -19,7 +19,7 @@ public class MovimentoDao {
 	private static Connection conexao;
 
 	public MovimentoDao() throws SQLException {
-		this.conexao = ConnectionFactory.getConexao(new String[] { "jdbc:sqlite:sample.db" });
+		this.conexao = ConnectionFactory.getConexao(new String[] { "jdbc:sqlite:sample.db",null, null });
 	}
 
 	public void createTable() {
@@ -30,15 +30,12 @@ public class MovimentoDao {
 				+ "vlItem DOUBLE," + "vlICMS DOUBLE," + "vlICMSST DOUBLE," + "CEST INTEGER," + "vlCOFINS DOUBLE,"
 				+ "vlPIS DOUBLE," + "quantidadeSaldo DOUBLE," + "custoSaldo DOUBLE," + "totalSaldo DOUBLE" + ");";
 	}
-
-	public static void adiciona(MovimentoESS movimentoESS) throws SQLException {
-		String sql = "INSERT INTO MovimentoESS( CNPJ, data, historico, codigoMercadoria, descricao, NCM, numNotaFiscal, CFOP, CST_ICMS, quantidadeUnitario, custoUnitario, totalUnitario, vlItem, vlICMS, vlICMSST, CEST, vlCOFINS, vlPIS, quantidadeSaldo, custoSaldo, totalSaldo, objetoFonteInformacao, set, keyValueMap) values( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	public void adiciona(MovimentoESS	movimentoESS) throws SQLException{
+		String sql = "INSERT INTO MovimentoESS ( CNPJ, data, historico, codigoMercadoria, descricao, NCM, numNotaFiscal, CFOP, CST_ICMS, quantidadeUnitario, custoUnitario, totalUnitario, vlItem, vlICMS, vlICMSST, CEST, vlCOFINS, vlPIS, quantidadeSaldo, custoSaldo, totalSaldo) values( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 
 		PreparedStatement stmt = conexao.prepareStatement(sql);
 		stmt.setString(1, movimentoESS.getCNPJ());
-		// stmt.setCalendar(2, movimentoESS.getData());
-		// Date dateSQL = new java.sql.Date(1);
-		stmt.setDate(2, new java.sql.Date(1), movimentoESS.getData());
+		stmt.setDate(2,new java.sql.Date(1) , movimentoESS.getData());
 		stmt.setString(3, movimentoESS.getHistorico());
 		stmt.setString(4, movimentoESS.getCodigoMercadoria());
 		stmt.setString(5, movimentoESS.getDescricao());
@@ -58,12 +55,10 @@ public class MovimentoDao {
 		stmt.setDouble(19, movimentoESS.getQuantidadeSaldo());
 		stmt.setDouble(20, movimentoESS.getCustoSaldo());
 		stmt.setDouble(21, movimentoESS.getTotalSaldo());
-		// stmt.setObject(22, movimentoESS.getObjetoFonteInformacao());
-		// stmt.setSet(23, movimentoESS.getSet());
-		// stmt.setMap(24, movimentoESS.getKeyValueMap());
 		stmt.execute();
 		stmt.close();
 	}
+	
 	public void altera(MovimentoESS	movimentoESS) throws SQLException{
 		String sql = "UPDATE MovimentoESS SET  CNPJ=?, data=?, historico=?, codigoMercadoria=?, descricao=?, NCM=?, numNotaFiscal=?, CFOP=?, CST_ICMS=?, quantidadeUnitario=?, custoUnitario=?, totalUnitario=?, vlItem=?, vlICMS=?, vlICMSST=?, CEST=?, vlCOFINS=?, vlPIS=?, quantidadeSaldo=?, custoSaldo=?, totalSaldo=?, objetoFonteInformacao=?, set=?, keyValueMap=?  where id=?";
 		PreparedStatement stmt = this.conexao.prepareStatement(sql);

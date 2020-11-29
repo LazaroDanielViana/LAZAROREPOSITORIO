@@ -1,6 +1,7 @@
 package makeCode;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -72,7 +73,8 @@ public class MakeDAO {
 
 		return (methodHeader + sql + classeComand);
 	}
-
+	
+	
 	
 	public static String insertStatement(Field[] fields, Object tipo) {
 		String simpleClassName = tipo.getClass().getSimpleName();
@@ -89,11 +91,28 @@ public class MakeDAO {
 		// "values(?,?,?,?,?,?,?)";
 		for (int i = 0; i < fields.length; i++) {
 			if (i < fields.length - 1) {
-				makeCode.append(fields[i].getName() + ", ");
-				makeCode2.append("?, ");
+				if(!Modifier.toString(fields[i].getModifiers() ).contains("transient") ) {
+					makeCode.append(fields[i].getName() + ", ");
+					makeCode2.append("?, ");
+					if(!Modifier.toString(fields[fields.length-1].getModifiers() ).contains("transient")) {	
+						
+						
+					}
+					else {
+						//makeCode2.append(") ");
+					}
+				}
+				
+				
 			} else {
-				makeCode.append(fields[i].getName() + ") ");
-				makeCode2.append("?)\";\n\n");
+				if(!Modifier.toString(fields[i].getModifiers() ).contains("transient") ) {
+					makeCode.append(fields[i].getName() + ") ");
+					makeCode2.append("?)\";\n\n");
+				}
+				else {
+					makeCode2.append(")\";\n\n");
+				}
+				
 			}
 
 		}
@@ -102,35 +121,70 @@ public class MakeDAO {
 		// ...
 		// stmt.execute();
 		// stmt.close();
-
+		
+		
+		String makeCode3 = makePreparedStatment(fields, tipo);
+		/*
 		StringBuffer makeCode3 = new StringBuffer();
 		makeCode3.append("PreparedStatement stmt = conexao.prepareStatement(sql);\n");
-
+		int contadorNaoTransient = 1;
 		for (int i = 0; i < fields.length; i++) {
-			
-			if(fields[i].getType() == Calendar.class) {
-				makeCode3.append("stmt.setDate(" + (i + 1) +",new java.sql.Date(1) "+ ", " + simpleObjectName+"."
+			if(!Modifier.toString(fields[i].getModifiers() ).contains("transient") ) {
+				if(fields[i].getType() == Calendar.class) {
+					makeCode3.append("stmt.setDate(" + (contadorNaoTransient ) +",new java.sql.Date(1) "+ ", " + simpleObjectName+"."
+							+ WriteGettersSetters.buildGetMethodName(fields[i].getName()) + "());\n");
+					//stmt.setDate(2, new java.sql.Date(1), movimentoESS.getData());
+					contadorNaoTransient++;
+				}
+				else {
+					makeCode3.append("stmt.set" + WriteGettersSetters.firstLetterToUpper(fields[i].getType().getSimpleName()) + "(" + (contadorNaoTransient) + ", " + simpleObjectName+"."
 						+ WriteGettersSetters.buildGetMethodName(fields[i].getName()) + "());\n");
-				//stmt.setDate(2, new java.sql.Date(1), movimentoESS.getData());
+					contadorNaoTransient++;
 				
-			}
-			else {
-				makeCode3.append("stmt.set" + WriteGettersSetters.firstLetterToUpper(fields[i].getType().getSimpleName()) + "(" + (i + 1) + ", " + simpleObjectName+"."
-					+ WriteGettersSetters.buildGetMethodName(fields[i].getName()) + "());\n");
+				}
 			
 			}
-			
-			
 			if (i == fields.length - 1) {
 				makeCode3.append("stmt.execute();\n" + "stmt.close();\n}");
 			}
 
 		}
-
-		String classeComand = (makeCode.toString() + makeCode2.toString() + makeCode3.toString());
+		*/
+		String classeComand = (makeCode.toString() + makeCode2.toString() + makeCode3);
 
 		return (methodHeader + sql + classeComand);
 	}
+	
+	public static String makePreparedStatment(Field[] fields, Object tipo) {
+		String simpleClassName = tipo.getClass().getSimpleName();
+		String simpleObjectName = WriteGettersSetters.firstLetterToLower(simpleClassName); 
+		StringBuffer makeCode3 = new StringBuffer();
+		makeCode3.append("PreparedStatement stmt = conexao.prepareStatement(sql);\n");
+		int contadorNaoTransient = 1;
+		for (int i = 0; i < fields.length; i++) {
+			if(!Modifier.toString(fields[i].getModifiers() ).contains("transient") ) {
+				if(fields[i].getType() == Calendar.class) {
+					makeCode3.append("stmt.setDate(" + (contadorNaoTransient ) +",new java.sql.Date(1) "+ ", " + simpleObjectName+"."
+							+ WriteGettersSetters.buildGetMethodName(fields[i].getName()) + "());\n");
+					//stmt.setDate(2, new java.sql.Date(1), movimentoESS.getData());
+					contadorNaoTransient++;
+				}
+				else {
+					makeCode3.append("stmt.set" + WriteGettersSetters.firstLetterToUpper(fields[i].getType().getSimpleName()) + "(" + (contadorNaoTransient) + ", " + simpleObjectName+"."
+						+ WriteGettersSetters.buildGetMethodName(fields[i].getName()) + "());\n");
+					contadorNaoTransient++;
+				
+				}
+			
+			}
+			if (i == fields.length - 1) {
+				makeCode3.append("stmt.execute();\n" + "stmt.close();\n}");
+			}
+
+		}//END FOR
+		return makeCode3.toString();
+	}
+
 
 	public static String alteraStatement(Field[] fields, Object tipo) {
 		String simpleClassName = tipo.getClass().getSimpleName();

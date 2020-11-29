@@ -25,7 +25,7 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 	//private static final long serialVersionUID = 1L;
 
 	//int numColuna = 0;
-	int id;
+	transient int id;
 	String CNPJ;
 
 	Calendar data;
@@ -67,12 +67,12 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 	double quantidadeSaldo;
 	double custoSaldo;
 	double totalSaldo;
-	Object objetoFonteInformacao;
-	public static Set<String> set = new HashSet<String>();
+	transient Object  objetoFonteInformacao;
+	public transient static Set<String> set = new HashSet<String>();
 
 	// TIPO_MOVIMENTO tipoMovimento;
 
-	public static Map<String, String> keyValueMap = LeEscreveExcel.leExcel();
+	public transient static Map<String, String> keyValueMap = LeEscreveExcel.leExcel();
 
 	/*
 	 * public static Map<String, String> getKeyValueMap(){ if(keyValueMap == null) {

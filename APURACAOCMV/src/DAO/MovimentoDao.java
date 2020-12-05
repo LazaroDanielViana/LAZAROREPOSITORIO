@@ -88,7 +88,7 @@ public class MovimentoDao {
 		stmt.close();
 		
 	}
-	/*	
+		
 	public void delete(MovimentoESS movimentoESS) throws SQLException{
 		String sql = "DELETE FROM MovimentoESS WHERE id=?";
 		PreparedStatement stmt = this.conexao.prepareStatement(sql);
@@ -96,47 +96,44 @@ public class MovimentoDao {
 		stmt.executeUpdate();
 		stmt.close();
 	}
-	*/
-	/*
-	 *
-	public void select(MovimentoESS movimentoESS){
+	
+	
+	public List<MovimentoESS> select() throws SQLException {
 		String sql = "SELECT *FROM MovimentoESS";
 		PreparedStatement stmt = this.conexao.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
 		List<MovimentoESS> minhaLista = new ArrayList<MovimentoESS>();
-	while (rs.next()) {
-		MovimentoESS movimentoESS = new MovimentoESS();
-		stmt.setString(1, movimentoESS.getCNPJ());
-		stmt.setCalendar(2, movimentoESS.getData());
-		stmt.setString(3, movimentoESS.getHistorico());
-		stmt.setString(4, movimentoESS.getCodigoMercadoria());
-		stmt.setString(5, movimentoESS.getDescricao());
-		stmt.setString(6, movimentoESS.getNCM());
-		stmt.setInt(7, movimentoESS.getNumNotaFiscal());
-		stmt.setString(8, movimentoESS.getCFOP());
-		stmt.setInt(9, movimentoESS.getCST_ICMS());
-		stmt.setDouble(10, movimentoESS.getQuantidadeUnitario());
-		stmt.setDouble(11, movimentoESS.getCustoUnitario());
-		stmt.setDouble(12, movimentoESS.getTotalUnitario());
-		stmt.setDouble(13, movimentoESS.getVlItem());
-		stmt.setDouble(14, movimentoESS.getVlICMS());
-		stmt.setDouble(15, movimentoESS.getVlICMSST());
-		stmt.setInt(16, movimentoESS.getCEST());
-		stmt.setDouble(17, movimentoESS.getVlCOFINS());
-		stmt.setDouble(18, movimentoESS.getVlPIS());
-		stmt.setDouble(19, movimentoESS.getQuantidadeSaldo());
-		stmt.setDouble(20, movimentoESS.getCustoSaldo());
-		stmt.setDouble(21, movimentoESS.getTotalSaldo());
-		stmt.setObject(22, movimentoESS.getObjetoFonteInformacao());
-		stmt.setSet(23, movimentoESS.getSet());
-		stmt.setMap(24, movimentoESS.getKeyValueMap());
-		minhaLista.add(movimentoESS);
+		while (rs.next()) {
+			MovimentoESS movimentoESS = new MovimentoESS();
+			stmt.setString(1, movimentoESS.getCNPJ());
+			stmt.setDate(2,new java.sql.Date(1), movimentoESS.getData());
+			stmt.setString(3, movimentoESS.getHistorico());
+			stmt.setString(4, movimentoESS.getCodigoMercadoria());
+			stmt.setString(5, movimentoESS.getDescricao());
+			stmt.setString(6, movimentoESS.getNCM());
+			stmt.setInt(7, movimentoESS.getNumNotaFiscal());
+			stmt.setString(8, movimentoESS.getCFOP());
+			stmt.setInt(9, movimentoESS.getCST_ICMS());
+			stmt.setDouble(10, movimentoESS.getQuantidadeUnitario());
+			stmt.setDouble(11, movimentoESS.getCustoUnitario());
+			stmt.setDouble(12, movimentoESS.getTotalUnitario());
+			stmt.setDouble(13, movimentoESS.getVlItem());
+			stmt.setDouble(14, movimentoESS.getVlICMS());
+			stmt.setDouble(15, movimentoESS.getVlICMSST());
+			stmt.setInt(16, movimentoESS.getCEST());
+			stmt.setDouble(17, movimentoESS.getVlCOFINS());
+			stmt.setDouble(18, movimentoESS.getVlPIS());
+			stmt.setDouble(19, movimentoESS.getQuantidadeSaldo());
+			stmt.setDouble(20, movimentoESS.getCustoSaldo());
+			stmt.setDouble(21, movimentoESS.getTotalSaldo());
+			
+			minhaLista.add(movimentoESS);
 	}
 	stmt.execute();
 	stmt.close();
 	return minhaLista;
 	}
-	*/
+	
 	
 	
 	

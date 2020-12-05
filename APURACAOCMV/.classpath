@@ -28,5 +28,6 @@
 	<classpathentry kind="lib" path="lib/poi-4.1.2.jar"/>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.32.3.2.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CalculoFinanceiro4"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/UtilsLazaro"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

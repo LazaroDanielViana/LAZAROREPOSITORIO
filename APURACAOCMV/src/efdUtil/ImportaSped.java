@@ -102,7 +102,7 @@ public class ImportaSped {
 
 				} // ifLineLength
 
-			} // while
+			} // END while
 
 			System.out.println("Leu o arquivo de entrada");
 			// blocoC.imprimeListC100();
@@ -110,23 +110,23 @@ public class ImportaSped {
 			// MovimentoESS.getKeyValueMap();
 			System.out.println("Visualizando tabela excel de MovimentoESS.veTabelaExcel()");
 			MovimentoESS.veTabelaExcel();
-
 			
 			
 			Map<String, FCEBasica> mapFCEBasica = FCEBasica.getMapFCEBasica(blocoC.getListC100(), bloco0);
 			MovimentoDao mdao = new MovimentoDao();
-			for (Map.Entry<String, FCEBasica> pairFCE : mapFCEBasica.entrySet()) {
-				System.out.println("Passou por aqui");
+			for (Map.Entry<String, FCEBasica> pairFCE : mapFCEBasica.entrySet()) {				
 				FCEBasica.escreveFCEBasica(pairFCE.getValue(), mdao);
 				
 			}
-			System.out.println(MovimentoESS.set.toString());
+			
 			JOptionPane.showMessageDialog(null, "Importação concluída com sucesso!");
 
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			System.out.println("Pego pelo catch de parseArquivo2(String pathOfFile)");
 			e.printStackTrace();
-		} finally {
+		} 
+		finally {
 			try {
 				if (reader != null)
 					reader.close();

@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -30,6 +31,7 @@ import modelBloco0.R0200;
 import modelBlocoC.C100;
 import modelBlocoC.C170;
 import utilLazaro.ToExcel;
+import writeobject.utils.WriteObject;
 
 public class FCEBasica implements FCE, Serializable {
 	private static final long serialVersionUID = 1L;
@@ -116,44 +118,75 @@ public class FCEBasica implements FCE, Serializable {
 		return mapFCEBasica2;
 	}
 
-	public static void escreveFCEBasica(FCEBasica fceBasica, MovimentoDao mdao) {
-		if (fceBasica.getMovimentos().size() > 1) {
-			JTable tablez;
-			tablez  = preencheTabela(fceBasica);
-			if(tablez != null) {
-				System.out.println("A tabela tem o seguinte número de linhas: " + tablez.getModel().getRowCount());
-				
+	public static void escreveListaFCEBasica(List<FCEBasica> listFceBasica, String diretorio, String filename) {
+		/*
+		 * JTable tablez; tablez = preencheTabela(fceBasica); if (tablez != null) {
+		 * System.out.println("A tabela tem o seguinte número de linhas: " +
+		 * tablez.getModel().getRowCount());
+		 * 
+		 * } else { System.out.println("tablez é nula"); }
+		 * 
+		 * if (mdao != null) { try { adicionaBD(fceBasica, mdao);
+		 * 
+		 * } catch (SQLException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); } }
+		 * 
+		 */
+		List<FCEBasica> listFceBasicaCopia = new ArrayList<FCEBasica>();
+		for (FCEBasica fceB : listFceBasica) {
+			if (fceB.getMovimentos().size() > 1) {
+				// ToExcel.exportaExcel(tablez);
+				FCEBasica copia = calculoMedioPonderadaMovel(fceB, null);
+				listFceBasicaCopia.add(copia);
+				//String diretorio = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL";				
 			}
-			else {
-				System.out.println("tablez é nula");
-			}
-			if(mdao != null) {
-				try {
-					adicionaBD(fceBasica, mdao);
-					
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			//ToExcel.exportaExcel(tablez);
-			FCEBasica copia = calculoMedioPonderadaMovel(fceBasica, null);
-			String diretorio = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL";
-			String filename = copia.getMovimentos().get(1).getCodigoMercadoria() + ".laz";
+		}//END FOR		
+		// SerialClass time = new SerialClass(); // We will write this object to file
+		// system.
+		WriteObject.writeObject(diretorio, filename, listFceBasicaCopia);
+	}
+
+	public static void escreveFCEBasica(FCEBasica fceBasica, String diretorio, String filename) {
+		
+		  escreveListaFCEBasica(Arrays.asList(fceBasica), diretorio, filename);
+		
+		//if (fceBasica.getMovimentos().size() > 1) {
+			/*
+			 * JTable tablez; tablez = preencheTabela(fceBasica); if (tablez != null) {
+			 * System.out.println("A tabela tem o seguinte número de linhas: " +
+			 * tablez.getModel().getRowCount());
+			 * 
+			 * } else { System.out.println("tablez é nula"); } if (mdao != null) { try {
+			 * adicionaBD(fceBasica, mdao);
+			 * 
+			 * } catch (SQLException e) { // TODO Auto-generated catch block
+			 * e.printStackTrace(); } }
+			 */
+			// ToExcel.exportaExcel(tablez);
+		
+			/*FCEBasica copia = calculoMedioPonderadaMovel(fceBasica, null);
+			
+			
+			// String diretorio = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL";
+			
 			// SerialClass time = new SerialClass(); // We will write this object to file
 			// system.
 			try {
 				ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(diretorio + filename));
 				out.writeObject(copia); // Write byte stream to file system.
 				out.close();
-			} catch (IOException ex) {
+			} 
+			catch (IOException ex) {
+				System.out.printf("Erro: %s", ex.getMessage());
 				ex.printStackTrace();
 			}
+			
 		}
+	*/
 	}
+
 	public static void adicionaBD(FCEBasica fceBasica, MovimentoDao mdao) throws SQLException {
-		
-		for(MovimentoESS mov : fceBasica.getMovimentos()) {
+		for (MovimentoESS mov : fceBasica.getMovimentos()) {
 			mdao.adiciona(mov);
 		}
 	}
@@ -169,6 +202,7 @@ public class FCEBasica implements FCE, Serializable {
 			ex.printStackTrace();
 			return null;
 		} catch (ClassNotFoundException cnfe) {
+			System.out.printf("Erro: %s", cnfe.getMessage());
 			cnfe.printStackTrace();
 			return null;
 		}
@@ -190,7 +224,7 @@ public class FCEBasica implements FCE, Serializable {
 				JOptionPane.showMessageDialog(null, "this.fce.getMovimentos().isEmpty() em preecheTabela");
 				return null;
 			} else {
-				//System.out.println("this.fce não nulo e não vazio");
+				// System.out.println("this.fce não nulo e não vazio");
 			}
 
 			/*
@@ -218,146 +252,151 @@ public class FCEBasica implements FCE, Serializable {
 		return fceBasica;
 
 	}
+
 	public static class InformacaoCusto {
 		double custoUnitario = 0;
 		double quantidadeSaldo = 0;
 		double custoSaldo = 0;
-		double totalSaldo = 0;	
+		double totalSaldo = 0;
 	}
-	public static InformacaoCusto calculaInformacaoCusto(MovimentoESS movimento, MovimentoESS movimentoInicial,FCEBasica fceBasica, int contador) {
+
+	public static InformacaoCusto calculaInformacaoCusto(MovimentoESS movimento, MovimentoESS movimentoInicial,
+			FCEBasica fceBasica, int contador) {
 		InformacaoCusto informacaoCusto = new InformacaoCusto();
-		
+
 		if (contador == 0) {
 			if (movimento.getFonteInformacao() instanceof C170) {
 
 				C170 c170 = (C170) movimento.getFonteInformacao();
-				
+
 				if (c170.getC100().getIND_OPERC100().equals("Entrada")) {
-					informacaoCusto.custoUnitario =  movimento.getTotalUnitario() / movimento.getQuantidadeUnitario();
-					
+					informacaoCusto.custoUnitario = movimento.getTotalUnitario() / movimento.getQuantidadeUnitario();
+
 					informacaoCusto.quantidadeSaldo = movimento.getQuantidadeUnitario()
 							+ (movimentoInicial != null ? movimentoInicial.getQuantidadeSaldo() : 0);
 					informacaoCusto.totalSaldo = movimento.getTotalUnitario()
 							+ (movimentoInicial != null ? movimentoInicial.getTotalSaldo() : 0);
 					informacaoCusto.custoSaldo = informacaoCusto.totalSaldo / informacaoCusto.quantidadeSaldo;
-				} 
-				else {
-					
-					informacaoCusto.custoUnitario = movimentoInicial != null ? movimentoInicial.getCustoSaldo() : -1.11111111111;
-					informacaoCusto.quantidadeSaldo = movimentoInicial != null ? (movimentoInicial.getQuantidadeSaldo() - movimento.getQuantidadeUnitario()) :
-						- movimento.getQuantidadeUnitario() ;
+				} else {
+
+					informacaoCusto.custoUnitario = movimentoInicial != null ? movimentoInicial.getCustoSaldo()
+							: -1.11111111111;
+					informacaoCusto.quantidadeSaldo = movimentoInicial != null
+							? (movimentoInicial.getQuantidadeSaldo() - movimento.getQuantidadeUnitario())
+							: -movimento.getQuantidadeUnitario();
 					informacaoCusto.totalSaldo = movimentoInicial != null ? movimentoInicial.getTotalSaldo() : 0;
-							
-					informacaoCusto.custoSaldo = movimentoInicial.getCustoSaldo() != 0 ? movimentoInicial.getCustoSaldo() : 0;
+
+					informacaoCusto.custoSaldo = movimentoInicial.getCustoSaldo() != 0
+							? movimentoInicial.getCustoSaldo()
+							: 0;
 
 				}
 
 			}
-			
-		}//END contador == 0
-		
+
+		} // END contador == 0
+
 		else {// if(contador == 0)
 			if (movimento.getFonteInformacao() instanceof C170) {
 
 				C170 c170 = (C170) movimento.getFonteInformacao();
 				if (c170.getC100().getIND_OPERC100().equals("Entrada")) {
 					informacaoCusto.custoUnitario = movimento.getTotalUnitario() / movimento.getQuantidadeUnitario();
-					
+
 					informacaoCusto.quantidadeSaldo = movimento.getQuantidadeUnitario()
-							+ fceBasica.getMovimentos().get(contador -1).getQuantidadeSaldo();
+							+ fceBasica.getMovimentos().get(contador - 1).getQuantidadeSaldo();
 					informacaoCusto.totalSaldo = movimento.getTotalUnitario()
-							+ fceBasica.getMovimentos().get(contador -1).getTotalSaldo();
-					
-					if(informacaoCusto.quantidadeSaldo == 0) {
+							+ fceBasica.getMovimentos().get(contador - 1).getTotalSaldo();
+
+					if (informacaoCusto.quantidadeSaldo == 0) {
 						informacaoCusto.custoSaldo = informacaoCusto.custoUnitario;
-					}
-					else {
+					} else {
 						informacaoCusto.custoSaldo = informacaoCusto.totalSaldo / informacaoCusto.quantidadeSaldo;
 					}
-				} 
-				else {
-					informacaoCusto.custoUnitario = fceBasica.getMovimentos().get(contador -1).getCustoSaldo();
-					informacaoCusto.quantidadeSaldo = fceBasica.getMovimentos().get(contador-1).getQuantidadeSaldo()
+				} else {
+					informacaoCusto.custoUnitario = fceBasica.getMovimentos().get(contador - 1).getCustoSaldo();
+					informacaoCusto.quantidadeSaldo = fceBasica.getMovimentos().get(contador - 1).getQuantidadeSaldo()
 							- movimento.getQuantidadeUnitario();
-					informacaoCusto.totalSaldo = fceBasica.getMovimentos().get(contador-1).getTotalSaldo();
-					if(informacaoCusto.quantidadeSaldo == 0) {
-						informacaoCusto.custoSaldo = fceBasica.getMovimentos().get(contador -1).getCustoSaldo();
-					}
-					else {
-						informacaoCusto.custoSaldo = Math.abs(informacaoCusto.totalSaldo / informacaoCusto.quantidadeSaldo);
+					informacaoCusto.totalSaldo = fceBasica.getMovimentos().get(contador - 1).getTotalSaldo();
+					if (informacaoCusto.quantidadeSaldo == 0) {
+						informacaoCusto.custoSaldo = fceBasica.getMovimentos().get(contador - 1).getCustoSaldo();
+					} else {
+						informacaoCusto.custoSaldo = Math
+								.abs(informacaoCusto.totalSaldo / informacaoCusto.quantidadeSaldo);
 					}
 
 				}
 
-			}				
-		}	
-		
+			}
+		}
+
 		return informacaoCusto;
-		
+
 	}
+
 	public static FCEBasica calculoMedioPonderadaMovel(FCEBasica fceBasica, MovimentoESS movimentoInicial) {
-		Collections.sort(fceBasica.getMovimentos(), new FCEComparator() );
+		Collections.sort(fceBasica.getMovimentos(), new FCEComparator());
 		int contador = 0;
-		
+
 		double custoUnitario = 0;
 		double quantidadeSaldo = 0;
 		double custoSaldo = 0;
 		double totalSaldo = 0;
-		
+
 		for (MovimentoESS movimento : fceBasica.getMovimentos()) {
-			InformacaoCusto informacaoCusto = calculaInformacaoCusto(movimento,movimentoInicial,fceBasica, contador);
-			
-			/*if (contador == 0) {
-				if (movimento.getFonteInformacao() instanceof C170) {
+			InformacaoCusto informacaoCusto = calculaInformacaoCusto(movimento, movimentoInicial, fceBasica, contador);
 
-					C170 c170 = (C170) movimento.getFonteInformacao();
-					if (c170.getC100().getIND_OPERC100().equals("Entrada")) {
-						custoUnitario =  movimento.getTotalUnitario() / movimento.getQuantidadeUnitario();
-						quantidadeSaldo = movimento.getQuantidadeUnitario()
-								+ (movimentoInicial != null ? movimentoInicial.getQuantidadeSaldo() : 0);
-						totalSaldo = movimento.getTotalUnitario()
-								+ (movimentoInicial != null ? movimentoInicial.getTotalSaldo() : 0);
-						custoSaldo = totalSaldo / quantidadeSaldo;
-					} 
-					else {
-						
-						custoUnitario = movimentoInicial.getCustoSaldo() != 0 ? movimento.getTotalUnitario() / movimento.getQuantidadeUnitario() : 0;
-						quantidadeSaldo = movimentoInicial.getCustoSaldo() != 0 ? movimento.getQuantidadeUnitario() : 0 
-								+ (movimentoInicial != null ? movimentoInicial.getQuantidadeSaldo() : 0);
-						totalSaldo = (movimentoInicial.getCustoSaldo() != 0 ? movimentoInicial.getTotalSaldo() : 0)
-								- movimento.getTotalUnitario();
-						custoSaldo = movimentoInicial.getCustoSaldo() != 0 ? Math.abs(totalSaldo / quantidadeSaldo) : 0;
-
-					}
-
-				}
-				
-			} 
-			else {// if(contador == 0)
-				if (movimento.getFonteInformacao() instanceof C170) {
-
-					C170 c170 = (C170) movimento.getFonteInformacao();
-					if (c170.getC100().getIND_OPERC100().equals("Entrada")) {
-						custoUnitario = movimento.getTotalUnitario() / movimento.getQuantidadeUnitario();
-						quantidadeSaldo = movimento.getQuantidadeUnitario()
-								+ fceBasica.getMovimentos().get(contador).getQuantidadeSaldo();
-						totalSaldo = movimento.getTotalUnitario()
-								+ fceBasica.getMovimentos().get(contador).getTotalSaldo();
-						custoSaldo = totalSaldo / quantidadeSaldo;
-					} else {
-						custoUnitario = movimento.getTotalUnitario() / movimento.getQuantidadeUnitario();
-						quantidadeSaldo = fceBasica.getMovimentos().get(contador).getQuantidadeSaldo()
-								- movimento.getQuantidadeUnitario();
-						totalSaldo = fceBasica.getMovimentos().get(contador).getTotalSaldo()
-								- movimento.getTotalUnitario();
-						custoSaldo = Math.abs(totalSaldo / quantidadeSaldo);
-
-					}
-
-				}				
-			}*/
+			/*
+			 * if (contador == 0) { if (movimento.getFonteInformacao() instanceof C170) {
+			 * 
+			 * C170 c170 = (C170) movimento.getFonteInformacao(); if
+			 * (c170.getC100().getIND_OPERC100().equals("Entrada")) { custoUnitario =
+			 * movimento.getTotalUnitario() / movimento.getQuantidadeUnitario();
+			 * quantidadeSaldo = movimento.getQuantidadeUnitario() + (movimentoInicial !=
+			 * null ? movimentoInicial.getQuantidadeSaldo() : 0); totalSaldo =
+			 * movimento.getTotalUnitario() + (movimentoInicial != null ?
+			 * movimentoInicial.getTotalSaldo() : 0); custoSaldo = totalSaldo /
+			 * quantidadeSaldo; } else {
+			 * 
+			 * custoUnitario = movimentoInicial.getCustoSaldo() != 0 ?
+			 * movimento.getTotalUnitario() / movimento.getQuantidadeUnitario() : 0;
+			 * quantidadeSaldo = movimentoInicial.getCustoSaldo() != 0 ?
+			 * movimento.getQuantidadeUnitario() : 0 + (movimentoInicial != null ?
+			 * movimentoInicial.getQuantidadeSaldo() : 0); totalSaldo =
+			 * (movimentoInicial.getCustoSaldo() != 0 ? movimentoInicial.getTotalSaldo() :
+			 * 0) - movimento.getTotalUnitario(); custoSaldo =
+			 * movimentoInicial.getCustoSaldo() != 0 ? Math.abs(totalSaldo /
+			 * quantidadeSaldo) : 0;
+			 * 
+			 * }
+			 * 
+			 * }
+			 * 
+			 * } else {// if(contador == 0) if (movimento.getFonteInformacao() instanceof
+			 * C170) {
+			 * 
+			 * C170 c170 = (C170) movimento.getFonteInformacao(); if
+			 * (c170.getC100().getIND_OPERC100().equals("Entrada")) { custoUnitario =
+			 * movimento.getTotalUnitario() / movimento.getQuantidadeUnitario();
+			 * quantidadeSaldo = movimento.getQuantidadeUnitario() +
+			 * fceBasica.getMovimentos().get(contador).getQuantidadeSaldo(); totalSaldo =
+			 * movimento.getTotalUnitario() +
+			 * fceBasica.getMovimentos().get(contador).getTotalSaldo(); custoSaldo =
+			 * totalSaldo / quantidadeSaldo; } else { custoUnitario =
+			 * movimento.getTotalUnitario() / movimento.getQuantidadeUnitario();
+			 * quantidadeSaldo =
+			 * fceBasica.getMovimentos().get(contador).getQuantidadeSaldo() -
+			 * movimento.getQuantidadeUnitario(); totalSaldo =
+			 * fceBasica.getMovimentos().get(contador).getTotalSaldo() -
+			 * movimento.getTotalUnitario(); custoSaldo = Math.abs(totalSaldo /
+			 * quantidadeSaldo);
+			 * 
+			 * }
+			 * 
+			 * } }
+			 */
 			contador++;
-			
+
 			movimento.setCustoUnitario(informacaoCusto.custoUnitario);
 			movimento.setQuantidadeSaldo(informacaoCusto.quantidadeSaldo);
 			movimento.setTotalSaldo(informacaoCusto.totalSaldo);
@@ -462,8 +501,7 @@ public class FCEBasica implements FCE, Serializable {
 				} else {
 					return 0;
 				}
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}// END int compare

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import DAO.MovimentoDao;
+import diretorios.util.DiretoriosUtil;
 import excelText.ToExcel_InCMV;
 import modelBloco0.Bloco0;
 import modelBloco0.R0200;
@@ -110,23 +111,31 @@ public class ImportaSped {
 			// MovimentoESS.getKeyValueMap();
 			System.out.println("Visualizando tabela excel de MovimentoESS.veTabelaExcel()");
 			MovimentoESS.veTabelaExcel();
-			
-			
+
 			Map<String, FCEBasica> mapFCEBasica = FCEBasica.getMapFCEBasica(blocoC.getListC100(), bloco0);
 			MovimentoDao mdao = new MovimentoDao();
-			for (Map.Entry<String, FCEBasica> pairFCE : mapFCEBasica.entrySet()) {				
-				FCEBasica.escreveFCEBasica(pairFCE.getValue(), mdao);
-				
-			}
-			
-			JOptionPane.showMessageDialog(null, "Importação concluída com sucesso!");
 
-		} 
-		catch (IOException e) {
+			String diretorio = DiretoriosUtil.selecionaPasta();
+			// String filename
+			if (diretorio != null) {
+				FCEBasica.escreveListaFCEBasica(mapFCEBasica.values(), diretorio, "CMV.cmv");
+
+				/*
+				 * for (Map.Entry<String, FCEBasica> pairFCE : mapFCEBasica.entrySet()) {
+				 * FCEBasica.escreveFCEBasica(pairFCE.getValue(), mdao);
+				 * 
+				 * } String diretorio, String filename
+				 * 
+				 */
+				JOptionPane.showMessageDialog(null, "Importação concluída com sucesso!");
+			} else {
+
+			}
+
+		} catch (IOException e) {
 			System.out.println("Pego pelo catch de parseArquivo2(String pathOfFile)");
 			e.printStackTrace();
-		} 
-		finally {
+		} finally {
 			try {
 				if (reader != null)
 					reader.close();
@@ -149,7 +158,7 @@ public class ImportaSped {
 		Map<String, FCEBasica> mapFCEBasica = FCEBasica.getMapFCEBasica(listC100, bloco0);
 
 		for (Map.Entry<String, FCEBasica> pairFCE : mapFCEBasica.entrySet()) {
-			FCEBasica.escreveFCEBasica(pairFCE.getValue(),null);
+			//FCEBasica.escreveFCEBasica(pairFCE.getValue(), null);
 
 		}
 		System.out.println(MovimentoESS.set.toString());

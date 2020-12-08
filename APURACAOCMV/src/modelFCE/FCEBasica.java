@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -30,6 +31,7 @@ import modelBloco0.R0000;
 import modelBloco0.R0200;
 import modelBlocoC.C100;
 import modelBlocoC.C170;
+import readobject.utils.ReadObject;
 import utilLazaro.ToExcel;
 import writeobject.utils.WriteObject;
 
@@ -118,7 +120,7 @@ public class FCEBasica implements FCE, Serializable {
 		return mapFCEBasica2;
 	}
 
-	public static void escreveListaFCEBasica(List<FCEBasica> listFceBasica, String diretorio, String filename) {
+	public static void escreveListaFCEBasica(Collection<FCEBasica> listFceBasica, String diretorio, String filename) {
 		/*
 		 * JTable tablez; tablez = preencheTabela(fceBasica); if (tablez != null) {
 		 * System.out.println("A tabela tem o seguinte número de linhas: " +
@@ -148,7 +150,7 @@ public class FCEBasica implements FCE, Serializable {
 
 	public static void escreveFCEBasica(FCEBasica fceBasica, String diretorio, String filename) {
 		
-		  escreveListaFCEBasica(Arrays.asList(fceBasica), diretorio, filename);
+		  escreveListaFCEBasica(Arrays.asList(fceBasica) , diretorio, filename);
 		
 		//if (fceBasica.getMovimentos().size() > 1) {
 			/*
@@ -201,7 +203,8 @@ public class FCEBasica implements FCE, Serializable {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			return null;
-		} catch (ClassNotFoundException cnfe) {
+		} 
+		catch (ClassNotFoundException cnfe) {
 			System.out.printf("Erro: %s", cnfe.getMessage());
 			cnfe.printStackTrace();
 			return null;
@@ -210,7 +213,34 @@ public class FCEBasica implements FCE, Serializable {
 		// System.out.println("Restored time: " + time.getTime());
 
 	}
+	public static List<FCEBasica> leFCEBasica(String filename, int i) {
+		List<FCEBasica> fceBasica = null;
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));
+			fceBasica = (ArrayList<FCEBasica>) in.readObject();
+			in.close();
+			return fceBasica;
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			return null;
+		} 
+		catch (ClassNotFoundException cnfe) {
+			System.out.printf("Erro: %s", cnfe.getMessage());
+			cnfe.printStackTrace();
+			return null;
+		}
+		// print out restored time
+		// System.out.println("Restored time: " + time.getTime());
 
+	}
+	
+	
+	
+	public static FCEBasica leFCEBasica(String filename, Class<FCEBasica> classT, FCEBasica fceb) {
+		FCEBasica fceReturn = ReadObject.readObject(filename, classT, fceb);		
+		return fceReturn;		
+	}
+	
 	public static JTable preencheTabela(FCEBasica fce) {
 		JTable tabela = new JTable();
 		// DefaultTableModel dtm = new DefaultTableModel();
@@ -246,6 +276,34 @@ public class FCEBasica implements FCE, Serializable {
 		return tabela;
 
 	}
+	
+	public static JTable preencheTabela(List<FCEBasica> listFCE) {
+		JTable tabela = new JTable();
+		// DefaultTableModel dtm = new DefaultTableModel();
+		// dtm.setColumnIdentifiers(columnIdentifiers);
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+		List<FCEBasica> listFceBasicaCopia = new ArrayList<FCEBasica>();
+		for (FCEBasica fceB : listFCE) {
+			if (fceB.getMovimentos().size() > 1) {
+				// ToExcel.exportaExcel(tablez);
+				FCEBasica copia = calculoMedioPonderadaMovel(fceB, null);
+				listFceBasicaCopia.add(copia);
+				//String diretorio = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL";				
+			}
+		}//END FOR		
+
+		TableRowSorter sorterModelTabela = new TableRowSorter<>(new FCEBasicaTableModel(listFceBasicaCopia));
+		tabela.setModel(new FCEBasicaTableModel(listFceBasicaCopia));
+		tabela.setRowSorter(sorterModelTabela);
+		sorterModelTabela.toggleSortOrder(0);
+
+		// tabela.setName(this.fce.getMovimentos().get(0).getDescricao());
+
+		return tabela;
+
+	}
+	
 
 	public FCEBasica calculoPorLotesGlobais(FCEBasica fceBasica) {
 

@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class FCEBasicaTableModel extends AbstractTableModel {
 
 	private FCEBasica fceBasica;
-	// private List<FCEBasica> listFceBasica;
+	private List<FCEBasica> listFceBasica;
 
 	Class<?> classe;
 
@@ -32,21 +32,21 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 		this.classe = this.fceBasica.getMovimentos().get(0).getClass();
 	}
 
-	/*
-	 * public FCEBasicaTableModel(List<FCEBasica> listFceBasica) {
-	 * this.listFceBasica = listFceBasica; this.classe =
-	 * this.fceBasica.getMovimentos().get(0).getClass(); }
-	 */
+	public FCEBasicaTableModel(List<FCEBasica> listFceBasica) {
+		this.listFceBasica = listFceBasica;
+		this.classe = listFceBasica.get(0).getMovimentos().get(0).getClass();
+	}
+
 	@Override
 	public int getRowCount() {
 		return this.fceBasica.getMovimentos().size();
 	}
 
-	
 	public int getColumnCount2() {
 		// TODO Auto-generated method stub
 		return NUM_COLUNAS;
 	}
+
 	@Override
 	public int getColumnCount() {
 		Object objeto = this.fceBasica.getMovimentos().get(0);
@@ -54,7 +54,7 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 		int colunas = 0;
 		for (Method metodo : classe.getDeclaredMethods()) {
 			if (metodo.isAnnotationPresent(Coluna.class)) {
-			colunas++;
+				colunas++;
 			}
 		}
 		return colunas;
@@ -170,7 +170,7 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 				if (metodo.isAnnotationPresent(Coluna.class)) {
 					Coluna anotacao = metodo.getAnnotation(Coluna.class);
 					if (anotacao.posicao() == coluna) {
-						return String.format(anotacao.formato(),metodo.invoke(objeto) );
+						return String.format(anotacao.formato(), metodo.invoke(objeto));
 					}
 				}
 			}

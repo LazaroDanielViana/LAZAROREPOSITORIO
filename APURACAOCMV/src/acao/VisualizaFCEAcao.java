@@ -13,7 +13,7 @@ import view.TableView;
 
 public class VisualizaFCEAcao extends AbstractAction {
 
-	@Override
+	/*@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		List<String> arquivosFce = ArquivoDiretorioUtil.listaArquivos();
@@ -21,6 +21,24 @@ public class VisualizaFCEAcao extends AbstractAction {
 		int contadorTabela = 0;
 		for(String arqFCE : arquivosFce) {
 			FCEBasica fceImportada =  (FCEBasica) FCEBasica.leFCEBasica(arqFCE);
+			JTable tab = FCEBasica.preencheTabela(fceImportada);
+			TableView.mostraTabela(tab);
+			if( contadorTabela > 4) {
+				break;
+			}
+		}
+	}*/
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		List<String> arquivosFce = ArquivoDiretorioUtil.listaArquivos();
+		
+		int contadorTabela = 0;
+		for(String arqFCE : arquivosFce) {
+			@SuppressWarnings("unchecked")
+			List<FCEBasica> fceImportada =  FCEBasica.leFCEBasica(arqFCE,1);
+			
 			JTable tab = FCEBasica.preencheTabela(fceImportada);
 			TableView.mostraTabela(tab);
 			if( contadorTabela > 4) {

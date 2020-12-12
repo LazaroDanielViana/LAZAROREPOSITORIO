@@ -220,7 +220,7 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 
 		if (historicoMapa != null) {
 			this.historico = c170.getC100().getIND_OPERC100() + " - " + historicoMapa;
-			System.out.println("HistóricoMapa obtido: " + historicoMapa);
+			//System.out.println("HistóricoMapa obtido: " + historicoMapa);
 		} else {
 			this.historico = c170.getC100().getIND_OPERC100() + " " + c170.getCFOPC170();
 			set.add("CFOP sem descrição -> " + c170.getCFOPC170());

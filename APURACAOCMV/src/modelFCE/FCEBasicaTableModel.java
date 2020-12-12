@@ -19,7 +19,7 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 
 	private FCEBasica fceBasica;
 	private List<FCEBasica> listFceBasica;
-
+	private FCEBasica bigFceBasica;
 	Class<?> classe;
 
 	public static int NUM_COLUNAS = 20;
@@ -35,11 +35,25 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 	public FCEBasicaTableModel(List<FCEBasica> listFceBasica) {
 		this.listFceBasica = listFceBasica;
 		this.classe = listFceBasica.get(0).getMovimentos().get(0).getClass();
+		bigFceBasica = new FCEBasica();
+		for(FCEBasica f : listFceBasica) {
+			bigFceBasica.getMovimentos().addAll(f.getMovimentos());
+		}
 	}
 
 	@Override
 	public int getRowCount() {
-		return this.fceBasica.getMovimentos().size();
+		int numLinhas = 0;
+		if(this.fceBasica != null) {
+			numLinhas = this.fceBasica.getMovimentos().size();
+		}
+		else if(this.listFceBasica != null) {
+			numLinhas = this.bigFceBasica.getMovimentos().size();
+		}
+		
+		
+		return numLinhas;
+	
 	}
 
 	public int getColumnCount2() {
@@ -49,14 +63,23 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		Object objeto = this.fceBasica.getMovimentos().get(0);
-		Class<?> classe = objeto.getClass();
 		int colunas = 0;
+		
+		Object objeto;
+		if(this.fceBasica != null) {
+			objeto = this.fceBasica.getMovimentos().get(0);
+		}
+		else {
+			objeto = this.listFceBasica.get(0).getMovimentos().get(0);
+		}
+		Class<?> classe = objeto.getClass();
+		
 		for (Method metodo : classe.getDeclaredMethods()) {
 			if (metodo.isAnnotationPresent(Coluna.class)) {
 				colunas++;
 			}
-		}
+		}	
+		
 		return colunas;
 	}
 
@@ -164,7 +187,15 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int linha, int coluna) {
 		try {
-			Object objeto = this.fceBasica.getMovimentos().get(linha);
+			Object objeto;
+			if(this.fceBasica != null) {
+				objeto = this.fceBasica.getMovimentos().get(0);
+			}
+			else {
+				objeto = this.bigFceBasica.getMovimentos().get(linha);
+			}
+			
+			
 			Class<?> classe = objeto.getClass();
 			for (Method metodo : classe.getDeclaredMethods()) {
 				if (metodo.isAnnotationPresent(Coluna.class)) {
@@ -176,7 +207,7 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 			}
 			return "";
 		} catch (Exception e) {
-			return "Erro";
+			return "Erro" +e;
 		}
 	}
 

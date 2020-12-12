@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.nio.file.FileSystem;
 
+import javax.swing.JOptionPane;
+
 public class WriteObject {
 
 	public static void writeObject(String diretorio, String filename, Object obj) {
@@ -15,6 +17,7 @@ public class WriteObject {
 		} 
 		catch (IOException ex) {
 			System.out.printf("Erro do tipo: %s", ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Erro ao serializar arquivo relacionado à: "+obj.getClass());
 			ex.printStackTrace();
 		}
 	}

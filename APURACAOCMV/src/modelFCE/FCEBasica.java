@@ -139,6 +139,9 @@ public class FCEBasica implements FCE, Serializable {
 			if (fceB.getMovimentos().size() > 1) {
 				// ToExcel.exportaExcel(tablez);
 				FCEBasica copia = calculoMedioPonderadaMovel(fceB, null);
+				if(copia != null) {
+					listFceBasicaCopia.add(copia);
+				}
 				listFceBasicaCopia.add(copia);
 				//String diretorio = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL";				
 			}

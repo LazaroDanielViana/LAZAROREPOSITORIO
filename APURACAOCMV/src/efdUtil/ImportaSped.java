@@ -1,6 +1,7 @@
 package efdUtil;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
@@ -34,15 +35,12 @@ public class ImportaSped {
 
 		System.out.println("pathOfFile vale: " + pathOfFile);
 		List<String> strs1 = new ArrayList<>();
-
 		String regActive;
 		String line;
 		String cnpjArquivo = "";
 
 		BufferedReader reader = null;
-
 		try {
-
 			Path path = java.nio.file.Paths.get(pathOfFile);
 			Charset latin1 = java.nio.charset.StandardCharsets.ISO_8859_1;
 			reader = java.nio.file.Files.newBufferedReader(path, latin1);
@@ -105,31 +103,32 @@ public class ImportaSped {
 
 			} // END while
 
-			System.out.println("Leu o arquivo de entrada");
-			// blocoC.imprimeListC100();
-
-			// MovimentoESS.getKeyValueMap();
 			System.out.println("Visualizando tabela excel de MovimentoESS.veTabelaExcel()");
 			MovimentoESS.veTabelaExcel();
 
 			Map<String, FCEBasica> mapFCEBasica = FCEBasica.getMapFCEBasica(blocoC.getListC100(), bloco0);
 			MovimentoDao mdao = new MovimentoDao();
-
-			String diretorio = DiretoriosUtil.selecionaPasta();
+			String diretorio = DiretoriosUtil.selecionaPasta("D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL", "Selecione uma pasta para salvar o(s) arquivo(s) serializados.");
 			// String filename
 			if (diretorio != null) {
-				FCEBasica.escreveListaFCEBasica(mapFCEBasica.values(), diretorio, "CMV.cmv");
-
-				/*
-				 * for (Map.Entry<String, FCEBasica> pairFCE : mapFCEBasica.entrySet()) {
-				 * FCEBasica.escreveFCEBasica(pairFCE.getValue(), mdao);
-				 * 
-				 * } String diretorio, String filename
-				 * 
-				 */
+				//deleta-se o arquivo para evitar o erro: java.io.StreamCorruptedException: invalid stream header: 504B0304
+				File f = new File(diretorio+"\\"+"CMV.cmv");
+				if(f.exists() && !f.isDirectory()) { 
+				    f.delete();
+				    try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				System.out.println("Diretorio vale: " +diretorio);
+				List<FCEBasica> listFCET = new ArrayList<FCEBasica>(mapFCEBasica.values());
+				FCEBasica.escreveListaFCEBasica(listFCET, diretorio+"\\", "CMV.cmv");				
 				JOptionPane.showMessageDialog(null, "Importação concluída com sucesso!");
-			} else {
-
+			} 
+			else {
+				JOptionPane.showMessageDialog(null, "Favor escolher um diretório");
 			}
 
 		} catch (IOException e) {
@@ -172,35 +171,6 @@ public class ImportaSped {
 
 	}
 
-	/*
-	 * List<FCEBasica> fce = new ArrayList<FCEBasica>();
-	 * 
-	 * List<C100> listC100 = blocoC.getListC100();
-	 * 
-	 * 
-	 * Map<String, FCEBasica> mapFCEBasica = new HashMap<>();
-	 * 
-	 * Map<String, R0200> mapR0200 = new HashMap<>();
-	 * 
-	 * for (R0200 r0200 : bloco0.getR0001().getListR0200()) {
-	 * mapR0200.put(r0200.getCOD_ITEM_R0200(), r0200);
-	 * 
-	 * }
-	 * 
-	 * mapFCEBasica = FCEBasica.getMapFCEBasica(listC100, mapR0200);
-	 * 
-	 * TableView tableView = new TableView( mapFCEBasica, mapR0200);
-	 * 
-	 * 
-	 * TableView tableViewList = new TableView(mapFCEBasica);
-	 * 
-	 */
-	// String pathOfFileW = ArquivoDiretorioUtil.pedeArquivoTexto();
-	// ToTxtSPEDIPI.exportaListaC(blocoC.getListC100(), pathOfFileW);
-	// blocoD.imprimeListD100();
-	// blocoE.imprimeListE100();
-	// blocoE.imprimeListE200();
-	// System.out.println("O tamanho da lista e100 do blocoE é: "+
-	// blocoE.getListE100().size());
+	
 
 }

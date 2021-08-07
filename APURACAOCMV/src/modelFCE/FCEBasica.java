@@ -1,7 +1,12 @@
 package modelFCE;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -19,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -26,6 +32,8 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import DAO.MovimentoDao;
+import efdUtil.EscreveEmArquivo;
+import efdUtil.LogFactory;
 import modelBloco0.Bloco0;
 import modelBloco0.R0000;
 import modelBloco0.R0200;
@@ -36,25 +44,27 @@ import utilLazaro.ToExcel;
 import writeobject.utils.WriteObject;
 
 public class FCEBasica implements FCE, Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	MovimentoESS si = new MovimentoESS();
 
-	// MovimentoESS sf;
-
 	private double totalDeCompras;
 	private int numCompras;
-	// private double precoMedioCompra;
+		
+	//nem toda entrada é compra (pode ser transferência,devolução de venda, por exemplo)
 	private double totalEntradas;
 	private int numEntradas;
 
 	private double totalDeVendas;
 	private int numVendas;
-	// private double precoMedioVenda;
+		
+	//nem toda saída é venda (pode ser transferência,doação, por exemplo)
 	private double totalSaidas;
 	private int numSaidas;
 
 	List<MovimentoESS> movimentos;
+	StringBuffer buf;
 
 	public FCEBasica() {
 		this.movimentos = new ArrayList<MovimentoESS>();
@@ -62,25 +72,24 @@ public class FCEBasica implements FCE, Serializable {
 	}
 
 	public FCEBasica(List<MovimentoESS> movimentos) {
-		this.movimentos = new ArrayList<MovimentoESS>();
-		this.movimentos.add(si);
-		si.setHistorico("Movimento Inicial");
+		if(this.movimentos == null) {
+			this.movimentos = new ArrayList<MovimentoESS>();
+			this.movimentos.add(si);
+			si.setHistorico("Movimento Inicial");
+		}
 		this.movimentos.addAll(movimentos);
-
 	}
 
 	public void doNothing() {
 		System.out.println("nothing");
-
 	}
 
 	@Override
 	public String toString() {
-		StringBuffer buf = new StringBuffer();
+		buf = new StringBuffer();
 		for (MovimentoESS movESS : movimentos) {
 			buf.append(movESS.toString());
 		}
-
 		return buf.toString();
 	}
 
@@ -88,106 +97,107 @@ public class FCEBasica implements FCE, Serializable {
 
 		Map<String, R0200> mapR0200 = Bloco0.getMapR0200(bloco0);
 		Map<String, FCEBasica> mapFCEBasica = new HashMap<>();
-
+		// PARA PEGAR APENAS FCEBASICAS COM MOVIMENTOS			
 		for (R0200 r0200 : mapR0200.values()) {
 			mapFCEBasica.put(r0200.getCOD_ITEM_R0200(), new FCEBasica());
 		}
-
 		for (C100 c100 : listC100) {
 			for (C170 c170 : c100.getListC170()) {
-				// movESS = new MovimentoESS();//PORQUE DOIS CONSTRUTORES?
-				MovimentoESS movESS = new MovimentoESS(c170, bloco0,
-						mapFCEBasica.get(c170.getCOD_ITEMC170()).getMovimentos());
+				MovimentoESS movESS = new MovimentoESS(c170, bloco0,mapFCEBasica.get(c170.getCOD_ITEMC170()).getMovimentos()  );
 				mapFCEBasica.get(c170.getCOD_ITEMC170()).getMovimentos().add(movESS);
 			}
-		}
-
-		// PEGAR APENAS FCEBASICAS COM MOVIMENTOS
-		Map<String, FCEBasica> mapFCEBasica2 = new TreeMap<>();
-		// usado para setar o Saldo inicial
+		}				
+		
+		Map<String, FCEBasica> mapFCEBasica2 = new HashMap<>();
 		int contador = 0;
+		Logger log = null;		
+		StringBuffer bufLog = new StringBuffer();
+		
 		for (Map.Entry<String, FCEBasica> pairFCE : mapFCEBasica.entrySet()) {
-
 			if (!pairFCE.getValue().movimentos.isEmpty()) {
 				mapFCEBasica2.put(pairFCE.getKey(), pairFCE.getValue());
+				if(contador %10 == 0) {
+					//System.out.println(pairFCE.getKey() +" : "+pairFCE.getValue().toString());
+					bufLog.append(pairFCE.getKey() +" : "+pairFCE.getValue().toString()+"\n");
+				}
 				if (pairFCE.getValue().getMovimentos().size() >= 2) {
 					pairFCE.getValue().getMovimentos().get(0)
 							.setDescricao(pairFCE.getValue().getMovimentos().get(1).getDescricao());
 				}
+				contador++;
 			}
 		}
-
+	
+		BufferedWriter bfw = null;
+		try {
+			bfw = new BufferedWriter(new FileWriter(new File("D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL\\MyLogFile.log"))  );
+			bfw.append(bufLog.toString());			
+			
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if(bfw != null) {
+				try {
+					bfw.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}
 		return mapFCEBasica2;
 	}
 
-	public static void escreveListaFCEBasica(Collection<FCEBasica> listFceBasica, String diretorio, String filename) {
-		/*
-		 * JTable tablez; tablez = preencheTabela(fceBasica); if (tablez != null) {
-		 * System.out.println("A tabela tem o seguinte número de linhas: " +
-		 * tablez.getModel().getRowCount());
-		 * 
-		 * } else { System.out.println("tablez é nula"); }
-		 * 
-		 * if (mdao != null) { try { adicionaBD(fceBasica, mdao);
-		 * 
-		 * } catch (SQLException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } }
-		 * 
-		 */
+	public static void escreveListaFCEBasica(List<FCEBasica> listFceBasica, String diretorio, String filename) {
+		
 		List<FCEBasica> listFceBasicaCopia = new ArrayList<FCEBasica>();
 		for (FCEBasica fceB : listFceBasica) {
 			if (fceB.getMovimentos().size() > 1) {
-				// ToExcel.exportaExcel(tablez);
+				//ToExcel.exportaExcel(tablez);
 				FCEBasica copia = calculoMedioPonderadaMovel(fceB, null);
 				if(copia != null) {
 					listFceBasicaCopia.add(copia);
-				}
-				listFceBasicaCopia.add(copia);
-				//String diretorio = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL";				
+				}						
 			}
 		}//END FOR		
-		// SerialClass time = new SerialClass(); // We will write this object to file
-		// system.
-		WriteObject.writeObject(diretorio, filename, listFceBasicaCopia);
-	}
-
-	public static void escreveFCEBasica(FCEBasica fceBasica, String diretorio, String filename) {
 		
-		  escreveListaFCEBasica(Arrays.asList(fceBasica) , diretorio, filename);
-		
-		//if (fceBasica.getMovimentos().size() > 1) {
-			/*
-			 * JTable tablez; tablez = preencheTabela(fceBasica); if (tablez != null) {
-			 * System.out.println("A tabela tem o seguinte número de linhas: " +
-			 * tablez.getModel().getRowCount());
-			 * 
-			 * } else { System.out.println("tablez é nula"); } if (mdao != null) { try {
-			 * adicionaBD(fceBasica, mdao);
-			 * 
-			 * } catch (SQLException e) { // TODO Auto-generated catch block
-			 * e.printStackTrace(); } }
-			 */
-			// ToExcel.exportaExcel(tablez);
-		
-			/*FCEBasica copia = calculoMedioPonderadaMovel(fceBasica, null);
-			
-			
-			// String diretorio = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL";
-			
-			// SerialClass time = new SerialClass(); // We will write this object to file
-			// system.
-			try {
-				ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(diretorio + filename));
-				out.writeObject(copia); // Write byte stream to file system.
+		if(listFceBasicaCopia.size()> 0 ) {
+			//WriteObject.writeObject(diretorio, filename, listFceBasicaCopia);
+			ObjectOutputStream out = null;
+			try 
+			{
+				
+				out = new ObjectOutputStream(new FileOutputStream(diretorio+"\\"+filename));
+				out.writeObject(listFceBasicaCopia); //Write byte stream to file system.
 				out.close();
 			} 
-			catch (IOException ex) {
-				System.out.printf("Erro: %s", ex.getMessage());
+			catch(IOException ex){
 				ex.printStackTrace();
+				System.out.println("Entrou no catch da escrita");
 			}
-			
+			finally {
+				if(out != null) {
+					try {
+						out.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						System.out.println("Problemas na escrita em escreveListaFCEBasica(List<FCEBasica> listFceBasica, String diretorio, String filename)");
+						e.printStackTrace();
+					}
+				}
+			}
 		}
-	*/
+		else {
+			System.out.println("listFceBasicaCopia.size() == 0");
+		}
+	}
+
+	public static void escreveFCEBasica(FCEBasica fceBasica, String diretorio, String filename) {		
+		  escreveListaFCEBasica(Arrays.asList(fceBasica), diretorio, filename);		
 	}
 
 	public static void adicionaBD(FCEBasica fceBasica, MovimentoDao mdao) throws SQLException {
@@ -195,7 +205,6 @@ public class FCEBasica implements FCE, Serializable {
 			mdao.adiciona(mov);
 		}
 	}
-
 	public static FCEBasica leFCEBasica(String filename) {
 		FCEBasica fceBasica = null;
 		try {
@@ -211,110 +220,179 @@ public class FCEBasica implements FCE, Serializable {
 			System.out.printf("Erro: %s", cnfe.getMessage());
 			cnfe.printStackTrace();
 			return null;
-		}
-		// print out restored time
-		// System.out.println("Restored time: " + time.getTime());
+		}		
 
 	}
-	public static List<FCEBasica> leFCEBasica(String filename, int i) {
+	public static List<FCEBasica> leFCEBasica(String filename, String placeHolder)  {
 		List<FCEBasica> fceBasica = null;
+		//ObjectInputStream ois = null;
+		//FileInputStream fis = null;
+		//BufferedInputStream bis = null;
+		ObjectInputStream in = null;
 		try {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));
-			fceBasica = (ArrayList<FCEBasica>) in.readObject();
+			//fis = new FileInputStream(filename);
+			//bis = new BufferedInputStream(fis);
+			//ois = new ObjectInputStream(bis);
+			//fceBasica = (List<FCEBasica>) ois.readObject();
+			in = new ObjectInputStream(new FileInputStream(filename));
+			fceBasica = (List<FCEBasica>) in.readObject();
 			in.close();
 			return fceBasica;
-		} catch (IOException ex) {
-			ex.printStackTrace();
+		} 
+		catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block			
+			e.printStackTrace();
 			return null;
 		} 
-		catch (ClassNotFoundException cnfe) {
-			System.out.printf("Erro: %s", cnfe.getMessage());
-			cnfe.printStackTrace();
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Problemas com IOException em leFCEBasica(String filename, String placeHolder)");
+			return Collections.emptyList();
+		} 
+		catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Problemas com ClassNotFoundException em leFCEBasica(String filename, String placeHolder)");
 			return null;
 		}
-		// print out restored time
-		// System.out.println("Restored time: " + time.getTime());
+		finally {
+			if(in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		/*finally {
+			if(ois!= null) {
+				try {
+					ois.close();
+				} 
+				catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(bis != null)
+				try {
+					bis.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			if(fis != null) {
+				try {
+					fis.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}*/
 
 	}
-	
-	
+	//segundo parâmetro usado unicamente para ser possível o overload com outro tipo de retorno
+	public static List<FCEBasica> leFCEBasica(String filename, int i) {
+		List<FCEBasica> fceBasica = null;
+		FileInputStream fis = null;
+		BufferedInputStream bis = null;
+		ObjectInputStream in = null;
+		try{
+			fis = new FileInputStream(filename);
+			bis = new BufferedInputStream(fis);
+			in = new ObjectInputStream(bis ) ;
+		
+			fceBasica = (ArrayList<FCEBasica>) in.readObject();
+			fis.close();
+			bis.close();
+			in.close();
+			return fceBasica;
+		} 
+		catch (IOException ex) {
+			ex.printStackTrace();
+		} 
+		catch (ClassNotFoundException cnfe) {
+			cnfe.printStackTrace();
+		}
+		finally {
+			if(fis!= null) {
+				try {
+					fis.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(bis != null) {
+				try {
+					bis.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}//end finaly
+		return fceBasica;
+		
+	}
 	
 	public static FCEBasica leFCEBasica(String filename, Class<FCEBasica> classT, FCEBasica fceb) {
-		FCEBasica fceReturn = ReadObject.readObject(filename, classT, fceb);		
-		return fceReturn;		
-	}
-	
-	public static JTable preencheTabela(FCEBasica fce) {
-		JTable tabela = new JTable();
-		// DefaultTableModel dtm = new DefaultTableModel();
-		// dtm.setColumnIdentifiers(columnIdentifiers);
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-
-		if (fce != null) {
-
-			if (fce.getMovimentos().isEmpty()) {
-				System.out.println("this.fce.getMovimentos().isEmpty() em preencheTabela");
-				JOptionPane.showMessageDialog(null, "this.fce.getMovimentos().isEmpty() em preecheTabela");
-				return null;
-			} else {
-				// System.out.println("this.fce não nulo e não vazio");
-			}
-
-			/*
-			 * for (MovimentoESS movESS : this.fce.getMovimentos()) { if (movESS != null) {
-			 * Object[] objects = movESS.carregaObjetoTabela(movESS); dtm.addRow(objects); }
-			 * }
-			 */
-		} else {
+		FCEBasica fceReturn;
+		try {
+			fceReturn = ReadObject.readObject(filename, classT, fceb, null);
+			return fceReturn;	
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return null;
-		}
-
-		TableRowSorter sorterModelTabela = new TableRowSorter<>(new FCEBasicaTableModel(fce));
-		tabela.setModel(new FCEBasicaTableModel(fce));
-		tabela.setRowSorter(sorterModelTabela);
-		sorterModelTabela.toggleSortOrder(0);
-
-		// tabela.setName(this.fce.getMovimentos().get(0).getDescricao());
-
-		return tabela;
-
+		}		
+			
 	}
 	
-	public static JTable preencheTabela(List<FCEBasica> listFCE) {
-		JTable tabela = new JTable();
-		// DefaultTableModel dtm = new DefaultTableModel();
-		// dtm.setColumnIdentifiers(columnIdentifiers);
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-
-		List<FCEBasica> listFceBasicaCopia = new ArrayList<FCEBasica>();
-		for (FCEBasica fceB : listFCE) {
-			if (fceB.getMovimentos().size() > 1) {
-				// ToExcel.exportaExcel(tablez);
-				FCEBasica copia = calculoMedioPonderadaMovel(fceB, null);
-				listFceBasicaCopia.add(copia);
-				//String diretorio = "D:\\LAZAROREPOSITORIO\\APURACAOCMV\\SERIAL";				
-			}
-		}//END FOR		
-
-		TableRowSorter sorterModelTabela = new TableRowSorter<>(new FCEBasicaTableModel(listFceBasicaCopia));
-		tabela.setModel(new FCEBasicaTableModel(listFceBasicaCopia));
-		tabela.setRowSorter(sorterModelTabela);
-		sorterModelTabela.toggleSortOrder(0);
-
-		// tabela.setName(this.fce.getMovimentos().get(0).getDescricao());
-
-		return tabela;
-
+	public static List<FCEBasica> leFCEBasica2(String filename, int i) {
+		List<FCEBasica> fceBasica = null;
+		
+		try(FileInputStream fis = new FileInputStream(filename); BufferedInputStream bis = new BufferedInputStream(fis);
+				ObjectInputStream in = new ObjectInputStream(bis);){
+			fceBasica = (ArrayList<FCEBasica>) in.readObject();	
+			if(in != null)
+				in.close();
+			if(bis != null)
+				bis.close();
+			if(fis != null)
+				fis.close();
+			return fceBasica;
+			
+		}		
+		catch (ClassNotFoundException |IOException ex) {
+			ex.printStackTrace();
+			
+			return null;
+		} 
+		
 	}
+
 	
+		
 
 	public FCEBasica calculoPorLotesGlobais(FCEBasica fceBasica) {
-
 		return fceBasica;
-
 	}
 
-	public static class InformacaoCusto {
+	public static class InformacaoCusto implements Serializable{
+		private static final long serialVersionUID = 1L;
 		double custoUnitario = 0;
 		double quantidadeSaldo = 0;
 		double custoSaldo = 0;
@@ -338,7 +416,8 @@ public class FCEBasica implements FCE, Serializable {
 					informacaoCusto.totalSaldo = movimento.getTotalUnitario()
 							+ (movimentoInicial != null ? movimentoInicial.getTotalSaldo() : 0);
 					informacaoCusto.custoSaldo = informacaoCusto.totalSaldo / informacaoCusto.quantidadeSaldo;
-				} else {
+				} 
+				else {
 
 					informacaoCusto.custoUnitario = movimentoInicial != null ? movimentoInicial.getCustoSaldo()
 							: -1.11111111111;
@@ -350,14 +429,12 @@ public class FCEBasica implements FCE, Serializable {
 					informacaoCusto.custoSaldo = movimentoInicial.getCustoSaldo() != 0
 							? movimentoInicial.getCustoSaldo()
 							: 0;
-
 				}
 
 			}
 
 		} // END contador == 0
-
-		else {// if(contador == 0)
+		else {// contador != 0
 			if (movimento.getFonteInformacao() instanceof C170) {
 
 				C170 c170 = (C170) movimento.getFonteInformacao();
@@ -371,10 +448,12 @@ public class FCEBasica implements FCE, Serializable {
 
 					if (informacaoCusto.quantidadeSaldo == 0) {
 						informacaoCusto.custoSaldo = informacaoCusto.custoUnitario;
-					} else {
+					} 
+					else {
 						informacaoCusto.custoSaldo = informacaoCusto.totalSaldo / informacaoCusto.quantidadeSaldo;
 					}
-				} else {
+				} 
+				else {
 					informacaoCusto.custoUnitario = fceBasica.getMovimentos().get(contador - 1).getCustoSaldo();
 					informacaoCusto.quantidadeSaldo = fceBasica.getMovimentos().get(contador - 1).getQuantidadeSaldo()
 							- movimento.getQuantidadeUnitario();
@@ -385,14 +464,10 @@ public class FCEBasica implements FCE, Serializable {
 						informacaoCusto.custoSaldo = Math
 								.abs(informacaoCusto.totalSaldo / informacaoCusto.quantidadeSaldo);
 					}
-
 				}
-
 			}
 		}
-
 		return informacaoCusto;
-
 	}
 
 	public static FCEBasica calculoMedioPonderadaMovel(FCEBasica fceBasica, MovimentoESS movimentoInicial) {
@@ -540,29 +615,29 @@ public class FCEBasica implements FCE, Serializable {
 	}
 
 	public static class FCEComparator implements Comparator<MovimentoESS> {
-
 		@Override
 		public int compare(MovimentoESS p1, MovimentoESS p2) {
-
 			if (p1 != null && p2 != null) {
-
 				if (p1.getData() != null && p2.getData() != null) {
 
-					if (p1.getData().compareTo(p2.getData()) != 0) {
+					if (p1.getData().compareTo(p2.getData()) != 0 ) {
 						if (p1.getData().before(p2.getData())) {
 							return -1;
-
-						} else {
+						} 
+						else {
 							return 1;
 						}
 
-					} else {
+					} 
+					else {
 						return 0;
 					}
-				} else {
+				}// end if (p1.getData() != null && p2.getData() != null)
+				else {
 					return 0;
 				}
-			} else {
+			} 
+			else {
 				return 0;
 			}
 		}// END int compare

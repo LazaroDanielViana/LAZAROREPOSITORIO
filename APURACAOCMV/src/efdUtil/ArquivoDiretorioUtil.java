@@ -10,23 +10,30 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ArquivoDiretorioUtil {
-
-	public static List<String> listaArquivos() {
+	public static List<String> listaArquivos(String diretorioPadraoParam, String textoPadrao) {
 		List<String> nomes = new ArrayList<String>();
 		List<String> nomesArquivos = new ArrayList<String>();
 		
 		JFileChooser chooser = new JFileChooser();
 		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		File diretorioPadrao = new File("D:\\Dados_Teste");
+		File diretorioPadrao;
+		if(diretorioPadraoParam != null) {
+			 diretorioPadrao = new File(diretorioPadraoParam);
+		}
+		else {
+			diretorioPadrao = new File(System.getProperty("user.home"));
+		}
+			
 		chooser.setCurrentDirectory(diretorioPadrao);
+		chooser.setDialogTitle(textoPadrao);
 		int returnVal = chooser.showOpenDialog(null);
 		String nomeDiretorio = "";
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			nomeDiretorio = chooser.getSelectedFile().getPath();
 
-		} else {
-			JOptionPane.showMessageDialog(null,
-					"Favor selecionar uma pasta contendo os arquivos a serem trabalhados! Finalizando o aplicativo ...");
+		} 
+		else {
+			//JOptionPane.showMessageDialog(null,"Favor selecionar uma pasta contendo os arquivos a serem trabalhados! Finalizando o aplicativo ...");
 			return null;
 		}
 
@@ -42,6 +49,15 @@ public class ArquivoDiretorioUtil {
 		}
 
 		return nomesArquivos;
+	}
+
+	public static List<String> listaArquivos(String diretorioPadraoParam) {
+		return listaArquivos(diretorioPadraoParam, null);
+	}
+
+
+	public static List<String> listaArquivos() {		
+		return listaArquivos("D:\\Dados_Teste");		
 	}
 
 	public static String pedeArquivoTexto() {

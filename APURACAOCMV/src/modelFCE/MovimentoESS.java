@@ -22,7 +22,7 @@ import modelBloco0.R0200.TIPO_ITEM_R0200;
 import modelBlocoC.C170;
 
 public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
-	//private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 	//int numColuna = 0;
 	transient int id;
@@ -67,7 +67,7 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 	double quantidadeSaldo;
 	double custoSaldo;
 	double totalSaldo;
-	transient Object  objetoFonteInformacao;
+	Object  objetoFonteInformacao;
 	public transient static Set<String> set = new HashSet<String>();
 
 	// TIPO_MOVIMENTO tipoMovimento;
@@ -160,7 +160,20 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 	@Override
 	public String toString() {
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		return "MovimentoESS [data=" + df.format(data) + ", historico=" + historico + ", quantidade="
+		
+		String dataMostrar = "01/01/1900";
+		try {
+			dataMostrar = df.format(data);
+		}
+		catch(IllegalArgumentException e) {
+			if(data != null) {
+				dataMostrar = data.toString();
+			}
+			else {
+				dataMostrar = "DataNula";
+			}
+		}
+		return "MovimentoESS [data=" + dataMostrar + ", historico=" + historico + ", quantidade="
 				+ quantidadeUnitario + ", custo=" + custoUnitario + ", total=" + totalUnitario + ", tipoMovimento="
 				+ "]";
 	}
@@ -483,11 +496,11 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 	@Override
 	public int compareTo(MovimentoESS o) {
 		// TODO Auto-generated method stub
-
 		int resultado = 0;
 		if (this.data.before(o.data)) {
 			resultado = -1;
-		} else {
+		} 
+		else {
 			resultado = 1;
 		}
 
@@ -500,7 +513,7 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 	 * public void setTipoMovimento(TIPO_MOVIMENTO tipoMovimento) {
 	 * this.tipoMovimento = tipoMovimento; }
 	 */
-
+	/*
 	public enum TIPO_MOVIMENTO {
 		// 00 – Mercadoria para Revenda; 01 – Matéria-Prima; 02 – Embalagem; 03 –
 		// Produto em Processo;
@@ -528,10 +541,10 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 			return valor;
 		}
 
-		/**
-		 * Localiza um registro dado o seu c�digo (�til quando a refer�ncia � feita
-		 * atrav�s de um c�digo entre uma tabela de dados e a tabela de dom�nio)
-		 */
+		
+		 //Localiza um registro dado o seu c�digo (�til quando a refer�ncia � feita
+		 //atrav�s de um c�digo entre uma tabela de dados e a tabela de dom�nio)
+		 //
 		public static TIPO_MOVIMENTO getTIPO_MOVIMENTO(int codigo) {
 			// Este c�digo n�o � eficiente para muitos dados (uso de
 			// LOOP)
@@ -549,5 +562,5 @@ public class MovimentoESS implements Serializable, Comparable<MovimentoESS> {
 		}
 
 	}// END enum TIPO_MOVIMENTO
-
+	*/
 }

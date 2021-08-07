@@ -9,17 +9,34 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class DiretoriosUtil {
-
-	public static String selecionaPasta() {
+	
+	public static String selecionaPasta(String diretorioPadraoParam, String tituloPersonalizado) {
 		String nome = "";
 		JFileChooser chooser = new JFileChooser();
 		
 		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		chooser.setDialogTitle("Selecione uma pasta.");
+		
+		if(tituloPersonalizado != null && tituloPersonalizado.trim().length() != 0) {
+			chooser.setDialogTitle(tituloPersonalizado);
+		}
+		else {
+			chooser.setDialogTitle("Selecione uma pasta.");
+		}
+		
+		
 		// FileNameExtensionFilter filter = new FileNameExtensionFilter("Normal text
 		// file", "*.txt");
 		// chooser.setFileFilter(filter);
-		File diretorioPadrao = new File("D:\\LAZAROREPOSITORIO\\APURACAOCMV");
+		File diretorioPadrao;
+		if(diretorioPadraoParam != null) {
+			diretorioPadrao = new File(diretorioPadraoParam);//"D:\\LAZAROREPOSITORIO\\APURACAOCMV"
+		}
+		else {
+			diretorioPadrao = new File(System.getProperty("user.home"));
+		}
+		
+		
+		
 		chooser.setCurrentDirectory(diretorioPadrao);
 		int returnVal = chooser.showOpenDialog(null);
 
@@ -34,6 +51,16 @@ public class DiretoriosUtil {
 
 		return nome;
 
+	}
+
+	
+	public static String selecionaPasta(String diretorioPadraoParam) {
+		return selecionaPasta(diretorioPadraoParam, null);
+
+	}
+	
+	public static String selecionaPasta() {
+		return selecionaPasta("D:\\LAZAROREPOSITORIO\\APURACAOCMV");		
 	}
 
 	public static List<String> listaArquivos() {

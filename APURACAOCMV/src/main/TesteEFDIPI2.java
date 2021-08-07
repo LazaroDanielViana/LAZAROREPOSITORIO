@@ -159,19 +159,21 @@ import modelFCE.MovimentoESS;
 import net.miginfocom.swing.MigLayout;
 
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.io.FileWriter;
 import java.lang.Exception;
 
-public class TesteEFDIPI2 extends JFrame {
-
+public class TesteEFDIPI2 extends JFrame implements Serializable {
+	private static final long serialVersionUID = 1L;
 	JMenuBar barra;
-	JMenu opcoes;
+	JMenu jMenuPrincipal;
 	JMenuItem jmImportarArquivo;	
 	JMenuItem jmVisualizaFCE;
 	JMenuItem jmVisualizaFCEAleatoria;
 	JPanel panelCalcularListar;
 
 	public TesteEFDIPI2() {
+		
 
 		super("TesteEFDIPI2");
 		
@@ -180,24 +182,21 @@ public class TesteEFDIPI2 extends JFrame {
 		
 		barra = new JMenuBar();
 		setJMenuBar(barra);
-		opcoes = new JMenu("Opções");
-		
+		jMenuPrincipal = new JMenu("Opções");		
 		
 		Action importar = new ImportaSpedAcao();
 		jmImportarArquivo = new JMenuItem(importar);		
-		opcoes.add(jmImportarArquivo);		
+		jMenuPrincipal.add(jmImportarArquivo);		
 		
 		Action visualizaFCE = new VisualizaFCEAcao();
 		jmVisualizaFCE = new JMenuItem(visualizaFCE);		
-		opcoes.add(jmVisualizaFCE);
+		jMenuPrincipal.add(jmVisualizaFCE);
 		
 		Action visualizaFCEAleatoria = new VisualizaFCEAleatoriaAcao();
 		jmVisualizaFCEAleatoria = new JMenuItem(visualizaFCEAleatoria);		
-		opcoes.add(jmVisualizaFCEAleatoria);
+		jMenuPrincipal.add(jmVisualizaFCEAleatoria);		
 		
-		
-		barra.add(opcoes);
-		
+		barra.add(jMenuPrincipal);		
 		
 		
 		setVisible(true);

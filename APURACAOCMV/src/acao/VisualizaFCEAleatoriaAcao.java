@@ -19,7 +19,7 @@ public class VisualizaFCEAleatoriaAcao extends AbstractAction{
 		if(arquivoFce != null) {
 			FCEBasica fceImportada =  (FCEBasica) FCEBasica.leFCEBasica(arquivoFce);
 			
-			JTable tab = FCEBasica.preencheTabela(fceImportada);
+			JTable tab = TableView.preencheTabela(fceImportada);
 			TableView.mostraTabela(tab);
 		}		
 		

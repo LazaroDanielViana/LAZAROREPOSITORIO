@@ -29,15 +29,20 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 
 	public FCEBasicaTableModel(FCEBasica fceBasica) {
 		this.fceBasica = fceBasica;
-		this.classe = this.fceBasica.getMovimentos().get(0).getClass();
+		this.classe = MovimentoESS.class;//this.fceBasica.getMovimentos().get(0).getClass();
 	}
 
 	public FCEBasicaTableModel(List<FCEBasica> listFceBasica) {
 		this.listFceBasica = listFceBasica;
-		this.classe = listFceBasica.get(0).getMovimentos().get(0).getClass();
-		bigFceBasica = new FCEBasica();
-		for(FCEBasica f : listFceBasica) {
-			bigFceBasica.getMovimentos().addAll(f.getMovimentos());
+		if(!listFceBasica.isEmpty()) {
+			this.classe = listFceBasica.get(0).getMovimentos().get(0).getClass();
+			bigFceBasica = new FCEBasica();
+			for(FCEBasica f : listFceBasica) {
+				bigFceBasica.getMovimentos().addAll(f.getMovimentos());
+			}
+		}
+		else {
+			this.listFceBasica = Collections.emptyList();
 		}
 	}
 
@@ -47,11 +52,9 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 		if(this.fceBasica != null) {
 			numLinhas = this.fceBasica.getMovimentos().size();
 		}
-		else if(this.listFceBasica != null) {
+		else if(this.listFceBasica != null && this.bigFceBasica != null) {
 			numLinhas = this.bigFceBasica.getMovimentos().size();
-		}
-		
-		
+		}		
 		return numLinhas;
 	
 	}
@@ -65,15 +68,17 @@ public class FCEBasicaTableModel extends AbstractTableModel {
 	public int getColumnCount() {
 		int colunas = 0;
 		
-		Object objeto;
+		Object objeto = null;
 		if(this.fceBasica != null) {
 			objeto = this.fceBasica.getMovimentos().get(0);
+		};
+		Class<?> classe = null;
+		if(objeto != null) {
+			 classe = objeto.getClass();
 		}
 		else {
-			objeto = this.listFceBasica.get(0).getMovimentos().get(0);
+			classe = MovimentoESS.class;
 		}
-		Class<?> classe = objeto.getClass();
-		
 		for (Method metodo : classe.getDeclaredMethods()) {
 			if (metodo.isAnnotationPresent(Coluna.class)) {
 				colunas++;
